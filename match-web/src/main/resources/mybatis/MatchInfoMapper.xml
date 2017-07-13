@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sduwh.match.dao.MatchInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sduwh.match.model.entity.MatchInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type1" jdbcType="INTEGER" property="type1" />
+    <result column="type2" jdbcType="INTEGER" property="type2" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="all_stage" jdbcType="VARCHAR" property="allStage" />
+    <result column="leader_num" jdbcType="INTEGER" property="leaderNum" />
+    <result column="member_num" jdbcType="INTEGER" property="memberNum" />
+    <result column="teacher_num" jdbcType="INTEGER" property="teacherNum" />
+    <result column="leader_in_num" jdbcType="INTEGER" property="leaderInNum" />
+    <result column="member_in_num" jdbcType="INTEGER" property="memberInNum" />
+    <result column="teacher_in_num" jdbcType="INTEGER" property="teacherInNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, type1, type2, level, all_stage, leader_num, member_num, teacher_num, leader_in_num, 
+    member_in_num, teacher_in_num, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from match_info
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from match_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sduwh.match.model.entity.MatchInfo">
+    insert into match_info (id, name, type1, 
+      type2, level, all_stage, 
+      leader_num, member_num, teacher_num, 
+      leader_in_num, member_in_num, teacher_in_num,create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type1,jdbcType=INTEGER}, 
+      #{type2,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{allStage,jdbcType=VARCHAR}, 
+      #{leaderNum,jdbcType=INTEGER}, #{memberNum,jdbcType=INTEGER}, #{teacherNum,jdbcType=INTEGER}, 
+      #{leaderInNum,jdbcType=INTEGER}, #{memberInNum,jdbcType=INTEGER}, #{teacherInNum,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.MatchInfo">
+    insert into match_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type1 != null">
+        type1,
+      </if>
+      <if test="type2 != null">
+        type2,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="allStage != null">
+        all_stage,
+      </if>
+      <if test="leaderNum != null">
+        leader_num,
+      </if>
+      <if test="memberNum != null">
+        member_num,
+      </if>
+      <if test="teacherNum != null">
+        teacher_num,
+      </if>
+      <if test="leaderInNum != null">
+        leader_in_num,
+      </if>
+      <if test="memberInNum != null">
+        member_in_num,
+      </if>
+      <if test="teacherInNum != null">
+        teacher_in_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type1 != null">
+        #{type1,jdbcType=INTEGER},
+      </if>
+      <if test="type2 != null">
+        #{type2,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="allStage != null">
+        #{allStage,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderNum != null">
+        #{leaderNum,jdbcType=INTEGER},
+      </if>
+      <if test="memberNum != null">
+        #{memberNum,jdbcType=INTEGER},
+      </if>
+      <if test="teacherNum != null">
+        #{teacherNum,jdbcType=INTEGER},
+      </if>
+      <if test="leaderInNum != null">
+        #{leaderInNum,jdbcType=INTEGER},
+      </if>
+      <if test="memberInNum != null">
+        #{memberInNum,jdbcType=INTEGER},
+      </if>
+      <if test="teacherInNum != null">
+        #{teacherInNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sduwh.match.model.entity.MatchInfo">
+    update match_info
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type1 != null">
+        type1 = #{type1,jdbcType=INTEGER},
+      </if>
+      <if test="type2 != null">
+        type2 = #{type2,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="allStage != null">
+        all_stage = #{allStage,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderNum != null">
+        leader_num = #{leaderNum,jdbcType=INTEGER},
+      </if>
+      <if test="memberNum != null">
+        member_num = #{memberNum,jdbcType=INTEGER},
+      </if>
+      <if test="teacherNum != null">
+        teacher_num = #{teacherNum,jdbcType=INTEGER},
+      </if>
+      <if test="leaderInNum != null">
+        leader_in_num = #{leaderInNum,jdbcType=INTEGER},
+      </if>
+      <if test="memberInNum != null">
+        member_in_num = #{memberInNum,jdbcType=INTEGER},
+      </if>
+      <if test="teacherInNum != null">
+        teacher_in_num = #{teacherInNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sduwh.match.model.entity.MatchInfo">
+    update match_info
+    set name = #{name,jdbcType=VARCHAR},
+      type1 = #{type1,jdbcType=INTEGER},
+      type2 = #{type2,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      all_stage = #{allStage,jdbcType=VARCHAR},
+      leader_num = #{leaderNum,jdbcType=INTEGER},
+      member_num = #{memberNum,jdbcType=INTEGER},
+      teacher_num = #{teacherNum,jdbcType=INTEGER},
+      leader_in_num = #{leaderInNum,jdbcType=INTEGER},
+      member_in_num = #{memberInNum,jdbcType=INTEGER},
+      teacher_in_num = #{teacherInNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

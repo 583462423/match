@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!-- 排除，不进行装饰的路径 -->
+    <!--其中path表示的是正常访问时的url-->
+    <mapping exclue="true">
+        <path>/login</path>
+        <path>/</path>
+        <path>/index</path>
+        <path>/logout</path>
+        <path>/common/*</path>
+    </mapping>
+
+  	<!-- 前端商城布局 -->
+    <mapping>
+        <path>/admin/**</path>
+        <path>/permission/**</path>
+        <decorator>/WEB-INF/views/sitemesh/admin.jsp</decorator>
+    </mapping>
+
+    <!--sitemesh默认只有body,title,head等tag标签，为了实现自定义，需要实现自定义标签-->
+    <content-processor>
+        <tag-rule-bundle class="com.sduwh.match.sitemesh.DivTagRoleBundle" />
+    </content-processor>
+</sitemesh>

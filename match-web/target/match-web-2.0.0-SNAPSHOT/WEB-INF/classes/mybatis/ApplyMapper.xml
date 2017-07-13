@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sduwh.match.dao.ApplyMapper">
+  <resultMap id="BaseResultMap" type="com.sduwh.match.model.entity.Apply">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="academy_id" jdbcType="INTEGER" property="academyId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="leader_id" jdbcType="INTEGER" property="leaderId" />
+    <result column="teacher_ids" jdbcType="VARCHAR" property="teacherIds" />
+    <result column="member_ids" jdbcType="VARCHAR" property="memberIds" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="src" jdbcType="VARCHAR" property="src" />
+    <result column="pos" jdbcType="VARCHAR" property="pos" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, academy_id, type, leader_id, teacher_ids, member_ids, status, src, pos
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sduwh.match.model.entity.Apply">
+    insert into apply (id, name, academy_id, 
+      type, leader_id, teacher_ids, 
+      member_ids, status, src, 
+      pos)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{academyId,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{leaderId,jdbcType=INTEGER}, #{teacherIds,jdbcType=VARCHAR}, 
+      #{memberIds,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{src,jdbcType=VARCHAR}, 
+      #{pos,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.Apply">
+    insert into apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="academyId != null">
+        academy_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="leaderId != null">
+        leader_id,
+      </if>
+      <if test="teacherIds != null">
+        teacher_ids,
+      </if>
+      <if test="memberIds != null">
+        member_ids,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="src != null">
+        src,
+      </if>
+      <if test="pos != null">
+        pos,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="academyId != null">
+        #{academyId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherIds != null">
+        #{teacherIds,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIds != null">
+        #{memberIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="src != null">
+        #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        #{pos,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sduwh.match.model.entity.Apply">
+    update apply
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="academyId != null">
+        academy_id = #{academyId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="leaderId != null">
+        leader_id = #{leaderId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherIds != null">
+        teacher_ids = #{teacherIds,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIds != null">
+        member_ids = #{memberIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="src != null">
+        src = #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        pos = #{pos,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sduwh.match.model.entity.Apply">
+    update apply
+    set name = #{name,jdbcType=VARCHAR},
+      academy_id = #{academyId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      leader_id = #{leaderId,jdbcType=INTEGER},
+      teacher_ids = #{teacherIds,jdbcType=VARCHAR},
+      member_ids = #{memberIds,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      src = #{src,jdbcType=VARCHAR},
+      pos = #{pos,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

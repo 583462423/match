@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="match-common:war">
+    <output-path>$PROJECT_DIR$/match-common/target</output-path>
+    <root id="archive" name="morning.war">
+      <element id="artifact" artifact-name="match-common:war exploded" />
+    </root>
+  </artifact>
+</component>

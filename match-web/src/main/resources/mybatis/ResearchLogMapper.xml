@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sduwh.match.dao.ResearchLogMapper">
+  <resultMap id="BaseResultMap" type="com.sduwh.match.model.entity.ResearchLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="is_public" jdbcType="INTEGER" property="isPublic" />
+    <result column="times" jdbcType="INTEGER" property="times" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sduwh.match.model.entity.ResearchLogWithBLOBs">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, is_public, times, last_time
+  </sql>
+  <sql id="Blob_Column_List">
+    content, comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from research_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from research_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sduwh.match.model.entity.ResearchLogWithBLOBs">
+    insert into research_log (id, title, is_public, 
+      times, last_time, content, 
+      comment)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{isPublic,jdbcType=INTEGER}, 
+      #{times,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}, 
+      #{comment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.ResearchLogWithBLOBs">
+    insert into research_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="isPublic != null">
+        is_public,
+      </if>
+      <if test="times != null">
+        times,
+      </if>
+      <if test="lastTime != null">
+        last_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null">
+        #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=INTEGER},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sduwh.match.model.entity.ResearchLogWithBLOBs">
+    update research_log
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null">
+        is_public = #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="times != null">
+        times = #{times,jdbcType=INTEGER},
+      </if>
+      <if test="lastTime != null">
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sduwh.match.model.entity.ResearchLogWithBLOBs">
+    update research_log
+    set title = #{title,jdbcType=VARCHAR},
+      is_public = #{isPublic,jdbcType=INTEGER},
+      times = #{times,jdbcType=INTEGER},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR},
+      comment = #{comment,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sduwh.match.model.entity.ResearchLog">
+    update research_log
+    set title = #{title,jdbcType=VARCHAR},
+      is_public = #{isPublic,jdbcType=INTEGER},
+      times = #{times,jdbcType=INTEGER},
+      last_time = #{lastTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

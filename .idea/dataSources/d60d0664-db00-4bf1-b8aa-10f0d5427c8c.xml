@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="competition@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="competition">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="osf"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="pussinboots_morning"/>
+    <schema id="8" parent="1" name="shiro"/>
+    <schema id="9" parent="1" name="sys"/>
+    <schema id="10" parent="1" name="yibo"/>
+    <table id="11" parent="2" name="academy">
+      <Comment>学院表</Comment>
+    </table>
+    <table id="12" parent="2" name="apply">
+      <Comment>申请表</Comment>
+    </table>
+    <table id="13" parent="2" name="grade">
+      <Comment>评分</Comment>
+    </table>
+    <table id="14" parent="2" name="match_info">
+      <Comment>比赛信息</Comment>
+    </table>
+    <table id="15" parent="2" name="match_item">
+      <Comment>比赛条目</Comment>
+    </table>
+    <table id="16" parent="2" name="match_type">
+      <Comment>比赛大类</Comment>
+    </table>
+    <table id="17" parent="2" name="match_type2">
+      <Comment>比赛小类</Comment>
+    </table>
+    <table id="18" parent="2" name="munu">
+      <Comment>菜单表</Comment>
+    </table>
+    <table id="19" parent="2" name="permission">
+      <Comment>权限</Comment>
+    </table>
+    <table id="20" parent="2" name="personal_match_info">
+      <Comment>个人的比赛信息表</Comment>
+    </table>
+    <table id="21" parent="2" name="research_log">
+      <Comment>科研日志表</Comment>
+    </table>
+    <table id="22" parent="2" name="role">
+      <Comment>角色</Comment>
+    </table>
+    <table id="23" parent="2" name="specialty">
+      <Comment>专业</Comment>
+    </table>
+    <table id="24" parent="2" name="stage">
+      <Comment>阶段表</Comment>
+    </table>
+    <table id="25" parent="2" name="tmp_rater">
+      <Comment>临时评委表</Comment>
+    </table>
+    <table id="26" parent="2" name="user">
+      <Comment>用户表</Comment>
+    </table>
+    <column id="27" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="29" parent="11" name="type">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="30" parent="11" name="academy_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="32" parent="11" name="academy_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>academy_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="33" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="35" parent="12" name="academy_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="12" name="type">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="12" name="leader_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="38" parent="12" name="teacher_ids">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="39" parent="12" name="member_ids">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="40" parent="12" name="status">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="12" name="src">
+      <Position>9</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="42" parent="12" name="pos">
+      <Position>10</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <index id="43" parent="12" name="apply_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="45" parent="12" name="apply_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>apply_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="46" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="13" name="score">
+      <Position>2</Position>
+      <DataType>float|0</DataType>
+    </column>
+    <column id="48" parent="13" name="comment">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="49" parent="13" name="level">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="13" name="match_item_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="51" parent="13" name="grade_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="53" parent="13" name="grade_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>grade_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="54" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="55" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="56" parent="14" name="type1">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="14" name="type2">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="14" name="level">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="14" name="all_stage">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="60" parent="14" name="leader_num">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="61" parent="14" name="member_num">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="62" parent="14" name="teacher_num">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="63" parent="14" name="leader_in_num">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="64" parent="14" name="member_in_num">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="65" parent="14" name="teacher_in_num">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="66" parent="14" name="create_time">
+      <Position>13</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="67" parent="14" name="match_info_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="68" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="69" parent="14" name="match_info_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>match_info_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="70" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="15" name="leader_ids">
+      <Position>11</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="72" parent="15" name="member_ids">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="73" parent="15" name="apply_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="74" parent="15" name="teacher_ids">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="75" parent="15" name="log_ids">
+      <Position>6</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="76" parent="15" name="now_stage_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="77" parent="15" name="next_stage_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="78" parent="15" name="academy_id">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="79" parent="15" name="match_info_id">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="80" parent="15" name="title">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <index id="81" parent="15" name="match_item_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="82" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="83" parent="15" name="match_item_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>match_item_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="84" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="85" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="86" parent="16" name="match_type_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="87" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="88" parent="16" name="match_type_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>match_type_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="89" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="90" parent="17" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="91" parent="17" name="match_type_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="92" parent="17" name="match_type2_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="93" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="94" parent="17" name="match_type2_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>match_type2_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="95" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="96" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="97" parent="18" name="link">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <index id="98" parent="18" name="munu_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="99" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="100" parent="18" name="munu_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>munu_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="101" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="102" parent="19" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="103" parent="19" name="des">
+      <Position>3</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <index id="104" parent="19" name="permission_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="105" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="106" parent="19" name="permission_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>permission_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="107" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="108" parent="20" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="109" parent="20" name="match_item_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="110" parent="20" name="type">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="111" parent="20" name="status">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="112" parent="20" name="job_assignment">
+      <Position>6</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <index id="113" parent="20" name="personal_match_info_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="114" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="115" parent="20" name="personal_match_info_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>personal_match_info_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="116" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="117" parent="21" name="title">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="118" parent="21" name="content">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="119" parent="21" name="comment">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="120" parent="21" name="is_public">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="121" parent="21" name="times">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="122" parent="21" name="last_time">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="123" parent="21" name="research_log_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="124" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="125" parent="21" name="research_log_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>research_log_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="126" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="127" parent="22" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="128" parent="22" name="permission_ids">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="129" parent="22" name="des">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <index id="130" parent="22" name="role_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="131" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="132" parent="22" name="role_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>role_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="133" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="134" parent="23" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="135" parent="23" name="academy_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="136" parent="23" name="specialty_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="137" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="138" parent="23" name="specialty_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>specialty_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="139" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="140" parent="24" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="141" parent="24" name="type">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="142" parent="24" name="start_time">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="143" parent="24" name="end_time">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="144" parent="24" name="stage_flag">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="145" parent="24" name="stage_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="146" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="147" parent="24" name="stage_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>stage_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="148" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="149" parent="25" name="username">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="150" parent="25" name="password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="151" parent="25" name="comment_ids">
+      <Position>4</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="152" parent="25" name="done_comment_ids">
+      <Position>5</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="153" parent="25" name="level">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="154" parent="25" name="start_time">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="155" parent="25" name="end_time">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="156" parent="25" name="tmp_rater_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="157" parent="25" name="tmp_rater_username_uindex">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="158" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="159" parent="25" name="tmp_rater_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tmp_rater_id_uindex</UnderlyingIndexName>
+    </key>
+    <key id="160" parent="25" name="tmp_rater_username_uindex">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>tmp_rater_username_uindex</UnderlyingIndexName>
+    </key>
+    <column id="161" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="162" parent="26" name="username">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="163" parent="26" name="password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="164" parent="26" name="status">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="165" parent="26" name="role_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="166" parent="26" name="join_match_ids">
+      <Position>6</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="167" parent="26" name="academy_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="168" parent="26" name="specialty_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="169" parent="26" name="last_time">
+      <Position>9</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="170" parent="26" name="phone">
+      <Position>10</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="171" parent="26" name="email">
+      <Position>11</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="172" parent="26" name="name">
+      <Position>12</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <index id="173" parent="26" name="user_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="174" parent="26" name="user_username_uindex">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="175" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="176" parent="26" name="user_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
+    </key>
+    <key id="177" parent="26" name="user_username_uindex">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>user_username_uindex</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

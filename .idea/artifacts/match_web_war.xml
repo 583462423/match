@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="match-web:war">
+    <output-path>$PROJECT_DIR$/match-web/target</output-path>
+    <root id="archive" name="match-web-2.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="match-web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sduwh.match.dao.GradeMapper">
+  <resultMap id="BaseResultMap" type="com.sduwh.match.model.entity.Grade">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="score" jdbcType="REAL" property="score" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="match_item_id" jdbcType="INTEGER" property="matchItemId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sduwh.match.model.entity.Grade">
+    <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, score, level, match_item_id
+  </sql>
+  <sql id="Blob_Column_List">
+    comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from grade
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from grade
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sduwh.match.model.entity.Grade">
+    insert into grade (id, score, level, 
+      match_item_id, comment)
+    values (#{id,jdbcType=INTEGER}, #{score,jdbcType=REAL}, #{level,jdbcType=INTEGER}, 
+      #{matchItemId,jdbcType=INTEGER}, #{comment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.Grade">
+    insert into grade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="matchItemId != null">
+        match_item_id,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="matchItemId != null">
+        #{matchItemId,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sduwh.match.model.entity.Grade">
+    update grade
+    <set>
+      <if test="score != null">
+        score = #{score,jdbcType=REAL},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="matchItemId != null">
+        match_item_id = #{matchItemId,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sduwh.match.model.entity.Grade">
+    update grade
+    set score = #{score,jdbcType=REAL},
+      level = #{level,jdbcType=INTEGER},
+      match_item_id = #{matchItemId,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sduwh.match.model.entity.Grade">
+    update grade
+    set score = #{score,jdbcType=REAL},
+      level = #{level,jdbcType=INTEGER},
+      match_item_id = #{matchItemId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
