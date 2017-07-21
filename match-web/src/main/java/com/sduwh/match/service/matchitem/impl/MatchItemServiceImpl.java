@@ -3,7 +3,7 @@ package com.sduwh.match.service.matchitem.impl;
 import com.sduwh.match.dao.MatchItemMapper;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.service.matchitem.MatchItemService;
-import com.sduwh.match.util.StringUtil;
+import com.sduwh.match.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,8 +52,13 @@ public class MatchItemServiceImpl implements MatchItemService {
 
     @Override
     public List<MatchItem> selectAllByStringIds(String ids) {
-        if (StringUtil.NullOrEmpty(ids))return null;
+        if (StringUtils.nullOrEmpty(ids))return null;
         List<Integer> idList = Arrays.stream(ids.split(",")).map(Integer::parseInt).collect(Collectors.toList());
         return idList.stream().map(matchItemMapper::selectByPrimaryKey).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MatchItem> selectAllByInfoId(Integer id) {
+        return matchItemMapper.selectAllByInfoId(id);
     }
 }

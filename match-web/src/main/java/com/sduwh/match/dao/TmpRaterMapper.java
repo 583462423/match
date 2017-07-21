@@ -13,6 +13,8 @@ public interface TmpRaterMapper {
 
     int insertSelective(TmpRater record);
 
+
+
     TmpRater selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(TmpRater record);

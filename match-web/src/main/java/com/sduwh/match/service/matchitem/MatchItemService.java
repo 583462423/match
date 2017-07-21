@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface MatchItemService extends BaseService<MatchItem,Integer> {
     List<MatchItem> selectAllByStringIds(String ids);
+    List<MatchItem> selectAllByInfoId(Integer id);
 }

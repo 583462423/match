@@ -5,6 +5,7 @@ import com.sduwh.match.model.wrapper.RaterWrapper;
 import com.sduwh.match.service.BaseService;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -13,4 +14,5 @@ import java.util.List;
 
 public interface TmpRaterService extends BaseService<TmpRater,Integer> {
     List<RaterWrapper> selectAll();
+    int createRater(String ids,String startTime,String endTime,Integer cnt) throws ParseException;
 }

@@ -7,6 +7,7 @@ import com.sduwh.match.model.entity.*;
 import com.sduwh.match.model.wrapper.MatchTypeWrapper;
 import com.sduwh.match.model.wrapper.RoleTOWrapper;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
+import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.matchtype2.MatchType2Service;
 import com.sduwh.match.service.permission.PermissionService;
 import com.sduwh.match.service.role.RoleService;
@@ -20,10 +21,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -35,9 +33,11 @@ public class TestMapper {
 
     @Autowired
     MatchInfoService matchInfoService;
+    @Autowired
+    MatchItemService matchItemService;
 
     @Test
     public void test(){
-        matchInfoService.selectAll().stream().forEach(System.out::println);
+        System.out.println(UUID.randomUUID());
     }
 }

@@ -62,7 +62,11 @@ public class UserController extends BaseController{
         //这表示通过，但是如何获取通过信息？= =
         if(currentUser.hasRole("student")){
             //如果是user用户，就怎样？
-            return success(true,"/xxurl");
+            return success(true,"/student/index");
+        }
+
+        if(currentUser.hasRole("admin")){
+            return success(true,"/admin/matchs");
         }
 
         return success(true);

@@ -6,6 +6,8 @@ import com.sduwh.match.service.academy.AcademyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by qxg on 17-6-28.
  */
@@ -43,5 +45,10 @@ public class AcademyServiceImpl implements AcademyService {
     @Override
     public int updateByPrimaryKey(Academy record) {
         return academyMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Academy> selectAll() {
+        return academyMapper.selectAll();
     }
 }

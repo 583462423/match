@@ -10,11 +10,17 @@
         <path>/common/*</path>
     </mapping>
 
-  	<!-- 前端商城布局 -->
+  	<!-- admin布局修饰 -->
     <mapping>
         <path>/admin/**</path>
         <path>/permission/**</path>
         <decorator>/WEB-INF/views/sitemesh/admin.jsp</decorator>
+    </mapping>
+
+    <!-- student布局修饰 -->
+    <mapping>
+        <path>/student/**</path>
+        <decorator>/WEB-INF/views/sitemesh/student.jsp</decorator>
     </mapping>
 
     <!--sitemesh默认只有body,title,head等tag标签，为了实现自定义，需要实现自定义标签-->

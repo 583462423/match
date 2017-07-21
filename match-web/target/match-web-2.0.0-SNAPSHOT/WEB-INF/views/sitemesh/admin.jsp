@@ -92,27 +92,29 @@
                                 </ul>
                             </li>
 
-                            <li><a><i class="fa fa-home"></i> Banner<span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-home"></i> 通知(待做)<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="banner.html">Banner管理</a></li>
-                                    <li><a href="bannerAdd.html">Banner增加</a></li>
+                                    <li><a href="#">通知管理</a></li>
+                                    <li><a href="#">发布通知</a></li>
                                 </ul>
                             </li>
 
-                            <li><a><i class="fa fa-home"></i> 标签<span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-home"></i> 学院<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="tag.html">标签管理</a></li>
-                                    <li><a href="tagAdd.html">标签增加</a></li>
+                                    <li><a href="/admin/academy/all">学院管理</a></li>
+                                    <li><a href="/admin/academy/add">添加学院</a></li>
                                 </ul>
                             </li>
 
-                            <li><a><i class="fa fa-home"></i> 分类<span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-home"></i> 统计(待做)<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="catalog.html">分类管理</a></li>
-                                    <li><a href="catalogAdd.html">分类增加</a></li>
+                                    <li><a href=".">..</a></li>
+                                    <li><a href=".">..</a></li>
                                 </ul>
                             </li>
 
+                            <li><a href="/admin/password"><i class="fa"></i> 修改密码<span class="fa fa-chevron-down"></span></a>
+                            </li>
                         </ul>
                     </div>
 
@@ -121,7 +123,7 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" style="width:100%" title="退出登录">
+                    <a data-toggle="tooltip" data-placement="top" href="/logout" style="width:100%" title="退出登录">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -141,7 +143,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <a href="/logout" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <img src="/images/logout.png" alt="">退出
                             </a>
                         </li>

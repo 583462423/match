@@ -1,16 +1,20 @@
 package com.sduwh.match.service.tmprater.impl;
 
 
+import com.sduwh.match.Enum.RaterLevel;
 import com.sduwh.match.dao.TmpRaterMapper;
 import com.sduwh.match.model.entity.TmpRater;
 import com.sduwh.match.model.wrapper.RaterWrapper;
 import com.sduwh.match.service.matchitem.MatchItemService;
-import com.sduwh.match.service.matchtype.MatchTypeService;
 import com.sduwh.match.service.tmprater.TmpRaterService;
+import com.sduwh.match.util.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -67,5 +71,25 @@ public class TmpRaterServiceImpl implements TmpRaterService {
             return wrapper;
         }).collect(Collectors.toList());
         return warppers;
+    }
+
+    /** 通过ids, startTime,endTime,cnt等创建评委*/
+    @Override
+    public int createRater(String ids, String startTime, String endTime, Integer cnt) throws ParseException {
+        int result = 0;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        for(int i=0; i<cnt; i++){
+            TmpRater t = new TmpRater();
+            t.setCommentIds(ids);
+            t.setStartTime(dateFormat.parse(startTime));
+            t.setEndTime(dateFormat.parse(endTime));
+            t.setLevel(RaterLevel.SCHOOL.getLevel());
+            //生成帐号
+            t.setUsername(RandomStringUtils.getRandomStringUppercase(String.valueOf(i)));
+            t.setPassword(RandomStringUtils.getRandomStringUppercase(6,String.valueOf(i)));
+            result += tmpRaterMapper.insert(t);
+        }
+
+        return result;
     }
 }

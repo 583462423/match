@@ -13,4 +13,11 @@
     <artifactId>match-common</artifactId>
     <description>公共模块，主要保存一些实体，工具，等信息</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+    </dependencies>
 </project>

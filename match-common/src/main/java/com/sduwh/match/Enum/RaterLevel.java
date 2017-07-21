@@ -12,8 +12,12 @@ public enum RaterLevel {
     private Integer level;
     private String des;
 
-     private RaterLevel(Integer level,String des){
+    RaterLevel(Integer level,String des){
         this.level = level;
         this.des = des;
+    }
+
+    public Integer getLevel(){
+        return level;
     }
 }

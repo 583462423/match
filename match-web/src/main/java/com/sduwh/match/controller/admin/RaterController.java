@@ -1,6 +1,7 @@
 package com.sduwh.match.controller.admin;
 
 import com.sduwh.match.base.BaseController;
+import com.sduwh.match.common.ResponseResult;
 import com.sduwh.match.model.entity.MatchInfo;
 import com.sduwh.match.model.entity.TmpRater;
 import com.sduwh.match.model.wrapper.RaterWrapper;
@@ -9,9 +10,9 @@ import com.sduwh.match.service.role.RoleService;
 import com.sduwh.match.service.tmprater.TmpRaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -45,5 +46,21 @@ public class RaterController extends BaseController{
         //如果要生成评委信息，首先要选择哪一种比赛，所以先获取比赛info的信息，然后通过info再获取该种类型的所有比赛条目，再通过比赛日期等内容进行选择，要提供多选功能。
         map.put("info",matchInfoService.selectAll());
         return RATER_GEN;
+    }
+
+    /** 开始生成评委*/
+    @PostMapping("/gen")
+    @ResponseBody
+    public ResponseResult startGen(@RequestParam("matchItem") String matchItems,
+                                   @RequestParam("startTime") String startTime,
+                                   @RequestParam("endTime") String endTime,
+                                   @RequestParam("cnt") Integer cnt) throws ParseException {
+        //matchItems为"2,3"这种形式
+        //给对应的matchItem为'2,3'生成评委信息
+        //要考虑的还有时间= =我擦，还要选时间，回来再搞,fuc...................k
+        //还要考虑生成几个评委，我擦
+        if(tmpRaterService.createRater(matchItems,startTime,endTime,cnt)==cnt)
+            return success(true);
+        return fail(false,"添加失败");
     }
 }

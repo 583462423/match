@@ -110,4 +110,21 @@ public class MatchItem {
     public void setMatchInfoId(Integer matchInfoId) {
         this.matchInfoId = matchInfoId;
     }
+
+    @Override
+    public String toString() {
+        return "MatchItem{" +
+                "id=" + id +
+                ", leaderIds='" + leaderIds + '\'' +
+                ", title='" + title + '\'' +
+                ", memberIds='" + memberIds + '\'' +
+                ", applyId=" + applyId +
+                ", teacherIds='" + teacherIds + '\'' +
+                ", logIds='" + logIds + '\'' +
+                ", nowStageId=" + nowStageId +
+                ", nextStageId=" + nextStageId +
+                ", academyId=" + academyId +
+                ", matchInfoId=" + matchInfoId +
+                '}';
+    }
 }

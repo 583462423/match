@@ -3,6 +3,8 @@ package com.sduwh.match.dao;
 import com.sduwh.match.model.entity.MatchItem;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MatchItemMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,5 +18,7 @@ public interface MatchItemMapper {
     int updateByPrimaryKeySelective(MatchItem record);
 
     int updateByPrimaryKey(MatchItem record);
+
+    List<MatchItem> selectAllByInfoId(Integer id);
 
 }

@@ -60,7 +60,7 @@
                 data:data,
                 success:function(json){
                     if(json["success"] == true){
-                        window.location.href="/admin/matchs";
+                        window.location.href= json["message"];
                     }else{
                         alert("错误错误");
                     }
