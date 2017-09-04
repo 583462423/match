@@ -22,7 +22,7 @@
                 <option value="${item.id}">${item.name}</option>
             </c:forEach>
         </select>
-        <table class="table table-striped">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th class="col-sm-6"><input type="checkbox" id="allCheck" />全选</th>

@@ -19,10 +19,28 @@ public class MatchInfoTO {
     private Integer memberInNum;
     private Integer teacherNum;
     private Integer teacherInNum;
+    private Timestamp infoStartTime;
+    private Timestamp infoEndTime;
     private List<Integer> isChoose;
     private List<Timestamp> startTime;
     private List<Timestamp> endTime;
     private List<String> stageName;
+
+    public Timestamp getInfoStartTime() {
+        return infoStartTime;
+    }
+
+    public void setInfoStartTime(Timestamp infoStartTime) {
+        this.infoStartTime = infoStartTime;
+    }
+
+    public Timestamp getInfoEndTime() {
+        return infoEndTime;
+    }
+
+    public void setInfoEndTime(Timestamp infoEndTime) {
+        this.infoEndTime = infoEndTime;
+    }
 
     public Integer getId() {
         return id;
@@ -159,6 +177,8 @@ public class MatchInfoTO {
                 ", memberInNum=" + memberInNum +
                 ", teacherNum=" + teacherNum +
                 ", teacherInNum=" + teacherInNum +
+                ", infoStartTime=" + infoStartTime +
+                ", infoEndTime=" + infoEndTime +
                 ", isChoose=" + isChoose +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +

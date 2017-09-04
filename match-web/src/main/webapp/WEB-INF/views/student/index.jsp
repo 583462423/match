@@ -16,6 +16,18 @@
 <mydiv>
     <div style="width: 100%;height: 100%;">
         <!-- 显示用户信息 -->
+        ${user.user.username}<br>
+        ${user.user.lastTime}<br>
+        ${user.user.email}<br>
+        ${user.user.phone}<br>
+        <br>
+        ${user.status}
+        <br>
+        <c:forEach items="${user.joinMatch}" var="item">
+            ${item.title}<br>
+        </c:forEach>
+        ${user.academy.name}<br>
+        ${user.specialty.name}<br>
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->

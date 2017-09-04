@@ -8,10 +8,8 @@ import com.sduwh.match.service.stage.StageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -69,6 +67,23 @@ public class StageServiceImpl implements StageService {
     @Override
     public List<Stage> selectByIdList(List<Integer> ids) {
         return stageMapper.selectByIdList(ids);
+    }
+
+    @Override
+    public List<Stage> selectByStageFlag(int flag) {
+        return stageMapper.selectByStageFlag(flag);
+    }
+
+    @Override
+    public List<Stage> selectCheckedStageByStageFlag(int flag) {
+        return selectByStageFlag(flag).stream()
+                .filter(s->!checkEnd(s)).collect(Collectors.toList());
+    }
+
+    /** 如果过期，返回true*/
+    @Override
+    public boolean checkEnd(Stage stage) {
+        return stage.getEndTime().before(new Date());
     }
 
 }

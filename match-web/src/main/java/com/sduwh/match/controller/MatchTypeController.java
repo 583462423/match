@@ -1,9 +1,8 @@
 package com.sduwh.match.controller;
 
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.model.entity.MatchType;
 import com.sduwh.match.model.entity.MatchType2;
-import com.sduwh.match.service.matchinfo.MatchInfoService;
 import com.sduwh.match.service.matchtype.MatchTypeService;
 import com.sduwh.match.service.matchtype2.MatchType2Service;
 import org.springframework.beans.factory.annotation.Autowired;

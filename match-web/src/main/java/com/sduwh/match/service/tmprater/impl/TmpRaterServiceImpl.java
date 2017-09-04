@@ -1,7 +1,7 @@
 package com.sduwh.match.service.tmprater.impl;
 
 
-import com.sduwh.match.Enum.RaterLevel;
+import com.sduwh.match.enums.RaterLevel;
 import com.sduwh.match.dao.TmpRaterMapper;
 import com.sduwh.match.model.entity.TmpRater;
 import com.sduwh.match.model.wrapper.RaterWrapper;

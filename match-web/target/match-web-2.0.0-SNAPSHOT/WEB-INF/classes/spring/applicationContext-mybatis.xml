@@ -89,7 +89,7 @@
 	<!-- 使用xml配置事物-->
 	<aop:config>
 		<!--切入点表达式,其中execution是必须的，返回值为*表示任意返回值，service后边跟着两个.表示service的任意层级的子包都可以被访问 *(..)表示任意方法，任意参数-->
-		<aop:pointcut id="txPoint" expression="execution(* com.sduwh.match.service..*(..))" />
+		<aop:pointcut id="txPoint" expression="execution(* com.sduwh.match.dao..*(..))" />
 		<!--配置事物增强-->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>
 	</aop:config>

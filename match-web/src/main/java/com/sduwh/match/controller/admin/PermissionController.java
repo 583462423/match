@@ -1,10 +1,9 @@
 package com.sduwh.match.controller.admin;
 
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
 import com.sduwh.match.model.entity.Permission;
 import com.sduwh.match.model.entity.Role;
-import com.sduwh.match.model.to.RoleTO;
 import com.sduwh.match.model.wrapper.RoleTOWrapper;
 import com.sduwh.match.service.permission.PermissionService;
 import com.sduwh.match.service.role.RoleService;

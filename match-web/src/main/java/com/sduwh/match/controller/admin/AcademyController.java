@@ -1,7 +1,7 @@
 package com.sduwh.match.controller.admin;
 
-import com.sduwh.match.Enum.AcademyTypeEnum;
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.enums.AcademyTypeEnum;
+import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
 import com.sduwh.match.model.entity.Academy;
 import com.sduwh.match.service.academy.AcademyService;

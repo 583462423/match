@@ -1,6 +1,6 @@
 package com.sduwh.match.controller;
 
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * Created by qxg on 17-7-19.

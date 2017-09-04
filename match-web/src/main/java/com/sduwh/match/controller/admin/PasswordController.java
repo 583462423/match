@@ -1,6 +1,6 @@
 package com.sduwh.match.controller.admin;
 
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.controller.base.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -3,14 +3,17 @@ package com.sduwh.match.service.personalmatchinfo.impl;
 import com.sduwh.match.dao.PersonalMatchInfoMapper;
 import com.sduwh.match.model.entity.PersonalMatchInfo;
 import com.sduwh.match.service.BaseService;
+import com.sduwh.match.service.personalmatchinfo.PersonalMatchInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by qxg on 17-6-28.
  */
 @Service
-public class PersonalMatchInfoServiceImpl implements BaseService<PersonalMatchInfo,Integer> {
+public class PersonalMatchInfoServiceImpl implements PersonalMatchInfoService {
 
     @Autowired
     PersonalMatchInfoMapper personalMatchInfoMapper;
@@ -43,5 +46,10 @@ public class PersonalMatchInfoServiceImpl implements BaseService<PersonalMatchIn
     @Override
     public int updateByPrimaryKey(PersonalMatchInfo record) {
         return personalMatchInfoMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<PersonalMatchInfo> selectByUserId(int id) {
+        return personalMatchInfoMapper.selectByUserId(id);
     }
 }

@@ -29,6 +29,10 @@ public class MatchInfo {
 
     private Timestamp createTime;
 
+    private Timestamp startTime;
+
+    private Timestamp endTime;
+
 
     public Integer getId() {
         return id;
@@ -134,6 +138,22 @@ public class MatchInfo {
         this.createTime = createTime;
     }
 
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
+    }
+
     @Override
     public String toString() {
         return "MatchInfo{" +
@@ -150,6 +170,8 @@ public class MatchInfo {
                 ", memberInNum=" + memberInNum +
                 ", teacherInNum=" + teacherInNum +
                 ", createTime=" + createTime +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
                 '}';
     }
 }

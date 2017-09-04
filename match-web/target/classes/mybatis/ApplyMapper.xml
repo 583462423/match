@@ -26,7 +26,7 @@
     delete from apply
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sduwh.match.model.entity.Apply">
+  <insert id="insert" parameterType="com.sduwh.match.model.entity.Apply" useGeneratedKeys="true" keyProperty="id">
     insert into apply (id, name, academy_id, 
       type, leader_id, teacher_ids, 
       member_ids, status, src, 

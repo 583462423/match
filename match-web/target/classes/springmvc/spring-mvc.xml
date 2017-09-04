@@ -91,5 +91,22 @@
 			</property>
 	</bean>
 	<!-- 支持Shiro对Controller的方法级AOP安全控制 end -->
-    
+
+	<!--解决@ReponseBody返回字符串乱码-->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value = "text/html;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.sduwh.match.interceptors.UserInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

@@ -94,6 +94,8 @@ public class MatchInfoServiceImpl implements MatchInfoService {
         info.setTeacherNum(to.getTeacherNum());
         info.setType1(to.getType1());
         info.setType2(to.getType2());
+        info.setStartTime(to.getInfoStartTime());
+        info.setEndTime(to.getInfoEndTime());
 
         List<Stage> stages = new ArrayList<>();
         List<Integer> isChoose = to.getIsChoose();
@@ -123,10 +125,10 @@ public class MatchInfoServiceImpl implements MatchInfoService {
                 stage.setId(isChoose.get(i));
                 stage.setEndTime(endTime.get(i));
                 stage.setStartTime(startTime.get(i));
-                stage.setStageFlag(isChoose.get(i));
+                //stage.setStageFlag(isChoose.get(i)); 这条语句导致严重bug出现～～～～！！！！
                 stage.setName(toGetStages.get(i));
                 //这个地方就需要插入
-                stageService.updateByPrimaryKey(stage);
+                stageService.updateByPrimaryKeySelective(stage);
                 //这个是插入id  stage.getId();
                 stages.add(stage);
             }

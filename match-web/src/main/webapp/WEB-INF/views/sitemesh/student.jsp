@@ -63,56 +63,12 @@
                     <div class="menu_section">
                         <h3>管理操作</h3>
                         <ul class="nav side-menu">
-                            <li><a href="/student/index.html" ><i class="fa fa-home"></i> 主页</a></li>
+                            <li><a href="/student/index" ><i class="fa fa-home"></i> 主页</a></li>
                             <li><a><i class="fa fa-home"></i> 比赛<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/admin/matchs">比赛管理</a></li>
-                                    <li><a href="/admin/match/create">创建比赛</a></li>
+                                    <li><a href="/student/match/my">当前参与的比赛</a></li>
+                                    <li><a href="/student/matchs">参加比赛</a></li>
                                 </ul>
-                            </li>
-
-                            <li><a><i class="fa fa-home"></i>比赛分类<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="/admin/matchtype">比赛类别</a></li>
-                                    <li><a href="/admin/matchtype2">二级类别管理</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a><i class="fa fa-home"></i>权限<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="/permission/all">权限管理</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a><i class="fa fa-home"></i> 临时评委<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="/admin/rater/all.html">评委管理</a></li>
-                                    <li><a href="/admin/rater/gen.html">生成评委</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a><i class="fa fa-home"></i> 通知(待做)<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="#">通知管理</a></li>
-                                    <li><a href="#">发布通知</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a><i class="fa fa-home"></i> 学院<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="/admin/academy/all">学院管理</a></li>
-                                    <li><a href="/admin/academy/add">添加学院</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a><i class="fa fa-home"></i> 统计(待做)<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href=".">..</a></li>
-                                    <li><a href=".">..</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="/admin/password"><i class="fa"></i> 修改密码<span class="fa fa-chevron-down"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -122,7 +78,7 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" style="width:100%" title="退出登录">
+                    <a data-toggle="tooltip" data-placement="top" style="width:100%" href="/logout" title="退出登录">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -142,7 +98,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <a href="/logout" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <img src="/images/logout.png" alt="">退出
                             </a>
                         </li>

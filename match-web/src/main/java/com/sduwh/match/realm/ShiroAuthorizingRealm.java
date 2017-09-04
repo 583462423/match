@@ -1,6 +1,5 @@
 package com.sduwh.match.realm;
 
-import com.sduwh.match.Enum.UserStatus;
 import com.sduwh.match.model.entity.User;
 import com.sduwh.match.service.user.UserService;
 import org.apache.shiro.authc.*;

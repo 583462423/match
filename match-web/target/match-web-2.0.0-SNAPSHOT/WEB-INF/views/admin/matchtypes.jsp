@@ -15,7 +15,7 @@
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
-        <table class="table table-striped">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th class="col-sm-4">类别名称</th>

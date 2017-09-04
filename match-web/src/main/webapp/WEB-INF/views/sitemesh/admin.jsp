@@ -113,7 +113,7 @@
                                 </ul>
                             </li>
 
-                            <li><a href="/admin/password"><i class="fa"></i> 修改密码<span class="fa fa-chevron-down"></span></a>
+                            <li><a href="/admin/password"><i class="fa fa-home"></i> 修改密码</a>
                             </li>
                         </ul>
                     </div>

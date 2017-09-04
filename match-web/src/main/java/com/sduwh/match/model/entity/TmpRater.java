@@ -1,8 +1,5 @@
 package com.sduwh.match.model.entity;
 
-import com.sduwh.match.Enum.RaterLevel;
-import org.omg.CORBA.INTERNAL;
-
 import java.util.Date;
 
 public class TmpRater {

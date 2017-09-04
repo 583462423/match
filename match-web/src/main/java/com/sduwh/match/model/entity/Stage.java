@@ -62,4 +62,16 @@ public class Stage {
     public void setStageFlag(Integer stageFlag) {
         this.stageFlag = stageFlag;
     }
+
+    @Override
+    public String toString() {
+        return "Stage{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", stageFlag=" + stageFlag +
+                '}';
+    }
 }

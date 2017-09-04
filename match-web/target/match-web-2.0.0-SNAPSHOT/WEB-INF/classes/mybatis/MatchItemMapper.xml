@@ -34,15 +34,15 @@
     delete from match_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sduwh.match.model.entity.MatchItem">
+  <insert id="insert" parameterType="com.sduwh.match.model.entity.MatchItem" useGeneratedKeys="true" keyProperty="id">
     insert into match_item (id, leader_ids, member_ids, 
       apply_id, teacher_ids, log_ids, 
       now_stage_id, next_stage_id, academy_id, 
-      match_info_id)
+      match_info_id,title)
     values (#{id,jdbcType=INTEGER}, #{leaderIds,jdbcType=VARCHAR}, #{memberIds,jdbcType=VARCHAR},
       #{applyId,jdbcType=INTEGER}, #{teacherIds,jdbcType=VARCHAR}, #{logIds,jdbcType=VARCHAR}, 
       #{nowStageId,jdbcType=INTEGER}, #{nextStageId,jdbcType=INTEGER}, #{academyId,jdbcType=INTEGER}, 
-      #{matchInfoId,jdbcType=INTEGER}),#{title,jdbcType=VARCHAR}
+      #{matchInfoId,jdbcType=INTEGER},#{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.MatchItem">
     insert into match_item
@@ -163,7 +163,7 @@
       now_stage_id = #{nowStageId,jdbcType=INTEGER},
       next_stage_id = #{nextStageId,jdbcType=INTEGER},
       academy_id = #{academyId,jdbcType=INTEGER},
-      match_info_id = #{matchInfoId,jdbcType=INTEGER}
+      match_info_id = #{matchInfoId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

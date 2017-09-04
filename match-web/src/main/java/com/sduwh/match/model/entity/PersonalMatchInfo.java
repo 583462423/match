@@ -60,4 +60,17 @@ public class PersonalMatchInfo {
     public void setJobAssignment(String jobAssignment) {
         this.jobAssignment = jobAssignment == null ? null : jobAssignment.trim();
     }
+
+
+    @Override
+    public String toString() {
+        return "PersonalMatchInfo{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", matchItemId=" + matchItemId +
+                ", type=" + type +
+                ", status=" + status +
+                ", jobAssignment='" + jobAssignment + '\'' +
+                '}';
+    }
 }

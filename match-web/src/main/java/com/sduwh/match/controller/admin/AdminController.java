@@ -1,23 +1,20 @@
 package com.sduwh.match.controller.admin;
 
-import com.sduwh.match.Enum.StageEnum;
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.enums.MatchStage;
+import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
-import com.sduwh.match.dao.MatchInfoMapper;
 import com.sduwh.match.model.entity.MatchInfo;
 import com.sduwh.match.model.entity.MatchType;
 import com.sduwh.match.model.entity.MatchType2;
 import com.sduwh.match.model.to.MatchInfoTO;
 import com.sduwh.match.model.wrapper.MatchInfoWrapper;
 import com.sduwh.match.model.wrapper.MatchType2Wrapper;
-import com.sduwh.match.model.wrapper.MatchTypeWrapper;
 import com.sduwh.match.model.wrapper.StageWrapper;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
 import com.sduwh.match.service.matchtype.MatchTypeService;
 import com.sduwh.match.service.matchtype2.MatchType2Service;
 import com.sduwh.match.service.stage.StageService;
-import org.apache.ibatis.type.JdbcType;
-import org.omg.CORBA.INTERNAL;
+import com.sduwh.match.util.TimestampFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -98,7 +95,7 @@ public class AdminController extends BaseController{
     public String createMatch(Map<String, Object> map) {
         //首先要获取所有的阶段
         ArrayList<StageWrapper> list = new ArrayList<>();
-        Arrays.stream(StageEnum.values())
+        Arrays.stream(MatchStage.values())
                 .map(e -> new StageWrapper(e.getDes(), e.getId(), false))
                 .forEach(list::add);
         map.put("stages", list);
@@ -153,6 +150,8 @@ public class AdminController extends BaseController{
         if (id != null) {
             matchInfoTO.setId(Integer.parseInt(id));
         }
+        matchInfoTO.setInfoStartTime(TimestampFormatUtils.getTimestampFromString("yyyy-MM-dd hh:mm",request.getParameter("infoStartTime")));
+        matchInfoTO.setInfoEndTime(TimestampFormatUtils.getTimestampFromString("yyyy-MM-dd hh:mm",request.getParameter("infoEndTime")));
         matchInfoTO.setName(request.getParameter("name"));
         matchInfoTO.setIsChoose(Arrays.stream(request.getParameterValues("isChoose[]")).map(Integer::parseInt).collect(Collectors.toList()));
         matchInfoTO.setLeaderInNum(Integer.parseInt(request.getParameter("leaderInNum")));

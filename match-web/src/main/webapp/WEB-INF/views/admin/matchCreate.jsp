@@ -52,6 +52,13 @@
         <div class="input-group-addon">指导老师指导个数</div>
         <input class="form-control" id="teacherInNum" type="number" name="teacherInNum" />
     </div>
+    <div class="input-group">
+        <div class="input-group-addon">项目开始时间</div>
+        <input type="text" readonly id="startTime" class="form_datetime form-control"/>
+        <div class="input-group-addon">项目结束时间</div>
+        <input type="text" readonly id="endTime" class="form_datetime form-control"/>
+    </div>
+
     <hr>
     <table id="allStage" class="table table-bordered">
         <thead>
@@ -106,6 +113,8 @@
                 var endTime      = new Array(11);
                 var stageName    = new Array(11);
                 var isChooseCheckBox = $(".isChoose");
+                var infoStartTime = $("#startTime").val();
+                var infoEndTime = $("#endTime").val();
                 //var typeTmp = $(".type");
 
                 for(var i=0; i<isChooseCheckBox.length; i++){
@@ -151,7 +160,9 @@
                     "teacherInNum":teacherInNum,
                     "isChoose":isChoose,
                     "startTime":startTime,
-                    "endTime":endTime
+                    "endTime":endTime,
+                    "infoStartTime":infoStartTime,
+                    "infoEndTime":infoEndTime
                 };
                 
                 $.ajax({

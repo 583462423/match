@@ -3,6 +3,7 @@ package com.sduwh.match.service.role;
 import com.sduwh.match.model.entity.Role;
 import com.sduwh.match.model.to.RoleTO;
 import com.sduwh.match.service.BaseService;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,4 +14,5 @@ import java.util.List;
 public interface RoleService extends BaseService<Role,Integer> {
     List<RoleTO> selectAllRoleTO();
     List<Role> selectAll();
+    Role selectByRoleName(String name);
 }

@@ -1,6 +1,7 @@
 package com.sduwh.match;
 
 import com.sduwh.match.util.StringUtils;
+import com.sduwh.match.util.TimestampFormatUtils;
 import org.junit.Test;
 
 /**
@@ -10,7 +11,6 @@ import org.junit.Test;
 public class TestNormal {
     @Test
     public void test(){
-        Integer i = null;
-        System.out.println(StringUtils.nullOrEmpty(String.valueOf(i)));
+        System.out.println(TimestampFormatUtils.getTimestampFromString("yyyy-MM-dd hh:mm", "2014-55-66 11:22"));
     }
 }

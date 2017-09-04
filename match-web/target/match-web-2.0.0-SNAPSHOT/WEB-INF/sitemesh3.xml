@@ -8,6 +8,8 @@
         <path>/index</path>
         <path>/logout</path>
         <path>/common/*</path>
+        <path>/student/match/apply/submit/*</path>
+        <path>/teacher/check/detail/pass/*</path>
     </mapping>
 
   	<!-- admin布局修饰 -->
@@ -22,6 +24,22 @@
         <path>/student/**</path>
         <decorator>/WEB-INF/views/sitemesh/student.jsp</decorator>
     </mapping>
+    <!-- teacher布局修饰 -->
+    <mapping>
+        <path>/teacher/**</path>
+        <path>/check/teacher/done</path>
+        <path>/check/teacher</path>
+        <decorator>/WEB-INF/views/sitemesh/teacher.jsp</decorator>
+    </mapping>
+
+    <!-- academy 学院管理员布局修饰 -->
+    <mapping>
+        <path>/academy/**</path>
+        <path>/check/academy/done</path>
+        <path>/check/academy</path>
+        <decorator>/WEB-INF/views/sitemesh/academy.jsp</decorator>
+    </mapping>
+
 
     <!--sitemesh默认只有body,title,head等tag标签，为了实现自定义，需要实现自定义标签-->
     <content-processor>

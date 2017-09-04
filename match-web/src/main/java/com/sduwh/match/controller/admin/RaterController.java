@@ -1,12 +1,10 @@
 package com.sduwh.match.controller.admin;
 
-import com.sduwh.match.base.BaseController;
+import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
 import com.sduwh.match.model.entity.MatchInfo;
-import com.sduwh.match.model.entity.TmpRater;
 import com.sduwh.match.model.wrapper.RaterWrapper;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
-import com.sduwh.match.service.role.RoleService;
 import com.sduwh.match.service.tmprater.TmpRaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

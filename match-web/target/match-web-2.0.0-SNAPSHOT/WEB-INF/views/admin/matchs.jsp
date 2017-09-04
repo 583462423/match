@@ -99,6 +99,12 @@
                                 <div class="input-group-addon">指导老师指导个数</div>
                                 <input class="form-control" id="teacherInNum" type="number" name="teacherInNum" />
                             </div>
+                            <div class="input-group">
+                                <div class="input-group-addon">项目开始时间</div>
+                                <input type="text" readonly id="startTime" class="form_datetime form-control"/>
+                                <div class="input-group-addon">项目结束时间</div>
+                                <input type="text" readonly id="endTime" class="form_datetime form-control"/>
+                            </div>
                             <hr>
                             <span style="display: inline-block;font-size: 16px;"><bold>阶段信息</bold></span>
                             <table id="allStage" class="table table-bordered">
@@ -138,6 +144,8 @@
                     var startTimeTmp = $(".startTime");
                     var endTimeTmp = $(".endTime");
                     var stageNameTmp = $(".stageName");
+                    var infoStartTime = $("#startTime").val();
+                    var infoEndTime = $("#endTime").val();
 
 
                     for(var i=0; i<isChooseCheckBox.length; i++){
@@ -146,7 +154,6 @@
                         endTime[i] = endTimeTmp[i].value;
                         stageName[i] = stageNameTmp[i].value;
                         //type[i] = typeTmp[i].value;
-                        alert(endTime[i]);
                     }
 
                     var data = {
@@ -164,7 +171,9 @@
                         "teacherInNum":teacherInNum,
                         "isChoose":isChoose,
                         "startTime":startTime,
-                        "endTime":endTime
+                        "endTime":endTime,
+                        "infoStartTime":infoStartTime,
+                        "infoEndTime":infoEndTime
                     };
 
                     $.ajax({
@@ -238,6 +247,7 @@
                         success:function(json){
                             //{"matchInfo":{"id":3,"name":"2016-2017全国大学生挑战杯竞赛","type1":1,"type2":2,"level":1,"allStage":"1,2,3,4","leaderNum":2,"memberNum":4,"teacherNum":1,"leaderInNum":1,"memberInNum":4,"teacherInNum":5,"createTime":1498799996000},"matchType":{"id":1,"name":"国赛"},"matchType2":{"id":2,"name":"嘿嘿嘿","matchTypeId":2},"allStage":[{"id":1,"name":"立项申请"},{"id":2,"name":"学院审核"},{"id":3,"name":"学校审核"},{"id":4,"name":"公布"}]}
                             var matchInfo = json["matchInfo"];
+                            //alert(matchInfo["startTime"]);
                             $("#id").val(matchInfo["id"]);
                             $("#name").val(matchInfo["name"]);
                             $("#type1").val(matchInfo["type1"]);
@@ -247,12 +257,14 @@
                             $("#allStage").val(matchInfo["allStage"]);
                             $("#allStage").selectpicker("refresh");
                             getAllStageByIds(matchInfo["allStage"]);
-                            $("#leaderNum").val(matchInfo["leaderNum"])
-                            $("#memberNum").val(matchInfo["memberNum"])
-                            $("#teacherNum").val(matchInfo["teacherNum"])
-                            $("#leaderInNum").val(matchInfo["leaderInNum"])
-                            $("#memberInNum").val(matchInfo["memberInNum"])
-                            $("#teacherInNum").val(matchInfo["teacherInNum"])
+                            $("#leaderNum").val(matchInfo["leaderNum"]);
+                            $("#memberNum").val(matchInfo["memberNum"]);
+                            $("#teacherNum").val(matchInfo["teacherNum"]);
+                            $("#leaderInNum").val(matchInfo["leaderInNum"]);
+                            $("#memberInNum").val(matchInfo["memberInNum"]);
+                            $("#teacherInNum").val(matchInfo["teacherInNum"]);
+                            $("#startTime").val(getLocalTime(matchInfo["startTime"]));
+                            $("#endTime").val(getLocalTime(matchInfo["endTime"]));
                             $(".match_info").modal('show');
                         },
                         error:function(error){
@@ -321,7 +333,6 @@
                         todayBtn: true,
                         pickerPosition: "bottom-left"
                     });
-
                 }
             });
         </script>
