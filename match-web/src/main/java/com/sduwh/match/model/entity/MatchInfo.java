@@ -33,6 +33,8 @@ public class MatchInfo {
 
     private Timestamp endTime;
 
+    /** 表示当前是否开放补充申报状态*/
+    private int supply;
 
     public Integer getId() {
         return id;
@@ -154,6 +156,14 @@ public class MatchInfo {
         this.endTime = endTime;
     }
 
+    public int getSupply() {
+        return supply;
+    }
+
+    public void setSupply(int supply) {
+        this.supply = supply;
+    }
+
     @Override
     public String toString() {
         return "MatchInfo{" +
@@ -172,6 +182,7 @@ public class MatchInfo {
                 ", createTime=" + createTime +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
+                ", supply=" + supply +
                 '}';
     }
 }

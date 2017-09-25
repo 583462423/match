@@ -20,11 +20,11 @@
         </form>
         <a class="tmpRaterBtn aLogin">临时评委登陆</a>
     </div>
-    <div class="tmpRaterLogin loginForm">临时登陆
-        <form action="/tmpRaterLogin" method="post">
+    <div class="tmpRaterLogin loginForm">临时评委登陆
+        <form id="raterForm" action="/rater/login" method="post">
             <input name="username" type="text" placeholder="请输入用户名"/>
             <input name="password" type="password" placeholder="请输入密码"/>
-            <input type="button" class="btn btn-warning" value="临时登陆" />
+            <input type="button" id="raterLogin" class="btn btn-warning" value="临时登陆" />
         </form>
         <a class="userBtn aLogin">用户登陆</a>
     </div>
@@ -63,6 +63,28 @@
                         window.location.href= json["message"];
                     }else{
                         alert("错误错误");
+                    }
+                    //alert(json["success"] + "," + json["message"]);
+                },
+                error:function(error){
+                    alert("服务器开小差了，请稍后再试～")
+                }
+            });
+        });
+
+        $("#raterLogin").click(function(){
+            var data = $("#raterForm").serializeArray();
+            var action = $("#raterForm").attr("action");
+            $.ajax({
+                url:action,
+                type:'post',
+                data:data,
+                success:function(res){
+                    var json = JSON.parse(res);
+                    if(json["error"] != null){
+                        alert(json["error"]);
+                    }else{
+                        window.location.href = json["url"];
                     }
                     //alert(json["success"] + "," + json["message"]);
                 },

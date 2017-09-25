@@ -1,7 +1,9 @@
 package com.sduwh.match.interceptors;
 
 import com.sduwh.match.model.HostHolder;
+import com.sduwh.match.model.entity.TmpRater;
 import com.sduwh.match.model.entity.User;
+import com.sduwh.match.service.tmprater.TmpRaterService;
 import com.sduwh.match.service.user.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -23,15 +25,21 @@ public class UserInterceptor implements HandlerInterceptor {
 
     @Autowired
     UserService userService;
+    @Autowired
+    TmpRaterService raterService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //在进来的时候首先判断一下用户是否登陆，因为有shiro控制，所以不管登陆与否，在shiro控制的界面，HostHolder中必然有用户
         Subject subject = SecurityUtils.getSubject();
         if(subject != null){
+            //设置user和rater
             String username = (String) subject.getPrincipal();
             User user = userService.selectByUsername(username);
             hostHolder.setUser(user);
+
+            TmpRater rater = raterService.selectByUsername(username);
+            hostHolder.setRater(rater);
         }
         return true;
     }

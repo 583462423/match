@@ -101,4 +101,15 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public User selectAcademyUserByAcademyId(int roleId,int academyId) {
+
+        return userMapper.selectAcademyUserByAcademyId(roleId,academyId);
+    }
+
+    @Override
+    public User selectSuperUser() {
+        return userMapper.selectSuperUser();
+    }
+
 }

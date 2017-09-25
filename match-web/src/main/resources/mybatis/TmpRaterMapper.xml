@@ -10,9 +10,10 @@
     <result column="level" jdbcType="INTEGER" property="level" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="match_info_id" jdbcType="INTEGER" property="matchInfoId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, comment_ids, done_comment_ids, level, start_time, end_time
+    id, username, password, comment_ids, done_comment_ids, level, start_time, end_time,match_info_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -34,10 +35,10 @@
   <insert id="insert" parameterType="com.sduwh.match.model.entity.TmpRater">
     insert into tmp_rater (id, username, password, 
       comment_ids, done_comment_ids, level, 
-      start_time, end_time)
+      start_time, end_time,match_info_id)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{commentIds,jdbcType=VARCHAR}, #{doneCommentIds,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{matchInfoId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.TmpRater">
     insert into tmp_rater
@@ -66,6 +67,9 @@
       <if test="endTime != null">
         end_time,
       </if>
+      <if test="matchInfoId != null">
+        match_info_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -91,6 +95,9 @@
       </if>
       <if test="endTime != null">
         #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="matchInfoId != null">
+        #{matchInfoId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -118,6 +125,9 @@
       <if test="endTime != null">
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="matchInfoId != null">
+        match_info_id = #{matchInfoId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -129,7 +139,8 @@
       done_comment_ids = #{doneCommentIds,jdbcType=VARCHAR},
       level = #{level,jdbcType=INTEGER},
       start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP}
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      match_info_id = #{matchInfoId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

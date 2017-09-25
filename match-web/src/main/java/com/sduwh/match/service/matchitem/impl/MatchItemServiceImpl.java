@@ -5,11 +5,10 @@ import com.sduwh.match.enums.MatchStage;
 import com.sduwh.match.enums.MatchStatus;
 import com.sduwh.match.enums.PassStatus;
 import com.sduwh.match.model.HostHolder;
-import com.sduwh.match.model.entity.MatchInfo;
-import com.sduwh.match.model.entity.MatchItem;
-import com.sduwh.match.model.entity.Pass;
-import com.sduwh.match.model.entity.Stage;
+import com.sduwh.match.model.entity.*;
+import com.sduwh.match.model.wrapper.MatchItemWithScore;
 import com.sduwh.match.service.apply.ApplyService;
+import com.sduwh.match.service.grade.GradeService;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.pass.PassService;
@@ -20,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,8 @@ public class MatchItemServiceImpl implements MatchItemService {
     MatchItemService matchItemService;
     @Autowired
     HostHolder hostHolder;
+    @Autowired
+    GradeService gradeService;
 
     @Override
     public int deleteByPrimaryKey(Integer integer) {
@@ -62,7 +65,10 @@ public class MatchItemServiceImpl implements MatchItemService {
     public MatchItem selectByPrimaryKey(Integer integer) {
         //获取比赛条目，因为涉及到状态信息，所以每次获取，都要进行查看状态信息是否已经过期，如果已经过期，那么就需要进行调整
         MatchItem matchItem = matchItemMapper.selectByPrimaryKey(integer);
+        if(matchItem == null)return null;
+        //TODO matchItem也可能为空，原因也是后期删除
         MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
+        //TODO 注意这个地方matchInfo可能为空，原因是管理员将这个比赛删除，所以需要后续的工作是，管理员删除比赛的时候，将所有的相关记录都要删除掉，否则有些地方容易报错
         String[] stageIds = matchInfo.getAllStage().split(",");
         int stageId = matchItem.getNowStageId();
         int nextStageId = MatchStatus.ALL_DONE.getValue();
@@ -106,17 +112,26 @@ public class MatchItemServiceImpl implements MatchItemService {
     public List<MatchItem> selectAllByStringIds(String ids) {
         if (StringUtils.nullOrEmpty(ids))return null;
         List<Integer> idList = Arrays.stream(ids.split(",")).map(Integer::parseInt).collect(Collectors.toList());
-        return idList.stream().map(matchItemMapper::selectByPrimaryKey).collect(Collectors.toList());
+        return idList.stream().map(this::selectByPrimaryKey).collect(Collectors.toList());
     }
 
     @Override
     public List<MatchItem> selectAllByInfoId(Integer id) {
-        return matchItemMapper.selectAllByInfoId(id);
+        //只要是select开头的，都不能调用mapper的，因为selectByPrimary坐了特殊处理，必须调用那个方法
+        List<MatchItem> matchItems = matchItemMapper.selectAllByInfoId(id);
+        return matchItems.stream().map(item->{
+            //每个搜到的matchItem,都要重新调用selectByPrimaryKey方法进行重加工
+            return selectByPrimaryKey(item.getId());
+        }).collect(Collectors.toList());
     }
 
     @Override
     public List<MatchItem> selectByStageId(int stageId) {
-        return matchItemMapper.selectByStageId(stageId);
+        List<MatchItem> matchItems = matchItemMapper.selectByStageId(stageId);
+        return matchItems.stream().map(item->{
+            //每个搜到的matchItem,都要重新调用selectByPrimaryKey方法进行重加工
+            return selectByPrimaryKey(item.getId());
+        }).collect(Collectors.toList());
     }
 
 
@@ -150,20 +165,10 @@ public class MatchItemServiceImpl implements MatchItemService {
     @Override
     public int updateWhenTeacherAllChecked(int id) {
         MatchItem matchItem = selectByPrimaryKey(id);
-        MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
-        String[] stages = matchInfo.getAllStage().split(",");
         int nowStage = matchItem.getNowStageId();
         Stage stage = stageService.selectByPrimaryKey(nowStage);
         if(stage.getStageFlag() != MatchStage.GUIDER_VERIFY.getId())throw new RuntimeException("当前状态不是教师状态");
 
-        int nextStage = MatchStatus.ALL_DONE.getValue();
-        //获取下一个状态
-        for(int i=0; i<stages.length; i++){
-            int tmpStage = Integer.parseInt(stages[i]);
-            if(nowStage == tmpStage && i!= stages.length-1){
-                nextStage = Integer.parseInt(stages[i+1]);
-            }
-        }
 
         //判断当前状态中的所有老师是否都已经审核完毕，如果是，就更新当前状态
         if(Arrays.stream(matchItem.getTeacherIds().split(","))
@@ -175,8 +180,7 @@ public class MatchItemServiceImpl implements MatchItemService {
                 ){
             //如果所有老师都审核通过了
             //更新状态
-            matchItem.setNowStageId(nextStage);
-            return updateByPrimaryKey(matchItem);
+            return updateAndSetNextStage(matchItem,stage);
         }
 
         return 0;
@@ -199,7 +203,7 @@ public class MatchItemServiceImpl implements MatchItemService {
     }
 
     @Override
-    public String checkPass(int matchItemId) {
+    public String checkPass(int matchItemId,int flag) {
         //这里要考虑的一个问题是，是否添加一个审核表，因为一个比赛可能对应多个审核的教师。。= =
         //考虑完毕，需要添加审核表，毕竟审核也是一种记录。
         //每个审核表，都可以通过user_id,和match_item_id对应一条记录，这个记录标记该用户是否给该比赛通过
@@ -214,8 +218,87 @@ public class MatchItemServiceImpl implements MatchItemService {
         pass.setStatus(PassStatus.PASS.getValue());
         passService.insert(pass);
 
-        //完了之后，判断当前审核的老师中是否还有未审核的，如果没有，就设置当前状态为下一状态
-        matchItemService.updateWhenTeacherAllChecked(matchItemId);
+        switch (flag){
+            case CHECK_PASS_ACADEMY:
+                //学院管理员审核成功
+                updateWhenAcademyChecked(matchItemId);
+                break;
+            case CHECK_PASS_CAMPUS:
+                updateWhenAdminCheckd(matchItemId);
+                break;
+            case CHECK_PASS_TEACHER:
+                //判断当前审核的老师中是否还有未审核的，如果没有，就设置当前状态为下一状态
+                updateWhenTeacherAllChecked(matchItemId);
+                break;
+        }
+
         return null;
+    }
+
+
+    @Override
+    public int updateAndSetNextStage(MatchItem matchItem,Stage stage) {
+        MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
+        String[] stages = matchInfo.getAllStage().split(",");
+        int nowStage = matchItem.getNowStageId();
+
+        int nextStage = MatchStatus.ALL_DONE.getValue();
+        //获取下一个状态
+        for(int i=0; i<stages.length; i++){
+            int tmpStage = Integer.parseInt(stages[i]);
+            if(nowStage == tmpStage && i!= stages.length-1){
+                nextStage = Integer.parseInt(stages[i+1]);
+                break;
+            }
+        }
+        matchItem.setNowStageId(nextStage);
+        return updateByPrimaryKey(matchItem);
+    }
+
+    @Override
+    public List<MatchItem> selectByNowStageId(int nowStageId) {
+        return matchItemMapper.selectByStageId(nowStageId);
+    }
+
+    @Override
+    public boolean checkIsRunning(MatchItem matchItem) {
+        Date now = new Date();
+        MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
+        return matchInfo.getStartTime().before(now) && matchInfo.getEndTime().after(now);
+    }
+
+    @Override
+    public List<MatchItemWithScore> selectAwardsWithScore(int matchInfoId) {
+        List<MatchItemWithScore> ms = matchItemService.selectAllByInfoId(matchInfoId)
+                .stream()
+                .filter(matchItem -> {
+                    Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+                    return stageService.checkIsRuning(stage) && stage.getStageFlag() == MatchStage.AWARD.getId();
+                })
+                .map(matchItem -> {
+                    //获取到matchItem的分数
+                    MatchItemWithScore m = new MatchItemWithScore();
+                    m.setMatchItem(matchItem);
+                    m.setScore(gradeService.selectAverangeByMatchItem(matchItem.getId()));
+                    return m;
+                })
+                .sorted((m1,m2)-> (int)((m1.getScore() - m2.getScore()) * 100))
+                .collect(Collectors.toList());
+        return ms;
+    }
+
+
+    /** 当学院管理员审核通过后，设置为下一个状态*/
+    private void updateWhenAcademyChecked(int matchItemId){
+        MatchItem matchItem = matchItemService.selectByPrimaryKey(matchItemId);
+        Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        updateAndSetNextStage(matchItem,stage);
+    }
+
+    /** 当前管理员审核通过后，设置为下一个状态*/
+    private void updateWhenAdminCheckd(int matchItemId){
+        MatchItem matchItem = matchItemService.selectByPrimaryKey(matchItemId);
+        Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        updateAndSetNextStage(matchItem,stage);
     }
 }

@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th class="col-sm-4">比赛名称</th>
-                        <th class="col-sm-2">比赛等级</th>
+                        <th class="col-sm-1">比赛等级</th>
                         <th class="col-sm-1">队长人数</th>
                         <th class="col-sm-1">队员人数</th>
                         <th class="col-sm-1">指导老师人数</th>
@@ -43,12 +43,41 @@
                             <td>
                                 <a style="cursor: pointer" class="delete" data-id="${item.id}"><span class="label label-danger"><i class="glyphicon glyphicon-remove"></i>删除</span></a>
                                 <a style="cursor: pointer" class="info" data-id="${item.id}"><span class="label label-info"><i class="glyphicon glyphicon-option-vertical"></i>详情</span></a>
+                                <c:if test="${item.supply < 0}">
+                                    <a style="cursor: pointer" class="openSupply" data-id="${item.id}"><span class="label label-info"><i class="glyphicon glyphicon-eye-open"></i>开启补录</span></a>
+                                </c:if>
+                                <c:if test="${item.supply > 0}">
+                                    <a style="cursor: pointer" class="closeSupply" data-id="${item.id}"><span class="label label-warning"><i class="glyphicon glyphicon-eye-close"></i>关闭补录</span></a>
+                                </c:if>
+                                <a style="cursor: pointer" href="/admin/awards/info/${item.id}"><span class="label label-success"><i class="glyphicon glyphicon-usd"></i>评奖</span></a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
+
+        <!--模态框，显示详细信息-->
+        <div class="supplyModal modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">开启补录</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span id="info"></span>
+                        <input type="hidden" id="itemId"/>
+                        <input type="hidden" id="supplyFlag"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" id="confirm" class="btn btn-primary">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!--模态框结束-->
 
         <!--模态框，显示详细信息-->
         <div class="match_info modal fade" tabindex="-1" role="dialog">
@@ -105,6 +134,7 @@
                                 <div class="input-group-addon">项目结束时间</div>
                                 <input type="text" readonly id="endTime" class="form_datetime form-control"/>
                             </div>
+                            <input type="hidden" id="supply"/>
                             <hr>
                             <span style="display: inline-block;font-size: 16px;"><bold>阶段信息</bold></span>
                             <table id="allStage" class="table table-bordered">
@@ -146,6 +176,7 @@
                     var stageNameTmp = $(".stageName");
                     var infoStartTime = $("#startTime").val();
                     var infoEndTime = $("#endTime").val();
+                    var supply = $("#supply").val();
 
 
                     for(var i=0; i<isChooseCheckBox.length; i++){
@@ -173,7 +204,8 @@
                         "startTime":startTime,
                         "endTime":endTime,
                         "infoStartTime":infoStartTime,
-                        "infoEndTime":infoEndTime
+                        "infoEndTime":infoEndTime,
+                        "supply":supply
                     };
 
                     $.ajax({
@@ -265,6 +297,7 @@
                             $("#teacherInNum").val(matchInfo["teacherInNum"]);
                             $("#startTime").val(getLocalTime(matchInfo["startTime"]));
                             $("#endTime").val(getLocalTime(matchInfo["endTime"]));
+                            $("#supply").val(matchInfo["supply"]);
                             $(".match_info").modal('show');
                         },
                         error:function(error){
@@ -334,6 +367,41 @@
                         pickerPosition: "bottom-left"
                     });
                 }
+
+                $(".openSupply").click(function(){
+                    var itemId = $(this).attr("data-id");
+                    $("#info").text("确定开启补录?");
+                    $("#itemId").val(itemId);
+                    $("#supplyFlag").val(1);
+                    $(".supplyModal").modal("show");
+                });
+
+                $(".closeSupply").click(function(){
+                    var itemId = $(this).attr("data-id");
+                    $("#info").text("确定关闭补录?");
+                    $("#supplyFlag").val(-1);
+                    $("#itemId").val(itemId);
+                    $(".supplyModal").modal("show");
+                });
+
+                $("#confirm").click(function(){
+                    var itemId = $("#itemId").val();
+                    var supplyFlag = $("#supplyFlag").val();
+                    var data = {
+                        supplyFlag:supplyFlag,
+                        itemId:itemId
+                    }
+
+                    $.ajax({
+                        url:"/admin/supply",
+                        data:data,
+                        type:'post',
+                        success:function(res){
+                            var json = JSON.parse(res);
+                            alert(json["msg"]);
+                        }
+                    });
+                });
             });
         </script>
     </myscript>

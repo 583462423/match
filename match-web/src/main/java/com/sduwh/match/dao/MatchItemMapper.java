@@ -13,7 +13,7 @@ import java.util.List;
 public interface MatchItemMapper {
 
     String TABLE_NAME = "match_item";
-    String INSERT_FIELDS = "title,member_ids,apply_id,teacher_ids,log_ids,now_stage_id,next_stage_id,academy_id,match_info_id,leader_ids";
+    String INSERT_FIELDS = "title,member_ids,apply_id,teacher_ids,now_stage_id,next_stage_id,academy_id,match_info_id,leader_ids,is_supply";
     String SELECT_FIELDS = "id," + INSERT_FIELDS;
 
     int deleteByPrimaryKey(Integer id);

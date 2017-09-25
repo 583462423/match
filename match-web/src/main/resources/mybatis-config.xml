@@ -11,7 +11,7 @@
 		<setting name="useGeneratedKeys" value="true"/>
 		<!-- 驼峰命名法-->
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
-		<setting name="logImpl" value="STDOUT_LOGGING"/>
-		<!--<setting name="logImpl" value="LOG4J2"/>-->
+		<!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+		<setting name="logImpl" value="LOG4J2"/>
 	</settings>
 </configuration>

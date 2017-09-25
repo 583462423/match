@@ -3,6 +3,7 @@ package com.sduwh.match.controller.admin;
 import com.sduwh.match.enums.MatchStage;
 import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
+import com.sduwh.match.enums.SupplyStatus;
 import com.sduwh.match.model.entity.MatchInfo;
 import com.sduwh.match.model.entity.MatchType;
 import com.sduwh.match.model.entity.MatchType2;
@@ -109,6 +110,7 @@ public class AdminController extends BaseController{
     @ResponseBody
     public ResponseResult startCreateMatch(ServletRequest servletRequest) {
         MatchInfoTO matchInfoTO = getMatchInfoTO(servletRequest);
+        matchInfoTO.setSupply(SupplyStatus.CLOSE_SUPPLY.getCode());
         //获得的类型是这样的
         //MatchInfoTO{name='2014-2015创青春创业大赛', type1=1, type2=1, level=1, leaderNum=2, leaderInNum=3, memberNum=4, memberInNum=5, teacherNum=6, teacherInNum=7, isChoose=[10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], type=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], startTime=[2017-01-01T01:01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], endTime=[2018-01-01T01:01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
         System.out.println(matchInfoTO);
@@ -163,6 +165,7 @@ public class AdminController extends BaseController{
         matchInfoTO.setTeacherInNum(Integer.parseInt(request.getParameter("teacherInNum")));
         matchInfoTO.setStageName(Arrays.stream(request.getParameterValues("stageName[]")).collect(Collectors.toList()));
         matchInfoTO.setType1(Integer.parseInt(request.getParameter("type1")));
+        matchInfoTO.setSupply(Integer.parseInt(request.getParameter("supply")));
         if(!"".equals(request.getParameter("type2")))
             matchInfoTO.setType2(Integer.parseInt(request.getParameter("type2")));
 
@@ -258,8 +261,4 @@ public class AdminController extends BaseController{
 
     /** ===================================比赛类别管理end============================== **/
 
-    public static void main(String[] args) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'mm:ss");
-        System.out.println(sdf.parse("2017-01-01T01:01").getTime());
-    }
 }

@@ -12,7 +12,7 @@ public enum MatchStage {
     SCHOOL_VERIFY(40,"学校审核"),
     SHOW(50,"名单公布"),
     RESEARCH_LOG(60,"科研日志"),
-    SUPPLY_APPLY(70,"补充申报"),
+    //SUPPLY_APPLY(70,"补充申报"),补充申报阶段由管理员统一控制
     MIDDLE_CHECK(80,"中期检查"),
     CONCLUSION_CHECK(90,"结题检查"),
     AWARD(100,"学校评奖"),

@@ -17,10 +17,11 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="supply" jdbcType="INTEGER" property="supply" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, type1, type2, level, all_stage, leader_num, member_num, teacher_num, leader_in_num, 
-    member_in_num, teacher_in_num, create_time,start_time,end_time
+    member_in_num, teacher_in_num, create_time,start_time,end_time,supply
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -41,13 +42,13 @@
     insert into match_info (id, name, type1, 
       type2, level, all_stage, 
       leader_num, member_num, teacher_num, 
-      leader_in_num, member_in_num, teacher_in_num,create_time,start_time,end_time
+      leader_in_num, member_in_num, teacher_in_num,create_time,start_time,end_time,supply
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type1,jdbcType=INTEGER}, 
       #{type2,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{allStage,jdbcType=VARCHAR}, 
       #{leaderNum,jdbcType=INTEGER}, #{memberNum,jdbcType=INTEGER}, #{teacherNum,jdbcType=INTEGER}, 
       #{leaderInNum,jdbcType=INTEGER}, #{memberInNum,jdbcType=INTEGER}, #{teacherInNum,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP}
-      ,#{startTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP})
+      ,#{startTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP}, #{supply,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.MatchInfo">
     insert into match_info
@@ -97,6 +98,9 @@
       <if test="end_time != null">
         end_time,
       </if>
+      <if test="supply != null">
+        supply,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -143,6 +147,9 @@
       </if>
       <if test="endTime != null">
         #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supply != null">
+        #{supply,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -191,6 +198,9 @@
       <if test="endTime != null">
         endTime = #{endTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="supply != null">
+        supply = #{supply,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -209,7 +219,8 @@
       teacher_in_num = #{teacherInNum,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP}
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      supply = #{supply,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

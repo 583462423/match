@@ -75,7 +75,7 @@ public class TmpRaterServiceImpl implements TmpRaterService {
 
     /** 通过ids, startTime,endTime,cnt等创建评委*/
     @Override
-    public int createRater(String ids, String startTime, String endTime, Integer cnt) throws ParseException {
+    public int createRater(String ids, String startTime, String endTime, Integer cnt,int level, int matchInfoId) throws ParseException {
         int result = 0;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         for(int i=0; i<cnt; i++){
@@ -83,13 +83,36 @@ public class TmpRaterServiceImpl implements TmpRaterService {
             t.setCommentIds(ids);
             t.setStartTime(dateFormat.parse(startTime));
             t.setEndTime(dateFormat.parse(endTime));
-            t.setLevel(RaterLevel.SCHOOL.getLevel());
+            t.setLevel(level);
+            t.setMatchInfoId(matchInfoId);
             //生成帐号
             t.setUsername(RandomStringUtils.getRandomStringUppercase(String.valueOf(i)));
             t.setPassword(RandomStringUtils.getRandomStringUppercase(6,String.valueOf(i)));
+            //创建前先到数据库中查看是否已经存在同名的临时评委
+            TmpRater tmp = selectByUsername(t.getUsername());
+            while(tmp != null){
+                t.setUsername(RandomStringUtils.getRandomStringUppercase(String.valueOf(i)));
+                tmp = selectByUsername(t.getUsername());
+            }
             result += tmpRaterMapper.insert(t);
         }
-
         return result;
+    }
+
+    @Override
+    public TmpRater selectByUsername(String username) {
+        return tmpRaterMapper.selectByUsername(username);
+    }
+
+    @Override
+    public boolean checkEnd(TmpRater rater) {
+        //返回true，表示已结束
+        return rater.getEndTime().before(new Date());
+    }
+
+    @Override
+    public boolean checkStart(TmpRater rater) {
+        //返回true,表示未开始
+        return rater.getStartTime().after(new Date());
     }
 }

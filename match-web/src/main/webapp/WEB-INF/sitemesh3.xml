@@ -10,12 +10,50 @@
         <path>/common/*</path>
         <path>/student/match/apply/submit/*</path>
         <path>/teacher/check/detail/pass/*</path>
+        <path>/academy/check/detail/pass/*</path>
+        <path>/admin/check/detail/pass/*</path>
+        <path>/student/science/log/add/*</path>
+        <path>/student/science/detail/*</path>
+        <path>/admin/supply</path>
+        <path>/student/match/middle/report/update</path>
+        <path>/student/match/middle/report/submit</path>
+        <path>/teacher/match/middle/report/submit</path>
+        <path>/teacher/match/middle/report/update</path>
+        <path>/teacher/match/middle/change/submit</path>
+        <path>/academy/match/middle/report/submit</path>
+        <path>/academy/match/middle/report/update</path>
+        <path>/academy/match/middle/change/submit</path>
+        <path>/admin/match/middle/report/submit</path>
+        <path>/admin/match/middle/report/update</path>
+        <path>/admin/match/middle/change/submit</path>
+
+        <path>/student/match/concluding/report/update</path>
+        <path>/student/match/concluding/report/submit</path>
+        <path>/teacher/match/concluding/report/submit</path>
+        <path>/teacher/match/concluding/report/update</path>
+        <path>/teacher/match/concluding/change/submit</path>
+        <path>/academy/match/concluding/report/submit</path>
+        <path>/academy/match/concluding/report/update</path>
+        <path>/academy/match/concluding/change/submit</path>
+        <path>/admin/match/concluding/report/submit</path>
+        <path>/admin/match/concluding/report/update</path>
+        <path>/admin/match/concluding/change/submit</path>
+        <path>/academy/rater/gen</path>
+        <path>/rater/login</path>
+        <path>/rater/academy/grade/submit</path>
+        <path>/rater/admin/grade/submit</path>
+        <path>/admin/rater/gen</path>
+        <path>/academy/rater/score/end</path>
+        <path>/admin/rater/score/end</path>
+        <path>/admin/awards/award</path>
     </mapping>
 
   	<!-- admin布局修饰 -->
     <mapping>
         <path>/admin/**</path>
         <path>/permission/**</path>
+        <path>/check/admin</path>
+        <path>/check/admin/done</path>
         <decorator>/WEB-INF/views/sitemesh/admin.jsp</decorator>
     </mapping>
 

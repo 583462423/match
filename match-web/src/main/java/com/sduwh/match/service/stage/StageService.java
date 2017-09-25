@@ -20,4 +20,7 @@ public interface StageService extends BaseService<Stage,Integer> {
 
     /** 检查当前的状态是否已经过期*/
     boolean checkEnd(Stage stage);
+
+    /** 检查当前状态是否正在运行*/
+    boolean checkIsRuning(Stage stage);
 }

@@ -67,7 +67,7 @@ public class AcademyIndexController extends BaseController{
     @PostMapping("/check/detail/pass/{id}")
     @ResponseBody
     public String checkPass(@PathVariable("id") int matchItemId){
-        String res = matchItemService.checkPass(matchItemId);
+        String res = matchItemService.checkPass(matchItemId,MatchItemService.CHECK_PASS_ACADEMY);
         if(res != null)return res;
         return JSONObject.toJSONString(setResult("success","true"));
     }

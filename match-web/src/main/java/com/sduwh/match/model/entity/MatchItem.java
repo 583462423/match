@@ -13,7 +13,6 @@ public class MatchItem {
 
     private String teacherIds;
 
-    private String logIds;
 
     private Integer nowStageId;
 
@@ -22,6 +21,9 @@ public class MatchItem {
     private Integer academyId;
 
     private Integer matchInfoId;
+
+    /** 表示是否是补充申报的作品，因为补充申报的作品不能受时间影响，如果时间过期也不影响，但是不能提前*/
+    private Integer isSupply;
 
     public String getTitle() {
         return title;
@@ -71,14 +73,6 @@ public class MatchItem {
         this.teacherIds = teacherIds == null ? null : teacherIds.trim();
     }
 
-    public String getLogIds() {
-        return logIds;
-    }
-
-    public void setLogIds(String logIds) {
-        this.logIds = logIds == null ? null : logIds.trim();
-    }
-
     public Integer getNowStageId() {
         return nowStageId;
     }
@@ -111,6 +105,14 @@ public class MatchItem {
         this.matchInfoId = matchInfoId;
     }
 
+    public Integer getIsSupply() {
+        return isSupply;
+    }
+
+    public void setIsSupply(Integer isSupply) {
+        this.isSupply = isSupply;
+    }
+
     @Override
     public String toString() {
         return "MatchItem{" +
@@ -120,11 +122,11 @@ public class MatchItem {
                 ", memberIds='" + memberIds + '\'' +
                 ", applyId=" + applyId +
                 ", teacherIds='" + teacherIds + '\'' +
-                ", logIds='" + logIds + '\'' +
                 ", nowStageId=" + nowStageId +
                 ", nextStageId=" + nextStageId +
                 ", academyId=" + academyId +
                 ", matchInfoId=" + matchInfoId +
+                ", isSupply=" + isSupply +
                 '}';
     }
 }

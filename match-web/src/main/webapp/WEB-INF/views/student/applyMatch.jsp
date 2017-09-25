@@ -103,7 +103,7 @@
                             alert("无此账户");
                         }else{
                             //用户搜索成功，将用户添加到..处
-                            user = JSON.parse(res);
+                            var user = JSON.parse(res);
                             if(user.error != null){
                                 alert(user.error);
                                 return;

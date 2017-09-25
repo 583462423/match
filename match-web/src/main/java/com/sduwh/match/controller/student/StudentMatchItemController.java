@@ -141,7 +141,7 @@ public class StudentMatchItemController extends BaseController {
     }
 
     /** 当前参与的比赛*/
-    @GetMapping("/match/my")
+    @GetMapping({"/match/my"})
     public String getMyMathc(Map<String,List<Map<String,String>>> res){
         //显示当前的比赛，信息有比赛的名称，比赛的分工，比赛当前到哪个阶段了，比赛是否过期等信息
         List<PersonalMatchInfo> personalMatchInfo = personalMatchInfoService.selectByUserId(hostHolder.getUser().getId());

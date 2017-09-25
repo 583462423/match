@@ -19,6 +19,16 @@ public class TmpRater {
 
     private Date endTime;
 
+    private int matchInfoId;
+
+    public int getMatchInfoId() {
+        return matchInfoId;
+    }
+
+    public void setMatchInfoId(int matchInfoId) {
+        this.matchInfoId = matchInfoId;
+    }
+
     public Integer getId() {
         return id;
     }

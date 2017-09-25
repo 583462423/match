@@ -11,6 +11,16 @@ public class Grade {
 
     private String comment;
 
+    private int raterId;
+
+    public int getRaterId() {
+        return raterId;
+    }
+
+    public void setRaterId(int raterId) {
+        this.raterId = raterId;
+    }
+
     public Integer getId() {
         return id;
     }

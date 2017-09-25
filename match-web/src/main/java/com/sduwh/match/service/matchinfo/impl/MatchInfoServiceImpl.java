@@ -79,6 +79,17 @@ public class MatchInfoServiceImpl implements MatchInfoService {
         return matchInfoMapper.updateByPrimaryKey(TO2MatchInfo(to,UPDATE));
     }
 
+    @Override
+    public boolean checkEnd(MatchInfo info) {
+        return info.getEndTime().before(new Date());
+    }
+
+    @Override
+    public boolean checkIsRunning(MatchInfo matchInfo) {
+        Date now = new Date();
+        return matchInfo.getStartTime().before(now) && matchInfo.getEndTime().after(now);
+    }
+
     /** 将MatchInfoTO转换为MatchInfo*/
     public MatchInfo TO2MatchInfo(MatchInfoTO to,int flag){
         MatchInfo info = new MatchInfo();
@@ -96,6 +107,7 @@ public class MatchInfoServiceImpl implements MatchInfoService {
         info.setType2(to.getType2());
         info.setStartTime(to.getInfoStartTime());
         info.setEndTime(to.getInfoEndTime());
+        info.setSupply(to.getSupply());
 
         List<Stage> stages = new ArrayList<>();
         List<Integer> isChoose = to.getIsChoose();

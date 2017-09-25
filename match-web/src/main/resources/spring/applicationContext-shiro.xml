@@ -9,8 +9,14 @@
 
 	<!--安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="authenticator" ref="myAuthenticator"/>
 		<!-- 设置自定义Realm -->
-		<property name="realm" ref="shiroDbRealm" />
+		<property name="realms">
+			<list>
+				<ref bean="userRealm"></ref>
+				<ref bean="raterRealm"></ref>
+			</list>
+		</property>
 		<!-- 将缓存管理器，交给安全管理器 -->
 		<property name="cacheManager" ref="shiroEhcacheManager" />
         <!-- 记住密码管理 -->
@@ -19,8 +25,20 @@
 		<!-- <property name="sessionManager" ref="sessionManager" /> -->
 	</bean>
 
+	<!-- 配置自定义认证器-->
+	<bean id="myAuthenticator" class="com.sduwh.match.realm.MyModularRealmAuthenticator">
+		<property name="myRealms">
+			<map>
+				<entry key="userRealm" value-ref="userRealm"/>
+				<entry key="raterRealm" value-ref="raterRealm"/>
+			</map>
+		</property>
+	</bean>
+
 	<!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的SystemAuthorizingRealm.java -->
-	<bean id="shiroDbRealm" class="com.sduwh.match.realm.ShiroAuthorizingRealm" />
+	<bean id="userRealm" class="com.sduwh.match.realm.ShiroAuthorizingRealm" />
+	<bean id="raterRealm" class="com.sduwh.match.realm.TmpRaterAuthorizingRealm" />
+
 
     <!-- 记住密码Cookie -->
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">  

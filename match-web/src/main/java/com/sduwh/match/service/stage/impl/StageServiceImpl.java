@@ -39,6 +39,7 @@ public class StageServiceImpl implements StageService {
 
     @Override
     public Stage selectByPrimaryKey(Integer id) {
+        if(id < 0)return null;
         return stageMapper.selectByPrimaryKey(id);
     }
 
@@ -84,6 +85,12 @@ public class StageServiceImpl implements StageService {
     @Override
     public boolean checkEnd(Stage stage) {
         return stage.getEndTime().before(new Date());
+    }
+
+    @Override
+    public boolean checkIsRuning(Stage stage) {
+        Date now = new Date();
+        return now.after(stage.getStartTime()) && now.before(stage.getEndTime());
     }
 
 }

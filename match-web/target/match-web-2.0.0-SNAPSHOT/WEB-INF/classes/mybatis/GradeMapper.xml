@@ -6,21 +6,16 @@
     <result column="score" jdbcType="REAL" property="score" />
     <result column="level" jdbcType="INTEGER" property="level" />
     <result column="match_item_id" jdbcType="INTEGER" property="matchItemId" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sduwh.match.model.entity.Grade">
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
+    <result column="rater_id" jdbcType="INTEGER" property="raterId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, score, level, match_item_id
+    id, score,comment, level, match_item_id,rater_id
   </sql>
-  <sql id="Blob_Column_List">
-    comment
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from grade
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -30,9 +25,9 @@
   </delete>
   <insert id="insert" parameterType="com.sduwh.match.model.entity.Grade">
     insert into grade (id, score, level, 
-      match_item_id, comment)
+      match_item_id, comment,rater_id)
     values (#{id,jdbcType=INTEGER}, #{score,jdbcType=REAL}, #{level,jdbcType=INTEGER}, 
-      #{matchItemId,jdbcType=INTEGER}, #{comment,jdbcType=LONGVARCHAR})
+      #{matchItemId,jdbcType=INTEGER}, #{comment,jdbcType=LONGVARCHAR} ,#{raterId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.Grade">
     insert into grade
@@ -52,6 +47,9 @@
       <if test="comment != null">
         comment,
       </if>
+      <if test="raterId != null">
+        rater_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -68,6 +66,9 @@
       </if>
       <if test="comment != null">
         #{comment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="raterId != null">
+        #{raterId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -86,22 +87,19 @@
       <if test="comment != null">
         comment = #{comment,jdbcType=LONGVARCHAR},
       </if>
+      <if test="raterId != null">
+        rater_id = #{raterId,jdbcType=INTEGER},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sduwh.match.model.entity.Grade">
-    update grade
-    set score = #{score,jdbcType=REAL},
-      level = #{level,jdbcType=INTEGER},
-      match_item_id = #{matchItemId,jdbcType=INTEGER},
-      comment = #{comment,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sduwh.match.model.entity.Grade">
     update grade
     set score = #{score,jdbcType=REAL},
       level = #{level,jdbcType=INTEGER},
-      match_item_id = #{matchItemId,jdbcType=INTEGER}
+      match_item_id = #{matchItemId,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=LONGVARCHAR},
+      rater_id = #{raterId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

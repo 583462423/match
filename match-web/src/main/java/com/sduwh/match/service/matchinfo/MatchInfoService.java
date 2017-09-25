@@ -14,4 +14,10 @@ public interface MatchInfoService extends BaseService<MatchInfo,Integer> {
     List<MatchInfo> selectAll();
     public int createMatchInfoByTO(MatchInfoTO to);
     public int updateMatchInfoByTO(MatchInfoTO to);
+
+    /** 当前比赛是否已经结束*/
+    boolean checkEnd(MatchInfo info);
+
+    /** 当前比赛是否在运行*/
+    boolean checkIsRunning(MatchInfo matchInfo);
 }

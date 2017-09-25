@@ -70,6 +70,17 @@
                                     <li><a href="/check/academy/done">已审核比赛</a></li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-home"></i> 中期检查<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/academy/match/middle">待审核比赛</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-home"></i>结题报告<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/academy/match/concluding">当前比赛</a></li>
+                                    <li><a href="/academy/match/score/all">学院评分</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

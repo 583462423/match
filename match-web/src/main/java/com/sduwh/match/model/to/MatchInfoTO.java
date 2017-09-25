@@ -21,10 +21,19 @@ public class MatchInfoTO {
     private Integer teacherInNum;
     private Timestamp infoStartTime;
     private Timestamp infoEndTime;
+    private int supply;
     private List<Integer> isChoose;
     private List<Timestamp> startTime;
     private List<Timestamp> endTime;
     private List<String> stageName;
+
+    public int getSupply() {
+        return supply;
+    }
+
+    public void setSupply(int supply) {
+        this.supply = supply;
+    }
 
     public Timestamp getInfoStartTime() {
         return infoStartTime;
@@ -179,6 +188,7 @@ public class MatchInfoTO {
                 ", teacherInNum=" + teacherInNum +
                 ", infoStartTime=" + infoStartTime +
                 ", infoEndTime=" + infoEndTime +
+                ", supply=" + supply +
                 ", isChoose=" + isChoose +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +

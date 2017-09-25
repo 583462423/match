@@ -71,6 +71,25 @@
                                     <li><a href="/admin/match/create">创建比赛</a></li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-home"></i> 比赛审核<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/check/admin">待审核比赛</a></li>
+                                    <li><a href="/check/admin/done">已审核比赛</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-home"></i> 中期检查<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/admin/match/middle">待审核比赛</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-home"></i>结题报告<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/admin/match/concluding">当前比赛</a></li>
+                                    <li><a href="/admin/match/score/all">学校评分</a></li>
+                                </ul>
+                            </li>
 
                             <li><a><i class="fa fa-home"></i>比赛分类<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
@@ -88,7 +107,6 @@
                             <li><a><i class="fa fa-home"></i> 临时评委<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/admin/rater/all.html">评委管理</a></li>
-                                    <li><a href="/admin/rater/gen.html">生成评委</a></li>
                                 </ul>
                             </li>
 

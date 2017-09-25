@@ -5,6 +5,7 @@ import com.sduwh.match.common.ResponseResult;
 import com.sduwh.match.exception.IllegalApplyMatchException;
 import com.sduwh.match.exception.base.BaseException;
 import com.sun.xml.internal.rngom.parse.host.Base;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -69,7 +70,9 @@ public abstract class BaseController {
 
     /**
      * 统一处理异常方法
+     * 因为会自动映射，所以如果跑出的不是BaseException，那么就会出现问题
      */
+    @ExceptionHandler
     public String exp(HttpServletRequest request,BaseException ex){
         request.setAttribute("ex",ex);
         return expPage;
@@ -78,7 +81,7 @@ public abstract class BaseController {
     private static final String expPage = "/error";
 
     public Map<String,String> setResult(String ... info){
-        if((info.length &1) == 1)throw new RuntimeException("Map结果参数不得为基数个");
+        if((info.length &1) == 1)throw new BaseException("Map结果参数不得为基数个");
         Map<String,String> res = new HashMap<>();
         for(int i=0; i<info.length; i+=2){
             res.put(info[i],info[i+1]);

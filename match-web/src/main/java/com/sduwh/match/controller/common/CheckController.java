@@ -38,6 +38,8 @@ public class CheckController extends BaseController{
     private static final String TEACHER_CHECKED = "/teacher/checked";
     private static final String ACADEMY_CHECK = "/academy/check";
     private static final String ACADEMY_CHECKED = "/academy/checked";
+    private static final String ADMIN_CHECK = "/admin/check";
+    private static final String ADMIN_CHECKED = "/admin/checked";
 
     @Autowired
     HostHolder hostHolder;
@@ -147,5 +149,51 @@ public class CheckController extends BaseController{
         }).collect(Collectors.toList());
         map.put("matchItem",matchItems);
         return ACADEMY_CHECKED;
+    }
+
+
+    /** 学校审核，或成为超级管理员审核，查找待审核的作品*/
+    @GetMapping("/admin")
+    public String adminCheck(Map<String,List<MatchItem>> map){
+        Subject currentUser = SecurityUtils.getSubject();
+        if(!currentUser.hasRole(Roles.ADMIN.getName())){
+            return UNAUTH;
+        }
+
+        User user = hostHolder.getUser();
+        //查询待审核的比赛条目
+        //首先查找符合条件的stage
+        List<Stage> stages = stageService.selectCheckedStageByStageFlag(MatchStage.SCHOOL_VERIFY.getId());
+        //通过stages的id去查找哪个比赛是符合条件的，并且还需要判断这个比赛是否已经结束
+        List<MatchItem> matchItems = stages.stream().flatMap(e->{
+            return matchItemService.selectByStageId(e.getId()).stream();
+        }).filter(item->{
+            MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(item.getMatchInfoId());
+            return matchInfo.getEndTime().after(new Date());
+        }).filter(item->{
+            //判断当前用户是否已经审核过该用户了,如果没审核过，那才符合条件！
+            Pass pass = passService.selectByUserAndItem(user.getId(),item.getId());
+            return !passService.checkPass(pass);
+        }).collect(Collectors.toList());
+
+        //将需要审核的比赛，放入model中
+        map.put("matchItem",matchItems);
+        return ADMIN_CHECK;
+    }
+
+    /** 学校或超级管理员已审核的比赛*/
+    @GetMapping("/admin/done")
+    public String adminCheckDone(Map<String,List<MatchItem>> map){
+        Subject currentUser = SecurityUtils.getSubject();
+        if(!currentUser.hasRole(Roles.ADMIN.getName())){
+            return UNAUTH;
+        }
+        List<Pass> passes = passService.selectByUserId(hostHolder.getUser().getId());
+        //将已审核的作品的id显示出来
+        List<MatchItem> matchItems = passes.stream().map(e->{
+            return matchItemService.selectByPrimaryKey(e.getMatchItemId());
+        }).collect(Collectors.toList());
+        map.put("matchItem",matchItems);
+        return ADMIN_CHECKED;
     }
 }
