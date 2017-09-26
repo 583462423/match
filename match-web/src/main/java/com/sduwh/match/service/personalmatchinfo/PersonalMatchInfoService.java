@@ -12,4 +12,7 @@ import java.util.List;
 
 public interface PersonalMatchInfoService extends BaseService<PersonalMatchInfo,Integer> {
     List<PersonalMatchInfo> selectByUserId(int id);
+
+    /** 通过match_item_id删除对应的记录*/
+    int deleteAllByMatchItemId(int matchItemId);
 }

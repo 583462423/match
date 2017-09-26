@@ -120,7 +120,7 @@ public class CheckController extends BaseController{
             return matchItemService.selectByStageId(e.getId()).stream();
         }).filter(item->{
             MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(item.getMatchInfoId());
-            return matchInfo.getEndTime().after(new Date());
+            return matchInfoService.checkIsRunning(matchInfo);
         }).filter(item->{
             //判断这个比赛是否是当前学院，首先要查找到学院ID
             return user.getAcademyId() == item.getAcademyId();

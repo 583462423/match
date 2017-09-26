@@ -13,4 +13,7 @@ public interface PassService extends BaseService<Pass,Integer> {
     //判断当前pass表是否通过了审核
     boolean checkPass(Pass pass);
     List<Pass> selectByUserId(int userId);
+
+    /** 通过match_item_id删除对应的记录*/
+    int deleteAllByMatchItemId(int matchItemId);
 }

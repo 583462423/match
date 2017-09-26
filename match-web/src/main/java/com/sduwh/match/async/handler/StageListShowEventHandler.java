@@ -6,6 +6,7 @@ import com.sduwh.match.Config;
 import com.sduwh.match.async.EventHandler;
 import com.sduwh.match.async.EventModel;
 import com.sduwh.match.async.EventType;
+import com.sduwh.match.jedis.JedisAdapter;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.Stage;
 import com.sduwh.match.model.entity.User;
@@ -39,6 +40,8 @@ public class StageListShowEventHandler implements EventHandler{
     UserService userService;
     @Autowired
     MatchInfoService matchInfoService;
+    @Autowired
+    JedisAdapter jedisAdapter;
 
     @Override
     public void doHandle(EventModel eventModel) {

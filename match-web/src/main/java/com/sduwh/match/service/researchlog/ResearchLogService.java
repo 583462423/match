@@ -10,4 +10,8 @@ import java.util.List;
  */
 public interface ResearchLogService extends BaseService<ResearchLog,Integer>{
     List<ResearchLog> getAllLogByMatchItemId(int matchItemId);
+
+
+    /** 通过match_item_id删除对应的记录*/
+    int deleteAllByMatchItemId(int matchItemId);
 }

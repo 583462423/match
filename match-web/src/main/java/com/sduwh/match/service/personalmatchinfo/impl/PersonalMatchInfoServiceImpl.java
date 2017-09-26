@@ -52,4 +52,9 @@ public class PersonalMatchInfoServiceImpl implements PersonalMatchInfoService {
     public List<PersonalMatchInfo> selectByUserId(int id) {
         return personalMatchInfoMapper.selectByUserId(id);
     }
+
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return personalMatchInfoMapper.deleteAllByMatchItemId(matchItemId);
+    }
 }

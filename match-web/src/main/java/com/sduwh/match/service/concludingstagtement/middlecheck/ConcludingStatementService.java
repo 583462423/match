@@ -11,4 +11,7 @@ public interface ConcludingStatementService extends BaseService<ConcludingStatem
     ConcludingStatement selectByMatchItemId(int matchItemId);
     int updateByMatchItemId(ConcludingStatement concludingStatement);
     int updateByMatchItemIdSelective(ConcludingStatement concludingStatement);
+
+    /** 通过match_item_id删除对应的grade表*/
+    int deleteAllByMatchItemId(int matchItemId);
 }

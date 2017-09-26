@@ -1,6 +1,7 @@
 package com.sduwh.match.dao;
 
 import com.sduwh.match.model.entity.PersonalMatchInfo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -28,4 +29,7 @@ public interface PersonalMatchInfoMapper {
 
     @Select({"select ",SELECT_FIELDS,"from ",TABLE_NAME,"where user_id = #{userId}"})
     List<PersonalMatchInfo> selectByUserId(@Param("userId") int userId);
+
+    @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
+    int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
 }

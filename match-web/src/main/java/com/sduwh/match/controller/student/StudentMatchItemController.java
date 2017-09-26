@@ -61,8 +61,21 @@ public class StudentMatchItemController extends BaseController {
                 .stream()
                 .filter(e->{
                     //找出来在现在日期之前的
-                    return e.getStartTime().getTime() < currentTimeMillis && e.getEndTime().getTime() > currentTimeMillis;
-                }).collect(Collectors.toList());
+                    return matchInfoService.checkIsRunning(e);
+                })
+                .filter(e->{
+                    //过滤掉当前不在申请阶段的
+                    return Arrays.stream(e.getAllStage().split(",")).anyMatch(el->{
+                        int stageId = Integer.parseInt(el);
+                        Stage stage = stageService.selectByPrimaryKey(stageId);
+                        if(stage.getStageFlag() == MatchStage.APPLY.getId()){
+                            //判断当前日期是否已经结束
+                            return stageService.checkIsRuning(stage);
+                        }
+                        return false;
+                    });
+                })
+                .collect(Collectors.toList());
         map.put("info",matchInfos);
         return STUDENT_MATCHS;
     }

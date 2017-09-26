@@ -112,4 +112,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectSuperUser();
     }
 
+    @Override
+    public List<User> selectByEmail(String email) {
+        return userMapper.selectByEmail(email);
+    }
+
+
 }

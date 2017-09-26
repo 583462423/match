@@ -20,4 +20,7 @@ public interface MatchInfoService extends BaseService<MatchInfo,Integer> {
 
     /** 当前比赛是否在运行*/
     boolean checkIsRunning(MatchInfo matchInfo);
+
+    /** 删除该类型的比赛，以及联动的所有内容*/
+    boolean deleteAllOtherByMatchInfoId(int id);
 }

@@ -44,4 +44,8 @@ public class MD5Utils {
         }
         return md5str.toString().toUpperCase();
     }
+
+    public static String getActiveMD5(String username,String activekey,String email){
+        return md5(username + "_" + activekey + "_" + email);
+    }
 }

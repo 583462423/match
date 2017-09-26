@@ -41,8 +41,7 @@ public class GradeServiceImpl implements GradeService {
     StageService stageService;
     @Autowired
     ConcludingStatementService concludingStatementService;
-    @Autowired
-    GradeService gradeService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return gradeMapper.deleteByPrimaryKey(id);
@@ -179,12 +178,17 @@ public class GradeServiceImpl implements GradeService {
     @Override
     public float selectAverangeByMatchItem(int matchItemId) {
         float[] allScore  = new float[1];
-        List<Grade> grades = gradeService.selectByMatchItemId(matchItemId);
+        List<Grade> grades = selectByMatchItemId(matchItemId);
         if(grades != null || grades.size() != 0){
             grades.forEach(grade->{
                 allScore[0] += grade.getScore();
             });
             return allScore[0] / grades.size();
         }return 0;
+    }
+
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return gradeMapper.deleteAllByMatchItemId(matchItemId);
     }
 }

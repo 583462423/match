@@ -15,7 +15,6 @@
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
-        后期把只有申请阶段的显示出来，其他阶段不能再申请了。
         <!-- 显示table，在最后显示报名选项，注意，报名，自己就是队长，不允许队员选队长，只能队长选队员！！记住了 -->
         <table class="table table-bordered">
             <thead>

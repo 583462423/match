@@ -12,6 +12,7 @@ import com.sduwh.match.model.wrapper.MatchInfoWrapper;
 import com.sduwh.match.model.wrapper.MatchType2Wrapper;
 import com.sduwh.match.model.wrapper.StageWrapper;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
+import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.matchtype.MatchTypeService;
 import com.sduwh.match.service.matchtype2.MatchType2Service;
 import com.sduwh.match.service.stage.StageService;
@@ -51,6 +52,8 @@ public class AdminController extends BaseController{
     MatchTypeService matchTypeService;
     @Autowired
     MatchType2Service matchType2Service;
+    @Autowired
+    MatchItemService matchItemService;
 
 
     /**
@@ -139,10 +142,8 @@ public class AdminController extends BaseController{
     @GetMapping("/match/delete/{id}")
     @ResponseBody
     public ResponseResult deleteMatchInfo(@PathVariable("id") Integer id) {
-        if(matchInfoService.deleteByPrimaryKey(id) == 1){
-            return success(true);
-        }
-        return fail(false,"删除失败");
+        //删除该比赛对应的所有的比赛
+        return success(matchInfoService.deleteAllOtherByMatchInfoId(id));
     }
 
     public MatchInfoTO getMatchInfoTO(ServletRequest servletRequest) {
@@ -165,7 +166,11 @@ public class AdminController extends BaseController{
         matchInfoTO.setTeacherInNum(Integer.parseInt(request.getParameter("teacherInNum")));
         matchInfoTO.setStageName(Arrays.stream(request.getParameterValues("stageName[]")).collect(Collectors.toList()));
         matchInfoTO.setType1(Integer.parseInt(request.getParameter("type1")));
-        matchInfoTO.setSupply(Integer.parseInt(request.getParameter("supply")));
+        if(request.getParameterMap().containsKey("supply")){
+            matchInfoTO.setSupply(Integer.parseInt(request.getParameter("supply")));
+        }else{
+            matchInfoTO.setSupply(SupplyStatus.CLOSE_SUPPLY.getCode());
+        }
         if(!"".equals(request.getParameter("type2")))
             matchInfoTO.setType2(Integer.parseInt(request.getParameter("type2")));
 

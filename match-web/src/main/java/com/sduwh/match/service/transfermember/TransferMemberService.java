@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface TransferMemberService extends BaseService<TransferMember,Integer> {
     List<TransferMember> selectByMatchItemId(int matchItemId);
+
+    /** 通过match_item_id删除对应的记录*/
+    int deleteAllByMatchItemId(int matchItemId);
 }

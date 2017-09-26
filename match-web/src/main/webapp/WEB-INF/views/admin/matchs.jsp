@@ -79,6 +79,27 @@
         </div><!-- /.modal -->
         <!--模态框结束-->
 
+        <!--模态框，显示删除提示框-->
+        <div class="deleteModal modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">开启补录</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="delete"/>
+                        如果删除该比赛，则该比赛中的所有记录都将会被删除，比如比赛申请表，比赛提交的数据等。谨慎操作，确定要删除？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" id="confirmToDelete" class="btn btn-primary">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!--模态框结束-->
+
         <!--模态框，显示详细信息-->
         <div class="match_info modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -251,8 +272,13 @@
 
                 /** 点击删除后，弹出删除页面*/
                 $(".delete").click(function(){
-                    //TODO 弹出确认删除按钮，为了测试方便，此处还没有写弹出效果
                     var id = $(this).attr("data-id");
+                    $("#delete").val(id);
+                    $(".deleteModal").modal('show');
+                });
+
+                $("#confirmToDelete").click(function(){
+                    var id = $("#delete").val();
                     $.ajax({
                         url:"./match/delete/"+id,
                         success:function(json){
@@ -262,6 +288,7 @@
                             }else{
                                 alert("删除失败");
                             }
+                            $(".deleteModal").modal('hide');
                         },
                         error:function(error){
 

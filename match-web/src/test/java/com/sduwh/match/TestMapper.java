@@ -8,6 +8,7 @@ import com.sduwh.match.model.entity.*;
 import com.sduwh.match.model.to.MatchItemTO;
 import com.sduwh.match.model.wrapper.MatchItemWithScore;
 import com.sduwh.match.service.MailSender;
+import com.sduwh.match.service.apply.ApplyService;
 import com.sduwh.match.service.concludingstagtement.middlecheck.ConcludingStatementService;
 import com.sduwh.match.service.grade.GradeService;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
@@ -28,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.security.Key;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -60,21 +62,25 @@ public class TestMapper {
     JedisAdapter jedisAdapter;
     @Autowired
     GradeService gradeService;
+    @Autowired
+    ApplyService applyService;
+    @Autowired
+    PassService passService;
+    @Autowired
+    ResearchLogService researchLogService;
     @Test
     public void test(){
-        String key = RedisKeyGenerator.getSuperAwardKey(22);
-        List<MatchItemWithScore> matchItemWithScores = jedisAdapter.zgetAll(key).stream().map(id -> {
-            MatchItemWithScore ms = new MatchItemWithScore();
-            MatchItem m = matchItemService.selectByPrimaryKey(Integer.parseInt(id));
-            ms.setMatchItem(m);
-            ms.setScore(gradeService.selectAverangeByMatchItem(m.getId()));
-            return ms;
-        }).collect(Collectors.toList());
-        System.out.println(matchItemWithScores);
+        String key = RedisKeyGenerator.getListShowHandleHasDoneKey();
+        jedisAdapter.srem(key,"79");
+        jedisAdapter.sget(key).forEach(System.out::println);
     }
 
     @Test
     public void testRedis(){
+        String emailKey = RedisKeyGenerator.getUserTmpEmail();
 
+        jedisAdapter.hmget(emailKey).forEach((k,v)->{
+            System.out.println(k + ":" + v);
+        });
     }
 }

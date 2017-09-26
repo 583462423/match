@@ -42,4 +42,7 @@ public interface MiddleCheckDAO {
 
     int updateByMatchItemIdSelective(MiddleCheck middleCheck);
 
+    @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
+    int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
+
 }
