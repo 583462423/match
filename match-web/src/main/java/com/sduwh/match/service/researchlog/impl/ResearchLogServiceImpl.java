@@ -51,4 +51,9 @@ public class ResearchLogServiceImpl implements ResearchLogService {
     public List<ResearchLog> getAllLogByMatchItemId(int matchItemId) {
         return researchLogMapper.getAllLogByMatchItemId(matchItemId);
     }
+
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return researchLogMapper.deleteAllByMatchItemId(matchItemId);
+    }
 }

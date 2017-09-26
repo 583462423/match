@@ -1,10 +1,7 @@
 package com.sduwh.match.dao;
 
 import com.sduwh.match.model.entity.TransferMember;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,4 +26,7 @@ public interface TransferMemberDAO {
     List<TransferMember> selectByMatchItemId(@Param("matchItemId")int matchItemId);
 
     int updateByPrimaryKeySelective(TransferMember transferMember);
+
+    @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
+    int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
 }

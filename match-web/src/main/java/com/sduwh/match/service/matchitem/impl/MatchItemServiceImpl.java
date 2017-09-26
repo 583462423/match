@@ -69,6 +69,13 @@ public class MatchItemServiceImpl implements MatchItemService {
         //TODO matchItem也可能为空，原因也是后期删除
         MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
         //TODO 注意这个地方matchInfo可能为空，原因是管理员将这个比赛删除，所以需要后续的工作是，管理员删除比赛的时候，将所有的相关记录都要删除掉，否则有些地方容易报错
+        if(matchInfo == null){
+            //如果matchInfo为空，这个比赛就不应该存在，所以考虑是否将该比赛删除
+            //但实际上不需要删除，为了方便以后统计
+            //其实，删除这个东西实质上不存在的，在企业中，一般不会删除数据，只会给数据打一个标记，标记该数据不可用，这样方便以后统计，不然大数据中的数据是从哪来的，数据是最值钱的东西
+            //但是项目大体设计成了这样，如果要设计成标记删除，修改的地方就有很多。所以正确的操作是，管理员尽量不去做删除操作。
+            return null;
+        }
         String[] stageIds = matchInfo.getAllStage().split(",");
         int stageId = matchItem.getNowStageId();
         int nextStageId = MatchStatus.ALL_DONE.getValue();

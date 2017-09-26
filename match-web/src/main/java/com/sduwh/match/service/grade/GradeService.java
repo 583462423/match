@@ -22,4 +22,7 @@ public interface GradeService extends BaseService<Grade,Integer> {
 
     /** 通过某个比赛id来获取平均分*/
     float selectAverangeByMatchItem(int matchItemId);
+
+    /** 通过match_item_id删除对应的grade表*/
+    int deleteAllByMatchItemId(int matchItemId);
 }

@@ -51,4 +51,9 @@ public class TransferMemberServiceImpl implements TransferMemberService {
     public List<TransferMember> selectByMatchItemId(int matchItemId) {
         return transferMemberDAO.selectByMatchItemId(matchItemId);
     }
+
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return transferMemberDAO.deleteAllByMatchItemId(matchItemId);
+    }
 }

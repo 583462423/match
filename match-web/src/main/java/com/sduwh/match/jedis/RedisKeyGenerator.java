@@ -14,6 +14,8 @@ public class RedisKeyGenerator {
     private static final String ACADEMY_SCORE = "ACADEMY_SCORE";
     private static final String SUPER_SCORE = "SUPER_SCORE";
     private static final String SUPER_AWARD = "SUPER_AWARD";                              //学校评奖
+    private static final String USER_ACTIVE = "USER_ACTIVE";                                         //用于提取用户随机生成的激活码，用于用户激活
+    private static final String USER_TMP_EMAIL = "USER_TMP_EMAIL";
     /** 返回老师参与的项目的key值*/
     public static String getTeacherProjects(){
         return PROJECT_NAME + SPLIT + TEACHER_IN_PROJECT_IDS;
@@ -48,5 +50,15 @@ public class RedisKeyGenerator {
     /** 存储该比赛中获奖的比赛名单，主要存储id*/
     public static String getSuperAwardKey(int matchInfoId){
         return PROJECT_NAME + SPLIT + SUPER_AWARD + SPLIT + matchInfoId;
+    }
+
+    /** 用户激活码的KEY值，存储的是hash*/
+    public static String getUserActive(){
+        return PROJECT_NAME + SPLIT + USER_ACTIVE;
+    }
+
+    /** 用户在没有激活的时候，设置的email，都在这个redis里面存储*/
+    public static String getUserTmpEmail(){
+        return PROJECT_NAME + SPLIT + USER_TMP_EMAIL;
     }
 }

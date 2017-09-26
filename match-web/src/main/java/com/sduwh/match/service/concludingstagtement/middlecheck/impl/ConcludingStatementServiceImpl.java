@@ -61,5 +61,10 @@ public class ConcludingStatementServiceImpl implements ConcludingStatementServic
         return concludingStatementDAO.updateByMatchItemIdSelective(middleCheck);
     }
 
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return concludingStatementDAO.deleteAllByMatchItemId(matchItemId);
+    }
+
 
 }

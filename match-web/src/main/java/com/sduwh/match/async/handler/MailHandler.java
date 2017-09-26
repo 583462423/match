@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by qxg on 17-8-26.
+ * 这个是用来测试的。
  */
 @Service
 public class MailHandler implements EventHandler {
@@ -22,6 +23,7 @@ public class MailHandler implements EventHandler {
     @Override
     public void doHandle(EventModel eventModel) {
         //这里开始发邮件'
+
         sender.send("583462423@qq.com","放飞梦想","亲爱的用户您好，您在本网站进行了消费10000元，验证码为9483,请尽快进行确认。");
     }
 

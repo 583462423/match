@@ -2,20 +2,29 @@ package com.sduwh.match.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.sduwh.match.Config;
 import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
+import com.sduwh.match.enums.MatchStatus;
 import com.sduwh.match.enums.Roles;
 import com.sduwh.match.enums.UserStatus;
 import com.sduwh.match.jedis.JedisAdapter;
 import com.sduwh.match.jedis.RedisKeyGenerator;
+import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.MatchInfo;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.Role;
 import com.sduwh.match.model.entity.User;
+import com.sduwh.match.service.MailSender;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.role.RoleService;
 import com.sduwh.match.service.user.UserService;
+import com.sduwh.match.util.MD5Utils;
+import com.sduwh.match.util.RandomStringUtils;
+import com.sduwh.match.util.RegexUtils;
+import com.sduwh.match.util.StringUtils;
+import com.sun.org.apache.regexp.internal.RE;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -23,10 +32,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.management.relation.RoleStatus;
 import java.io.IOException;
@@ -43,7 +50,8 @@ public class UserController extends BaseController{
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    private static String LOGIN = "login";
+    private static final String LOGIN = "login";
+    private static final String ACTIVE = "active";
 
     @Autowired
     UserService userService;
@@ -55,6 +63,8 @@ public class UserController extends BaseController{
     MatchItemService matchItemService;
     @Autowired
     MatchInfoService matchInfoService;
+    @Autowired
+    MailSender mailSender;
 
     @GetMapping(value = {"/login","/","/index"})
     public String login() throws IOException {
@@ -192,4 +202,94 @@ public class UserController extends BaseController{
         return JSONObject.toJSONString(info);
     }
 
+    /** 用于用户激活，使用邮箱进行激活*
+     * 激活规则说明，向激活的邮箱发送 http://Config.URL/username/MD5(自动生成的激活码)
+     * 在接受到这个请求后，先查找该用户对应的激活码，然后将激活码进行md5，之后对比两者是否相同，相同即激活。
+     */
+    @GetMapping("/active")
+    public String getActivePage(Model model){
+        User user = getUser();
+        if(user == null || user.getStatus() != UserStatus.NOT_ACTIVE.getId())return UNAUTH;
+        model.addAttribute("user",user);
+        String emailKey = RedisKeyGenerator.getUserTmpEmail();
+        String userEmail = jedisAdapter.hget(emailKey,user.getUsername());
+        System.out.println("userEmail :" + userEmail);
+        if(StringUtils.nullOrEmpty(userEmail)){
+            model.addAttribute("emailIsNull","true");
+        }else{
+            model.addAttribute("email",userEmail);
+        }
+        return ACTIVE;
+    }
+
+    /** 给当前用户设置email*/
+    @PostMapping("/active/email")
+    @ResponseBody
+    public String setEmail(@RequestParam("email")String email){
+        if(!RegexUtils.checkEmaile(email))return setJsonResult("error","email格式不正确");
+        User user = getUser();
+        if(user == null)return setJsonResult("error","请先登陆");
+
+        String hkey = RedisKeyGenerator.getUserTmpEmail();
+        jedisAdapter.hset(hkey,user.getUsername(),email);
+        return setJsonResult("success","true");
+    }
+
+    /**向该id对应的用户发送激活码*/
+    @PostMapping("/active/user")
+    @ResponseBody
+    public String active(@RequestParam("userId")int userId){
+        User user = userService.selectByPrimaryKey(userId);
+        if(user == null)return setJsonResult("error","失败");
+        String emailKey = RedisKeyGenerator.getUserTmpEmail();
+        String tmpEmail = jedisAdapter.hget(emailKey,user.getUsername());
+        if(StringUtils.nullOrEmpty(tmpEmail))return setJsonResult("error","邮箱未设置");
+
+        //生成随即码
+        String randomString = RandomStringUtils.getRandomStringOfEmail();
+        String hkey = RedisKeyGenerator.getUserActive();
+        jedisAdapter.hset(hkey,user.getUsername(),randomString);
+
+        //通过激活码和username和email设置md5,向用户email发送对应的激活链接
+        String activeUrl = Config.URL + "/active/" + user.getUsername() + "/" + MD5Utils.getActiveMD5(user.getUsername(),randomString,tmpEmail);
+        mailSender.send(tmpEmail,"请点击邮件中的链接激活您的账户",activeUrl);
+        return setJsonResult("success","true");
+    }
+
+    @GetMapping("/active/{username}/{md5}")
+    @ResponseBody
+    public String getActive(@PathVariable("username")String username,@PathVariable("md5")String knownMd5){
+        //通过username获取User
+        User user = userService.selectByUsername(username);
+        if(user == null)return UNAUTH;
+        //获取 激活码
+        String activeHKey = RedisKeyGenerator.getUserActive();
+        String activeKey = jedisAdapter.hget(activeHKey,username);
+        String emailHKey = RedisKeyGenerator.getUserTmpEmail();
+        String email = jedisAdapter.hget(emailHKey,username);
+        String md5 = MD5Utils.getActiveMD5(user.getUsername(),activeKey,email);
+        if(md5.equals(knownMd5)){
+            //已激活，将redis中设置的临时邮箱设置进去
+            user.setEmail(email);
+            user.setStatus(UserStatus.NORMAL.getId());
+            userService.updateByPrimaryKey(user);
+            //将临时email和激活码消除
+            jedisAdapter.hrem(activeHKey,username);
+            jedisAdapter.hrem(emailHKey,username);
+            return "激活成功!";
+        }
+        return "激活失败";
+    }
+
+    /**获取当前登陆的user*/
+    private User getUser(){
+        Subject subject = SecurityUtils.getSubject();
+        if(subject != null){
+            //设置user和rater
+            String username = (String) subject.getPrincipal();
+            User user = userService.selectByUsername(username);
+            return user;
+        }
+        return null;
+    }
 }

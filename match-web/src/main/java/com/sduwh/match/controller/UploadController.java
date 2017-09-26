@@ -143,6 +143,9 @@ public class UploadController extends BaseController{
         //设置当前的阶段，当前阶段应该是上传申请表，即info中stage的第一个
         MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchInfoId);
         matchItem.setNowStageId(Integer.parseInt(matchInfo.getAllStage().split(",")[0]));
+        //设置比赛的学院，学院应当是和学生的学院信息一致
+        matchItem.setAcademyId(hostHolder.getUser().getAcademyId());
+
         matchItemService.insert(matchItem);
 
 

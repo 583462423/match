@@ -59,5 +59,10 @@ public class MiddleCheckServiceImpl implements MiddleCheckService {
         return middleCheckDAO.updateByMatchItemIdSelective(middleCheck);
     }
 
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return middleCheckDAO.deleteAllByMatchItemId(matchItemId);
+    }
+
 
 }

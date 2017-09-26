@@ -46,6 +46,8 @@
         <path>/academy/rater/score/end</path>
         <path>/admin/rater/score/end</path>
         <path>/admin/awards/award</path>
+        <path>/active/email</path>
+        <path>/active/user</path>
     </mapping>
 
   	<!-- admin布局修饰 -->

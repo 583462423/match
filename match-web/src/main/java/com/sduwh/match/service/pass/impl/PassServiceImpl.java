@@ -64,4 +64,9 @@ public class PassServiceImpl implements PassService {
     public List<Pass> selectByUserId(int userId) {
         return passDAO.selectByUserId(userId);
     }
+
+    @Override
+    public int deleteAllByMatchItemId(int matchItemId) {
+        return passDAO.deleteAllByMatchItemId(matchItemId);
+    }
 }

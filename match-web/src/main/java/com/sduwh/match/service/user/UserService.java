@@ -4,6 +4,8 @@ import com.sduwh.match.model.entity.User;
 import com.sduwh.match.model.wrapper.UserWrapper;
 import com.sduwh.match.service.BaseService;
 
+import java.util.List;
+
 /**
  * Created by qxg on 17-6-29.
  */
@@ -21,4 +23,6 @@ public interface UserService extends BaseService<User,Integer>{
     /** 获取学校的超级管理员，该管理员只有一个*/
     public User selectSuperUser();
 
+    /** 通过邮箱来获取对应的用户名，使用List防止出现BUG*/
+    public List<User> selectByEmail(String email);
 }

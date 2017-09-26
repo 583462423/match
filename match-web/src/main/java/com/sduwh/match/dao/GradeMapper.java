@@ -1,6 +1,7 @@
 package com.sduwh.match.dao;
 
 import com.sduwh.match.model.entity.Grade;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -34,4 +35,7 @@ public interface GradeMapper {
 
     @Select({"select",SELECT_FIELDS,"from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
     List<Grade> selectByMatchItemId(@Param("matchItemId")int matchItemId);
+
+    @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
+    int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
 }

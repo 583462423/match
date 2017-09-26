@@ -1,10 +1,7 @@
 package com.sduwh.match.dao;
 
 import com.sduwh.match.model.entity.ResearchLog;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -36,4 +33,7 @@ public interface ResearchLogMapper {
 
     @Select({"select",SELECT_FIELDS,"from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
     List<ResearchLog> getAllLogByMatchItemId(@Param("matchItemId") int matchItemId);
+
+    @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
+    int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
 }

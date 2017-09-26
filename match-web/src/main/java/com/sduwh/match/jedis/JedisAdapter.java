@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -129,5 +131,56 @@ public class JedisAdapter implements InitializingBean{
         }
         return null;
     }
+
+    /** 给某个hkey对应的hash中设置key-value*/
+    public long hset(String hkey,String key,String value){
+        try (Jedis jedis = jedisPool.getResource()){
+            return jedis.hset(hkey,key,value);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return 0;
+    }
+
+    /** 获取某个hash表*/
+    public Map<String,String> hmget(String key){
+        try (Jedis jedis = jedisPool.getResource()){
+            return jedis.hgetAll(key);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
+
+    /** 获取某个hash表中某个key对应的值*/
+    public String hget(String hkey,String key){
+        try (Jedis jedis = jedisPool.getResource()){
+            return jedis.hget(hkey,key);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
+
+    /** 查看某个hkey对应的hash是否包含某个key值*/
+    public boolean hexists(String hkey,String key){
+        try (Jedis jedis = jedisPool.getResource()){
+            return jedis.hexists(hkey,key);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
+
+    /** 删除hash中某个key*/
+    public long hrem(String hkey,String key){
+        try (Jedis jedis = jedisPool.getResource()){
+            return jedis.hdel(hkey,key);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return 0;
+    }
+
 
 }

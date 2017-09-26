@@ -39,4 +39,6 @@ public interface ConcludingStatementDAO {
 
     int updateByMatchItemIdSelective(ConcludingStatement concludingStatement);
 
+    @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
+    int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
 }

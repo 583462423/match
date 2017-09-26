@@ -1,5 +1,6 @@
 package com.sduwh.match.interceptors;
 
+import com.sduwh.match.enums.UserStatus;
 import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.TmpRater;
 import com.sduwh.match.model.entity.User;
@@ -37,7 +38,13 @@ public class UserInterceptor implements HandlerInterceptor {
             String username = (String) subject.getPrincipal();
             User user = userService.selectByUsername(username);
             hostHolder.setUser(user);
-
+            if(user != null){
+                //判断用户是否已经激活，如果没有，就跳转到激活页面
+                if(user.getStatus() == UserStatus.NOT_ACTIVE.getId()){
+                    response.sendRedirect("/active");
+                    return false;
+                }
+            }
             TmpRater rater = raterService.selectByUsername(username);
             hostHolder.setRater(rater);
         }

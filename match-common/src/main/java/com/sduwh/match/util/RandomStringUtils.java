@@ -46,4 +46,7 @@ public class RandomStringUtils {
         return getRandomString(length,salt).toUpperCase();
     }
 
+    public static String getRandomStringOfEmail(){
+        return getRandomString(10);
+    }
 }

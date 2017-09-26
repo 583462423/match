@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface UserMapper {
@@ -34,4 +36,7 @@ public interface UserMapper {
 
     @Select({"select",SELECT_FIELDS,"from",TABLE_NAME,"where role_id = 1"})
     User selectSuperUser();
+
+    @Select({"select",SELECT_FIELDS,"from",TABLE_NAME,"where email = #{email}"})
+    List<User> selectByEmail(@Param("email")String email);
 }
