@@ -144,9 +144,9 @@ public class CheckController extends BaseController{
         }
         List<Pass> passes = passService.selectByUserId(hostHolder.getUser().getId());
         //将已审核的作品的id显示出来
-        List<MatchItem> matchItems = passes.stream().map(e->{
-            return matchItemService.selectByPrimaryKey(e.getMatchItemId());
-        }).collect(Collectors.toList());
+        List<MatchItem> matchItems = passes.stream()
+                .map(e -> matchItemService.selectByPrimaryKey(e.getMatchItemId()))
+                .collect(Collectors.toList());
         map.put("matchItem",matchItems);
         return ACADEMY_CHECKED;
     }
