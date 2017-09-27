@@ -61,15 +61,9 @@ public class TmpRaterController extends BaseController {
         } catch (UnknownAccountException e) {
             logger.error("该账号不存在或者该账号未被激活!", e);
             return setJsonResult("error", "该账号不存在或者该账号未被激活!");
-        } catch (DisabledAccountException e) {
-            logger.error("该账号已被冻结!", e);
-            return setJsonResult("error", "该账号已被冻结!");
         } catch (IncorrectCredentialsException e) {
             logger.error("密码错误", e);
             return setJsonResult("error", "密码错误");
-        } catch (ExcessiveAttemptsException e) {
-            logger.error("密码连续输入错误超过5次，锁定半小时!", e);
-            return setJsonResult("error", "密码连续输入错误超过5次，锁定半小时!");
         } catch (RuntimeException e) {
             logger.error("未知错误,请联系管理员!", e);
             return setJsonResult("error", "未知错误,请联系管理员!");

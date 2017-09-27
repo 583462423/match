@@ -5,33 +5,86 @@
 <head>
     <title>登陆界面</title>
 </head>
-<link rel="stylesheet" media="screen" href="/css/style.css">
-<link rel="stylesheet" media="screen" href="/css/login.css">
 <link rel="stylesheet" media="screen" href="/css/bootstrap.min.css">
+<link rel="stylesheet" media="screen" href="/css/login.css">
+<link rel="stylesheet" media="screen" href="/css/style.css">
 
 <body>
 
+<div class="header">
+    <div class="headerPanel">
+        <img src="/images/2.png" style="width: 150px;">
+        <span class="headerTitle">山东大学(威海)比赛管理平台</span>
+    </div>
+    <hr />
+</div>
+
 <div class="loginContainer">
-    <div class="userLogin loginForm">用户登陆
-        <form id="userForm" action="/login" method="post">
-            <input name="username" type="text" placeholder="请输入用户名"/>
-            <input name="password" type="password" placeholder="请输入密码"/>
-            <input type="button" id="userLogin" class="btn btn-warning" value="登陆" />
+    <div class="userLogin loginDiv">
+        <div class="title">用户登陆</div>
+        <form id="userForm" class="loginForm" action="/login" method="post">
+            <input class="form-control username" name="username" type="text" placeholder="请输入用户名"/>
+            <input class="form-control password" name="password" type="password" placeholder="请输入密码"/>
+            <div class="loginOther">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 记住我
+                    </label>
+                    <a href="#" class="forgetPass">忘记密码?</a>
+                </div>
+            </div>
+            <input type="button" id="userLogin" class="btn btn-warning loginBtn userLoginBtn" value="登陆" />
+
         </form>
         <a class="tmpRaterBtn aLogin">临时评委登陆</a>
     </div>
-    <div class="tmpRaterLogin loginForm">临时评委登陆
-        <form id="raterForm" action="/rater/login" method="post">
-            <input name="username" type="text" placeholder="请输入用户名"/>
-            <input name="password" type="password" placeholder="请输入密码"/>
-            <input type="button" id="raterLogin" class="btn btn-warning" value="临时登陆" />
+    <div class="tmpRaterLogin loginDiv">
+        <div class="title">临时评委登陆</div>
+        <form id="raterForm" class="loginForm" action="/rater/login" method="post">
+            <input class="form-control username" name="username" type="text" placeholder="请输入临时评委用户名"/>
+            <input class="form-control password" name="password" type="password" placeholder="请输入密码"/>
+            <div class="loginOther">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 记住我
+                    </label>
+                    <a href="#" class="forgetPass">忘记密码?</a>
+                </div>
+            </div>
+            <input type="button" id="raterLogin" class="btn btn-danger loginBtn" value="临时登陆" />
         </form>
         <a class="userBtn aLogin">用户登陆</a>
     </div>
 
+
 </div>
 
-<div id="particles-js">
+<div class="footer">
+    <div class="footerPanel">
+        <span class="footerText">版权所有:山东大学(威海)</span>
+    </div>
+</div>
+
+<div id="particles-js" style="background: url(/images/demo-1.jpg);">
+</div>
+
+<!-- Modal -->
+<div class="errorMsgModal modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <%--<div class="modal-header">--%>
+                <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
+                <%--&lt;%&ndash;<h4 class="modal-title" id="myModalLabel">Modal title</h4>&ndash;%&gt;--%>
+            <%--</div>--%>
+            <div class="modal-body">
+                <div class="errorMsg"></div>
+            </div>
+            <%--<div class="modal-footer">--%>
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+                <%--<button type="button" class="btn btn-primary">Save changes</button>--%>
+            <%--</div>--%>
+        </div>
+    </div>
 </div>
 
 </body>
@@ -62,12 +115,12 @@
                     if(json["success"] == true){
                         window.location.href= json["message"];
                     }else{
-                        alert("错误错误");
+                        showMsg(json["message"]);
                     }
                     //alert(json["success"] + "," + json["message"]);
                 },
                 error:function(error){
-                    alert("服务器开小差了，请稍后再试～")
+                    showMsg("服务器开小差了，请稍后再试～");
                 }
             });
         });
@@ -82,7 +135,7 @@
                 success:function(res){
                     var json = JSON.parse(res);
                     if(json["error"] != null){
-                        alert(json["error"]);
+                        showMsg(json["error"]);
                     }else{
                         window.location.href = json["url"];
                     }
@@ -93,6 +146,12 @@
                 }
             });
         });
+
+        function showMsg(msg){
+            $(".errorMsg").html(msg);
+            $(".errorMsgModal").modal("show");
+        }
+
     });
 </script>
 <script>
