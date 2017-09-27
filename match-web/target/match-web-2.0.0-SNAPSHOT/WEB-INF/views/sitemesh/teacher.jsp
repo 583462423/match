@@ -136,6 +136,25 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="errorMsgModal modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <%--<div class="modal-header">--%>
+            <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
+            <%--&lt;%&ndash;<h4 class="modal-title" id="myModalLabel">Modal title</h4>&ndash;%&gt;--%>
+            <%--</div>--%>
+            <div class="modal-body">
+                <div class="errorMsg"></div>
+            </div>
+            <%--<div class="modal-footer">--%>
+            <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+            <%--<button type="button" class="btn btn-primary">Save changes</button>--%>
+            <%--</div>--%>
+        </div>
+    </div>
+</div>
+
 <!-- jQuery -->
 <script src="/js/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -157,6 +176,12 @@
 <!-- bootstrap-datetimepicker-->
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script>
+    function showMsg(msg){
+        $(".errorMsg").html(msg);
+        $(".errorMsgModal").modal("show");
+    }
+</script>
 <sitemesh:write property="myscript"/>
 
 </body>
