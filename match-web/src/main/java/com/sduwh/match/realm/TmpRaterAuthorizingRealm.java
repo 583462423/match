@@ -28,18 +28,10 @@ public class TmpRaterAuthorizingRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String username = token.getUsername();
         TmpRater rater = tmpRaterService.selectByUsername(username);
-        /*if (user == null){
+        if (rater == null){
             throw new UnknownAccountException();
         }
 
-        if(user.getStatus().equals(UserStatus.FREEZE.getId())){
-            throw new DisabledAccountException();
-        }
-
-        if(user.getStatus().equals(UserStatus.NOT_ACTIVE.getId())){
-            //TODO 抛出未激活异常
-        }
-        */
         return new SimpleAuthenticationInfo(rater.getUsername(),rater.getPassword(),getName());
     }
 }
