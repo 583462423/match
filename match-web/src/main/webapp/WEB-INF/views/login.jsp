@@ -91,9 +91,11 @@
 <script src="/js/particles.min.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="https://static.hdslb.com/plugins/resource/jsencrypt.min.js"></script>
 <script>
+    var crypt = new JSEncrypt();
     $(document).ready(function(){
+
         $(".userBtn").click(function(){
             $(".userLogin").css("display","block");
             $(".tmpRaterLogin").css("display","none");
@@ -105,19 +107,22 @@
         });
 
         $("#userLogin").click(function(){
-            var data = $("#userForm").serializeArray();
+            getPubKey();
+            var encode = crypt.encrypt($("#userForm .password").val());
+            var data = 'username=' + $("#userForm .username").val() + '&'
+                     + 'password=' + encodeURIComponent(encode);
             var action = $("#userForm").attr("action");
             $.ajax({
                 url:action,
                 type:'post',
                 data:data,
+                async:false,
                 success:function(json){
                     if(json["success"] == true){
                         window.location.href= json["message"];
                     }else{
                         showMsg(json["message"]);
                     }
-                    //alert(json["success"] + "," + json["message"]);
                 },
                 error:function(error){
                     showMsg("服务器开小差了，请稍后再试～");
@@ -126,12 +131,16 @@
         });
 
         $("#raterLogin").click(function(){
-            var data = $("#raterForm").serializeArray();
+            getPubKey();
+            var encode = crypt.encrypt($("#raterForm .password").val());
+            var data = 'username=' + $("#raterForm .username").val() + '&'
+                + 'password=' + encodeURIComponent(encode);
             var action = $("#raterForm").attr("action");
             $.ajax({
                 url:action,
                 type:'post',
                 data:data,
+                async:false,
                 success:function(res){
                     var json = JSON.parse(res);
                     if(json["error"] != null){
@@ -152,6 +161,25 @@
             $(".errorMsgModal").modal("show");
         }
 
+        function getPubKey() {
+            $.ajax({
+                url: '/pubkey',
+                type: 'get',
+                async: false,
+                success: function (json) {
+                    if (json["success"] == true) {
+                        window.location.href = json["message"];
+                    } else {
+                        showMsg(json["message"]);
+                    }
+                    // they believe that they need formatted rsa public key, make them happy
+                    crypt.setPublicKey('-----BEGIN PUBLIC KEY-----\n' + json["message"] + '\n-----END PUBLIC KEY-----');
+                },
+                error: function (error) {
+                    showMsg("服务器开小差了，获取公钥失败了哦~");
+                }
+            });
+        }
     });
 </script>
 <script>

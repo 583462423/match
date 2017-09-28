@@ -123,7 +123,7 @@ public class CheckController extends BaseController{
             return matchInfoService.checkIsRunning(matchInfo);
         }).filter(item->{
             //判断这个比赛是否是当前学院，首先要查找到学院ID
-            return user.getAcademyId() == item.getAcademyId();
+            return user.getAcademyId().equals(item.getAcademyId());
         }).filter(item->{
             //判断当前用户是否已经审核过该用户了,如果没审核过，那才符合条件！
             Pass pass = passService.selectByUserAndItem(user.getId(),item.getId());
@@ -144,9 +144,9 @@ public class CheckController extends BaseController{
         }
         List<Pass> passes = passService.selectByUserId(hostHolder.getUser().getId());
         //将已审核的作品的id显示出来
-        List<MatchItem> matchItems = passes.stream().map(e->{
-            return matchItemService.selectByPrimaryKey(e.getMatchItemId());
-        }).collect(Collectors.toList());
+        List<MatchItem> matchItems = passes.stream()
+                .map(e -> matchItemService.selectByPrimaryKey(e.getMatchItemId()))
+                .collect(Collectors.toList());
         map.put("matchItem",matchItems);
         return ACADEMY_CHECKED;
     }
