@@ -313,7 +313,6 @@ public class UserController extends BaseController{
     }
 
     private final UsernamePasswordToken createUsernamePasswordToken(User user, HttpServletRequest req) {
-        System.out.println(user.getUsername() + " : " + user.getPassword());
         PrivateKey privateKey = (PrivateKey) req.getSession().getAttribute("prikey");
         if (privateKey == null)
             throw new UserWrongOperationException("用户对应的 private key 没有了");
