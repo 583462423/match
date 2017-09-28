@@ -1,15 +1,16 @@
 package com.sduwh.match.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sduwh.match.Config;
 import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.common.ResponseResult;
+import com.sduwh.match.enums.MatchStatus;
 import com.sduwh.match.enums.Roles;
 import com.sduwh.match.enums.UserStatus;
-import com.sduwh.match.exception.UserBadOperationException;
-import com.sduwh.match.exception.UserWrongOperationException;
 import com.sduwh.match.jedis.JedisAdapter;
 import com.sduwh.match.jedis.RedisKeyGenerator;
+import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.MatchInfo;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.Role;
@@ -18,12 +19,12 @@ import com.sduwh.match.service.MailSender;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.role.RoleService;
-import com.sduwh.match.service.rsa.RSAService;
 import com.sduwh.match.service.user.UserService;
 import com.sduwh.match.util.MD5Utils;
 import com.sduwh.match.util.RandomStringUtils;
 import com.sduwh.match.util.RegexUtils;
 import com.sduwh.match.util.StringUtils;
+import com.sun.org.apache.regexp.internal.RE;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -34,16 +35,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.servlet.http.HttpServletRequest;
+import javax.management.relation.RoleStatus;
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.spec.InvalidKeySpecException;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by qxg on 17-6-28.
@@ -58,8 +55,6 @@ public class UserController extends BaseController{
 
     @Autowired
     UserService userService;
-    @Autowired
-    RSAService rsaService;
     @Autowired
     RoleService roleService;
     @Autowired
@@ -76,22 +71,13 @@ public class UserController extends BaseController{
         return LOGIN;
     }
 
-    @GetMapping(value = "/pubkey")
-    @ResponseBody
-    public ResponseResult getPublicKey(HttpServletRequest req) {
-        RSAService.RSAKeyPair keyPair = rsaService.rsaCreateKeyPair();
-        // promise there is session associates with request
-        req.getSession().setAttribute("prikey", keyPair.privateKey);
-        return success(true, keyPair.publicKeyStr);
-    }
-
     @PostMapping("/login")
     @ResponseBody
-    public ResponseResult userLogin(User user, HttpServletRequest req){
+    public ResponseResult userLogin(User user){
         Subject currentUser = SecurityUtils.getSubject();
-//        token.setRememberMe(false);   //不记住我 the default is false
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword());
+        token.setRememberMe(false);   //不记住我
         try {
-            UsernamePasswordToken token = createUsernamePasswordToken(user, req);
             currentUser.login(token);
         } catch (UnknownAccountException e) {
             logger.error("账户不存在或密码错误!", e);
@@ -102,18 +88,10 @@ public class UserController extends BaseController{
         } catch (IncorrectCredentialsException e) {
             logger.error("密码错误", e);
             return fail(false, "账户不存在或密码错误");
-        } catch (UserBadOperationException e) {
-            logger.error("用户非法操作", e);
-            return fail(false, "账户不存在或密码错误");
-        } catch (UserWrongOperationException e) {
-            logger.error("用户错误操作", e);
-            return fail(false, "Connection or cookies reset?");
         } catch (RuntimeException e) {
             logger.error("未知错误,请联系管理员!", e);
             return fail(false, "未知错误,请联系管理员!");
         }
-
-        req.getSession().removeAttribute("prikey");
 
         //这表示通过，但是如何获取通过信息？= =
         if(currentUser.hasRole(Roles.STUDENT.getName())){
@@ -310,30 +288,5 @@ public class UserController extends BaseController{
             return user;
         }
         return null;
-    }
-
-    private final UsernamePasswordToken createUsernamePasswordToken(User user, HttpServletRequest req) {
-        System.out.println(user.getUsername() + " : " + user.getPassword());
-        PrivateKey privateKey = (PrivateKey) req.getSession().getAttribute("prikey");
-        if (privateKey == null)
-            throw new UserWrongOperationException("用户对应的 private key 没有了");
-
-        UsernamePasswordToken token;
-        try {
-            System.out.println(rsaService.rsaDecode(user.getPassword(), privateKey));
-            token = new UsernamePasswordToken(
-                            user.getUsername(),
-                            rsaService.rsaDecode(user.getPassword(), privateKey).trim());
-        } catch ( InvalidKeySpecException
-                | NoSuchPaddingException
-                | BadPaddingException
-                | IllegalBlockSizeException
-                | InvalidKeyException
-                | NoSuchAlgorithmException e) {
-            throw new UserBadOperationException("用户蓄意令密码不合法", e);
-        } catch (IOException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        return token;
     }
 }
