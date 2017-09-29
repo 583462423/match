@@ -19,7 +19,7 @@
 <body>
     <mydiv>
         <div style="width: 100%;height: 100%;">
-            <table class="table table-striped">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th class="col-sm-4">比赛名称</th>
@@ -131,8 +131,8 @@
                             </div>
 
                             <div class="input-group">
-                                <div class="input-group-addon">队长个数</div>
-                                <input class="form-control" id="leaderNum" type="number" name="leaderNum" />
+                                <%--<div class="input-group-addon">队长个数</div>--%>
+                                <input class="form-control" id="leaderNum" type="hidden" name="leaderNum" />
                                 <div class="input-group-addon">队长可参与个数</div>
                                 <input class="form-control" id="leaderInNum" type="number" name="leaderInNum" />
                             </div>
@@ -160,6 +160,11 @@
                             <span style="display: inline-block;font-size: 16px;"><bold>阶段信息</bold></span>
                             <table id="allStage" class="table table-bordered">
                             </table>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -235,9 +240,8 @@
                         type:'post',
                         success:function(json){
                             if(json["success"] == true){
-                                //TODO 这个地方后期要换成非alert形式，提升用户体验
                                 alert("更新成功");
-                                //TODO 自己考虑添加成功是否跳转到其他页面
+                                location.href="/admin/matchs";
                             }else{
                                 alert("更新失败");
                             }

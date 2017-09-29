@@ -3,6 +3,7 @@ package com.sduwh.match.service.matchitem;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.MatchType;
 import com.sduwh.match.model.entity.Stage;
+import com.sduwh.match.model.wrapper.MatchItemDetail;
 import com.sduwh.match.model.wrapper.MatchItemWithScore;
 import com.sduwh.match.model.wrapper.MatchTypeWrapper;
 import com.sduwh.match.service.BaseService;
@@ -38,4 +39,7 @@ public interface MatchItemService extends BaseService<MatchItem,Integer> {
 
     /** 查询当前评奖阶段的所有比赛*/
     List<MatchItemWithScore> selectAwardsWithScore(int matchInfoId);
+
+    /** 通过matchItemId来查找比赛的详细信息*/
+    MatchItemDetail selectDetailById(int matchItemId);
 }

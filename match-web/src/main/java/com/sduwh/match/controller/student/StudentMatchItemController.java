@@ -56,7 +56,6 @@ public class StudentMatchItemController extends BaseController {
     /** 显示所有可以参加的比赛*/
     @GetMapping("/matchs")
     public String getMatch(Map<String,List<MatchInfo>> map){
-        Long currentTimeMillis = System.currentTimeMillis();
         List<MatchInfo> matchInfos = matchInfoService.selectAll()
                 .stream()
                 .filter(e->{
@@ -179,7 +178,9 @@ public class StudentMatchItemController extends BaseController {
                             //如果是立项申请，就需要显示跳转立项申请页面
                             map.put("upApply","true");
                         }
-                        map.put("stage",stages[i].getDes());
+                        //判断当前stage是否开始
+                        if(stageService.checkIsRuning(stage))map.put("stage",stages[i].getDes() + ":已开始");
+                        else map.put("stage",stages[i].getDes() + ":未开始");
                         break;
                     }
                 }

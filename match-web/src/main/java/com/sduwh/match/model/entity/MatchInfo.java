@@ -5,33 +5,33 @@ import java.sql.Timestamp;
 public class MatchInfo {
     private Integer id;
 
-    private String name;
+    private String name;      //比赛名称
 
-    private Integer type1;
+    private Integer type1;    //比赛一级分类
 
-    private Integer type2;
+    private Integer type2;    //比赛二级分类
 
-    private Integer level;
+    private Integer level;    //比赛级别,校际还是院级
 
-    private String allStage;
+    private String allStage;  //所有阶段
 
-    private Integer leaderNum;
+    private Integer leaderNum; //队长数目
 
-    private Integer memberNum;
+    private Integer memberNum; //成员数目
 
-    private Integer teacherNum;
+    private Integer teacherNum;//指导老师数目
 
-    private Integer leaderInNum;
+    private Integer leaderInNum; //队长能够参与比赛的数目
 
-    private Integer memberInNum;
+    private Integer memberInNum; //成员可以参与的比赛的个数
 
-    private Integer teacherInNum;
+    private Integer teacherInNum; //指导老师可以指导的数目
 
-    private Timestamp createTime;
+    private Timestamp createTime; //创建时间
 
-    private Timestamp startTime;
+    private Timestamp startTime;  //开始时间
 
-    private Timestamp endTime;
+    private Timestamp endTime;    //结束时间
 
     /** 表示当前是否开放补充申报状态*/
     private int supply;

@@ -113,6 +113,11 @@ public class AdminController extends BaseController{
     @ResponseBody
     public ResponseResult startCreateMatch(ServletRequest servletRequest) {
         MatchInfoTO matchInfoTO = getMatchInfoTO(servletRequest);
+        //检查比赛名是否已经被占用
+        List<MatchInfo> list = matchInfoService.selectByName(matchInfoTO.getName());
+        if(list != null && list.size()>=1){
+            return fail(false,"该名字已被占用!");
+        }
         matchInfoTO.setSupply(SupplyStatus.CLOSE_SUPPLY.getCode());
         //获得的类型是这样的
         //MatchInfoTO{name='2014-2015创青春创业大赛', type1=1, type2=1, level=1, leaderNum=2, leaderInNum=3, memberNum=4, memberInNum=5, teacherNum=6, teacherInNum=7, isChoose=[10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], type=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], startTime=[2017-01-01T01:01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], endTime=[2018-01-01T01:01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}

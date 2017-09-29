@@ -16,24 +16,34 @@
 <mydiv>
     <div style="width: 100%;height: 100%;">
         <!-- 显示table，在最后显示报名选项，注意，报名，自己就是队长，不允许队员选队长，只能队长选队员！！记住了 -->
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th class="col-sm-2">比赛名称</th>
-                <th class="col-sm-2">团队人数</th>
-                <th>报名</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${info}" var="item">
+        <c:if test="${info == null || fn:length(info) == 0}">
+            <!-- 当前没有可以报名的比赛 -->
+            当前没有可以报名的比赛
+        </c:if>
+        <c:if test="${info != null && fn:length(info) > 0}">
+            <table class="table table-bordered">
+                <thead>
                 <tr>
-                    <td>${item.name}</td>
-                    <td>${item.memberInNum}</td>
-                    <td><a href="/student/matchs/apply/${item.id}">报名</a></td>
+                    <th class="col-sm-2">比赛名称</th>
+                    <th class="col-sm-2">团队人数</th>
+                    <th class="col-sm-2">队长可参与个数</th>
+                    <th class="col-sm-2">队员可参与个数</th>
+                    <th>报名</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach items="${info}" var="item">
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.memberNum + item.leaderNum}</td>
+                        <td>${item.leaderInNum}</td>
+                        <td>${item.memberInNum}</td>
+                        <td><a href="/student/matchs/apply/${item.id}">报名</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->

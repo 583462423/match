@@ -154,6 +154,11 @@ public class MatchInfoServiceImpl implements MatchInfoService {
         return true;
     }
 
+    @Override
+    public List<MatchInfo> selectByName(String name) {
+        return matchInfoMapper.selectByName(name);
+    }
+
     /** 将MatchInfoTO转换为MatchInfo*/
     public MatchInfo TO2MatchInfo(MatchInfoTO to,int flag){
         MatchInfo info = new MatchInfo();

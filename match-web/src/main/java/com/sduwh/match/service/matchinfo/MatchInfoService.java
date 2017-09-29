@@ -23,4 +23,7 @@ public interface MatchInfoService extends BaseService<MatchInfo,Integer> {
 
     /** 删除该类型的比赛，以及联动的所有内容*/
     boolean deleteAllOtherByMatchInfoId(int id);
+
+    /** 检查比赛名是否被占用*/
+    List<MatchInfo> selectByName(String name);
 }

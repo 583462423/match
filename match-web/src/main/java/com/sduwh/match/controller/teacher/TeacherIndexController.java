@@ -58,7 +58,7 @@ public class TeacherIndexController extends BaseController{
     @GetMapping("/check/detail/{id}")
     public String checkDetail(Model model, @PathVariable("id") int id){
         //TODO 判断当前比赛是否未审核，如果已审核就设置为未授权
-
+        
         //通过比赛id来查找比赛信息
         String res = matchItemService.checkDetail(model,id);
         if(res != null)return res;

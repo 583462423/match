@@ -65,7 +65,7 @@
     </div>
 </div>
 
-<div id="particles-js" style="background: url(/images/demo-1.jpg);height:100%;width:100%;">
+<div id="particles-js" style="background: url(/images/demo-1.jpg);">
 </div>
 
 <!-- Modal -->

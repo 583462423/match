@@ -16,33 +16,39 @@
 <mydiv>
     <div style="width: 100%;height: 100%;">
         <!-- 显示当前的比赛，信息有比赛的名称，比赛的分工，比赛当前到哪个阶段了，比赛是否过期等信息 -->
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th class="col-sm-2">比赛名称</th>
-                <th class="col-sm-2">分工</th>
-                <th class="col-sm-2">阶段</th>
-                <th class="col-sm-2">有效期</th>
-                <th>详情</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${res}" var="item">
+        <c:if test="${res == null || fn:length(res) == 0}">
+            当前没有参加任何比赛
+        </c:if>
+        <c:if test="${res != null && fn:length(res) > 0}">
+            <table class="table table-bordered">
+                <thead>
                 <tr>
-                    <td>${item.title}</td>
-                    <td>${item.job}</td>
-                    <td>${item.stage}</td>
-                    <td>${item.expire}</td>
-                    <td>
-                        <c:if test="${item.upApply == 'true'}">
-                            <a href="/student/matchs/upapply/${item.itemId}"> 上传申请表</a>
-                            
-                        </c:if>
-                    </td>
+                    <th class="col-sm-2">比赛名称</th>
+                    <th class="col-sm-2">分工</th>
+                    <th class="col-sm-2">阶段</th>
+                    <th class="col-sm-2">有效期</th>
+                    <th>详情</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach items="${res}" var="item">
+                    <tr>
+                        <td>${item.title}</td>
+                        <td>${item.job}</td>
+                        <td>${item.stage}</td>
+                        <td>${item.expire}</td>
+                        <td>
+                            <c:if test="${item.upApply == 'true'}">
+                                <a href="/student/matchs/upapply/${item.itemId}"> 上传申请表</a>
+
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
+
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->

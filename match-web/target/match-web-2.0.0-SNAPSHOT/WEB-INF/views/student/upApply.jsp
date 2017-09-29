@@ -11,19 +11,48 @@
 <html>
 <head>
     <title>主页</title>
+    <mylink>
+        <style>
+
+            .submit:hover{
+                color:black;
+            }
+
+            .submit{
+                cursor: pointer;color:#CC4649;
+            }
+        </style>
+    </mylink>
 </head>
 
 <body>
 <mydiv>
     <!-- 上传申请表 -->
-    <c:if test="${apply != null}">
-        <b>您已上传过申请表，再次上传将会覆盖之前的申请表: ${apply}</b>
-        <input type="button" class="btn btn-info submit" value="是否提交？">
-    </c:if>
-    <form id="fileForm" enctype="multipart/form-data" method="post" action="/upload/match/apply/${item.id}">
-        <input type="file" name="file" />
-        <input type="submit" />
-    </form>
+
+    <div  style="width:660px;margin-top:66px;background:#F7F7F7">
+
+        <c:if test="${apply != null}">
+            <div class="alert alert-success" style="position: relative">
+                <span><b>您已上传过申请表，再次上传将会覆盖之前的申请表:<br> ${apply}</b></span><br>
+                <a class="submit"><b>是否提交?</b></a>
+            </div>
+        </c:if>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <b>申请表上传，请上传您的申请表，格式必须为doc,docx，文件大小不得超过5M</b>
+            </div>
+            <div class="panel-footer">
+                <form id="fileForm" enctype="multipart/form-data" method="post" action="/upload/match/apply/${item.id}">
+                    <input type="file" name="file" />
+                    <br>
+                    <input type="submit" class="btn btn-info" value="上传"/>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
 
 
     <!--模态框，显示详细信息 不用的时候删除-->
@@ -58,7 +87,7 @@
                 if(json["error"] != null){
                     alert(json["error"]);
                 }else{
-                    $("#info").text("上传成功,是否提交？提交后不可更改");
+                    $("#info").text("上传成功～是否提交？提交后将不得更改，不提交后续可以更改后再进行提交。");
                     $(".upSuccess").modal('show');
                 }
             })

@@ -11,11 +11,67 @@
 <html>
 <head>
     <title>主页</title>
+    <mylink>
+        <style>
+            .members{
+                border:1px solid #ccc;
+                padding:8px;
+                border-radius:5px;
+                margin-bottom:8px;
+            }
+
+            span{
+                cursor: pointer;
+            }
+        </style>
+    </mylink>
 </head>
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
-        ${itemId} <br>
+
+        <div class="panel panel-default" style="margin-top:66px;width:666px;">
+            <div class="panel-body">
+                <b>详细信息</b>
+            </div>
+            <div class="panel-footer">
+                <!--显示详细信息-->
+                <div class="input-group">
+                    <div class="input-group-addon">比赛信息</div>
+                    <input class="form-control"type="text" readonly value="${detail.matchInfo.name}"/>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-addon">比赛主题</div>
+                    <input class="form-control"type="text" readonly value="${detail.matchItem.title}"/>
+                </div>
+
+                <div class="members">
+                    比赛队长: <span class="label label-info" >${detail.leader.username}&nbsp;${detail.leader.name}</span>
+                </div>
+
+                <div class="members">
+                    比赛成员:
+                    <c:forEach items="${detail.members}" var="user">
+                        <span class="label label-info" >${user.username}&nbsp;${user.name}</span>&nbsp;
+                    </c:forEach><br>
+                </div>
+
+                <div class="members">
+                    指导教师:
+                    <c:forEach items="${detail.teachers}" var="user">
+                        <span class="label label-info" >${user.username}&nbsp;${user.name}</span>&nbsp;
+                    </c:forEach><br>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-addon">申请表</div>
+                    <span class="form-control"><a href='#'>${detail.apply.name}</a>  这里需要实现下载功能<br></span>
+                </div>
+            </div>
+        </div>
+
+
+
         <c:if test="${pass != 'true'}">
             <button id="pass" class="btn btn-info" >审核通过</button>
         </c:if>

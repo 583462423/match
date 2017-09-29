@@ -13,7 +13,7 @@
 </head>
 <body>
 <mydiv>
-<form id="myForm">
+<form id="myForm" style="width:650px;">
     <div class="input-group">
         <div class="input-group-addon">比赛名称</div>
         <input class="form-control"  type="text" id="name" name="name" />
@@ -34,8 +34,8 @@
     </div>
 
     <div class="input-group">
-        <div class="input-group-addon">队长个数</div>
-        <input class="form-control" id="leaderNum" type="number" name="leaderNum" />
+        <%--<div class="input-group-addon">队长个数</div>--%>
+        <input class="form-control" id="leaderNum" type="hidden" value="1" name="leaderNum" />
         <div class="input-group-addon">队长可参与个数</div>
         <input class="form-control" id="leaderInNum" type="number" name="leaderInNum" />
     </div>
@@ -96,7 +96,7 @@
             });
 
             $("#submit").click(function(){
-                //TODO 在点击的时候，要把这个按钮变成不可点击状态，防止多次提交
+                $("#submit").attr("disabled","true");
                 var name = $("#name").val();
                 var type1 = $("#type1").val();
                 var type2 = $("#type2").val();
@@ -115,8 +115,6 @@
                 var isChooseCheckBox = $(".isChoose");
                 var infoStartTime = $("#startTime").val();
                 var infoEndTime = $("#endTime").val();
-                //var typeTmp = $(".type");
-
                 for(var i=0; i<isChooseCheckBox.length; i++){
                     var value = isChooseCheckBox[i].value;
                     //type[i] = typeTmp[i].value;
@@ -125,14 +123,10 @@
                         startTime[i] = $("#startTime"+value).val();
                         endTime[i] = $("#endTime"+value).val();
                         stageName[i] = $("#name"+value).val();
-//                        alert(stageName[i]);
-//                        alert(startTime[i]);
-//                        alert(endTime[i]);
                         if(startTime[i] == ""){
                             alert("请勾选开始时间");
                             return;
                         }
-
                         if(endTime[i] == ""){
                             alert("请勾选结束时间");
                             return;
@@ -171,14 +165,11 @@
                     type:'post',
                     success:function(json){
                         if(json["success"] == true){
-                            //TODO 这个地方后期要换成非alert形式，提升用户体验
                             alert("添加成功");
-                            //TODO 自己考虑添加成功是否跳转到其他页面
+                            location.href="/admin/matchs";
                         }else{
                             alert("创建失败");
                         }
-
-                        //TODO 不论成功与否，都要把按钮的disable换成可点击
                     },
                     error:function(){
                         alert("未知错误");

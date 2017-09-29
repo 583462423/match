@@ -6,13 +6,16 @@ import com.sduwh.match.enums.MatchStatus;
 import com.sduwh.match.enums.PassStatus;
 import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.*;
+import com.sduwh.match.model.wrapper.MatchItemDetail;
 import com.sduwh.match.model.wrapper.MatchItemWithScore;
+import com.sduwh.match.service.academy.AcademyService;
 import com.sduwh.match.service.apply.ApplyService;
 import com.sduwh.match.service.grade.GradeService;
 import com.sduwh.match.service.matchinfo.MatchInfoService;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.pass.PassService;
 import com.sduwh.match.service.stage.StageService;
+import com.sduwh.match.service.user.UserService;
 import com.sduwh.match.util.JSONResponseUtils;
 import com.sduwh.match.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +48,12 @@ public class MatchItemServiceImpl implements MatchItemService {
     HostHolder hostHolder;
     @Autowired
     GradeService gradeService;
+    @Autowired
+    AcademyService academyService;
+    @Autowired
+    ApplyService applyService;
+    @Autowired
+    UserService userService;
 
     @Override
     public int deleteByPrimaryKey(Integer integer) {
@@ -197,7 +206,7 @@ public class MatchItemServiceImpl implements MatchItemService {
     public String checkDetail(Model model,int id) {
         //通过比赛id来查找比赛信息
         MatchItem matchItem = matchItemService.selectByPrimaryKey(id);
-        //TODO 这个地方可以添加一个实体类，该实体类包含所有的比赛信息，
+        model.addAttribute("detail",selectDetailById(matchItem.getId()));
         //最重要的是把id传进去，方便后续进行审核控制
         model.addAttribute("itemId",matchItem.getId());
         //判断当前是否已经被审核过了
@@ -292,6 +301,25 @@ public class MatchItemServiceImpl implements MatchItemService {
                 .sorted((m1,m2)-> (int)((m1.getScore() - m2.getScore()) * 100))
                 .collect(Collectors.toList());
         return ms;
+    }
+
+    @Override
+    public MatchItemDetail selectDetailById(int matchItemId) {
+        MatchItemDetail detail = new MatchItemDetail();
+        MatchItem matchItem = selectByPrimaryKey(matchItemId);
+        List<User> members = Arrays.stream(matchItem.getMemberIds().split(",")).map(Integer::parseInt).map(userService::selectByPrimaryKey)
+                .collect(Collectors.toList());
+        List<User> teachers = Arrays.stream(matchItem.getTeacherIds().split(",")).map(Integer::parseInt).map(userService::selectByPrimaryKey)
+                .collect(Collectors.toList());
+        detail.setMatchItem(matchItem);
+        detail.setAcademy(academyService.selectByPrimaryKey(matchItem.getAcademyId()));
+        detail.setApply(applyService.selectByPrimaryKey(matchItem.getApplyId()));
+        detail.setLeader(userService.selectByPrimaryKey(Integer.valueOf(matchItem.getLeaderIds())));
+        detail.setMembers(members);
+        detail.setTeachers(teachers);
+        detail.setMatchInfo(matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId()));
+
+        return detail;
     }
 
 

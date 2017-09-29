@@ -1,7 +1,6 @@
 package com.sduwh.match.async.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.sduwh.match.Config;
 import com.sduwh.match.async.EventHandler;
 import com.sduwh.match.async.EventModel;

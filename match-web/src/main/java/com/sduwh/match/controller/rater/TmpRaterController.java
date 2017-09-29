@@ -3,6 +3,7 @@ package com.sduwh.match.controller.rater;
 import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.enums.LoginType;
 import com.sduwh.match.enums.RaterLevel;
+import com.sduwh.match.exception.base.BaseException;
 import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.TmpRater;

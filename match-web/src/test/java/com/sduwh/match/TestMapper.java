@@ -70,9 +70,7 @@ public class TestMapper {
     ResearchLogService researchLogService;
     @Test
     public void test(){
-        String key = RedisKeyGenerator.getListShowHandleHasDoneKey();
-        jedisAdapter.srem(key,"79");
-        jedisAdapter.sget(key).forEach(System.out::println);
+        System.out.println(matchItemService.selectDetailById(3));
     }
 
     @Test
