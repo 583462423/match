@@ -116,9 +116,9 @@
                     success: function (res) {
                         var json = JSON.parse(res);
                         if (json["success"] == "true") {
-                            alert("创建成功");
+                            alert("创建成功\n" + json["raterInfo"]);
                             //TODO 有需求的话，调用模态狂显示添加成功的人
-                        }
+                        } else showMsg(json["error"]);
                     }
                 });
             });
@@ -147,7 +147,8 @@
                         var json = JSON.parse(res);
                         if(json["success"] == "true"){
                             alert("修改成功");
-                        }else alert(json["error"]);
+                            location.href="/admin/match/score/all";
+                        }else showMsg(json["error"]);
                     }
                 });
             });

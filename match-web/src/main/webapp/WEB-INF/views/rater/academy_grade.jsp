@@ -27,27 +27,46 @@
     <link href="/css/table.css" rel="stylesheet"/>
     <!--bootstrap-datetimepicker 怕误伤友军上个先不删除-->
     <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <style>
+        .myPanel{
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 50%;
+            margin-left: -250px;
+            margin-top: 280px;
+            background: #ffffff;
+            box-shadow: 0px 1px 40px 0px rgba(140,146,163,0.2),inset 0px -1px 0px 0px #dededf !important;
+            border-radius: 2px;
+            padding:8px;
+        }
+        .input-group{
+            margin:8px;
+        }
+    </style>
 </head>
-<body>
+<body style="background: #E0E0E0">
 
 
-    ${item.id}
-    <br>
 
-    ${item.title}
-    <br>
-
-    这里到时候会有各种信息，供查看
-    <br>
-
-    <form id="submitForm" action="/rater/academy/grade/submit" method="post">
-        <input name="score" type="number" placeholder="请输入分数"/>
-        <input name="comment" type="text" placeholder="请输入评价"/>
+<div class="myPanel">
+    <form id="submitForm" action="/rater/academy/grade/submit" style="margin:8px;" method="post">
+        <div class="input-group">
+            <div class="input-group-addon">比赛名称</div>
+            <input class="form-control" readonly value="${item.title}"/>
+        </div>
+        <div class="input-group">
+            <div class="input-group-addon">分数</div>
+            <input name="score" class="form-control" type="number" placeholder="请输入分数"/>
+        </div>
+        <div class="input-group">
+            <div class="input-group-addon">评价</div>
+            <textarea name="comment" style="resize:none;height:150px;width:100%;" placeholder="请输入评价"></textarea>
+        </div>
         <input name="matchItemId" type="hidden" value="${item.id}"/>
-        <button type="submit">提交</button>
+        <button type="submit" style="margin-left: 8px;" class="btn btn-success">提交</button>
     </form>
-
-
+</div>
 
 
     <!-- jQuery -->
@@ -77,6 +96,7 @@
                 var json = JSON.parse(res);
                 if(json["success"] == "true"){
                     alert("评价成功");
+                    location.href= "/rater/academy/index";
                 }else{
                     alert(json["error"]);
                 }

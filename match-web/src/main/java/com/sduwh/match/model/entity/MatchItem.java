@@ -22,8 +22,19 @@ public class MatchItem {
 
     private Integer matchInfoId;
 
+    /** 标志比赛执行是否按照时间来*/
+    private Integer byTime;
+
     /** 表示是否是补充申报的作品，因为补充申报的作品不能受时间影响，如果时间过期也不影响，但是不能提前*/
     private Integer isSupply;
+
+    public int getByTime() {
+        return byTime;
+    }
+
+    public void setByTime(int byTime) {
+        this.byTime = byTime;
+    }
 
     public String getTitle() {
         return title;

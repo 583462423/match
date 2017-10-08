@@ -30,24 +30,31 @@
 </head>
 <body>
 
-<table class="table table-bordered">
-    <h1>未评分的比赛</h1>
-    <thead>
-    <tr>
-        <th class="col-sm-2">比赛名称</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${notDoneMatchItems}" var="item">
-        <tr>
-            <td>${item.title}</td>
-            <td><a href="/rater/admin/grade/${item.id}">评分</a></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
 
+<c:if test="${notDoneMatchItems == null || fn:length(notDoneMatchItems) == 0}">
+    已经没有需要评分的比赛了
+</c:if>
+<c:if test="${notDoneMatchItems != null && fn:length(notDoneMatchItems) > 0}">
+    <table class="table table-bordered">
+        <h1>未评分的比赛</h1>
+        <thead>
+        <tr>
+            <th class="col-sm-2">比赛名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${notDoneMatchItems}" var="item">
+            <tr>
+                <td>${item.title}</td>
+                <td><a href="/rater/admin/grade/${item.id}">评分</a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</c:if>
+<br>
+<a class="btn btn-danger" style="display:inline-block;" href="/logout">退出</a>
 
 
     <!-- jQuery -->

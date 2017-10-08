@@ -29,6 +29,9 @@ public interface MatchItemService extends BaseService<MatchItem,Integer> {
 
     /** 将对应的比赛审核通过,如果返回的结果不为空，则表示重定向,flag表示指导老师审核通过还是学院或者学校*/
     String checkPass(int id,int flag);
+
+    /** 审核不通过*/
+    String checkNoPass(int id,int flag);
     
     /** 正常的将比赛设置为下一个阶段*/
     int updateAndSetNextStage(MatchItem matchItem,Stage stage);

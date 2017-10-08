@@ -11,6 +11,30 @@
 <html>
 <head>
     <title>主页</title>
+    <mylink>
+        <style>
+            textarea {
+                resize:none;
+                width:100%;
+                height:150px;
+            }
+
+            .addMembers{
+                border:1px solid #ccc;
+                padding:8px;
+                border-radius:5px;
+                margin-bottom:8px;
+            }
+
+            .changeDiv{
+                border:1px solid #ccc;
+                box-shadow: 0px 0px 2px 2px #ccc;
+                padding:8px;
+                border-radius:5px;
+                margin-bottom:8px;
+            }
+        </style>
+    </mylink>
 </head>
 <body>
 <mydiv>
@@ -18,31 +42,55 @@
         <form action="/admin/match/concluding/report/update" method="post" id="updateForm">
             <!-- 上传过检查表-->
             <input name="matchItemId" type="hidden" value="${concludingStatement.matchItemId}"/>
-            <input name="completionSituation" placeholder="完成情况" value="${concludingStatement.completionSituation}" />
-            <input name="researchResult" placeholder="研究结果"  value="${concludingStatement.researchResult}" />
-            <input name="selfJudge" placeholder="个人评价" value="${concludingStatement.selfJudge}" />
-            <input name="priceSituation" placeholder="经费情况" value="${concludingStatement.priceSituation}" />
-            <input name="viewOfTeacher" placeholder="教师评价" value="${concludingStatement.viewOfTeacher}"/>
-            <input name="viewOfAcademy" placeholder="学院评价" value="${concludingStatement.viewOfAcademy}"/>
-            <input name="viewOfSuper" placeholder="学校评价" value="${concludingStatement.viewOfSuper}"/>
-            <input type="submit" value="保存">
+
+
+            <div class="input-group">
+                <div class="input-group-addon">完成情况</div>
+                <textarea style="height: 150px;" readonly>${concludingStatement.completionSituation}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">研究结果</div>
+                <textarea style="height: 150px;" readonly>${concludingStatement.researchResult}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">个人评价</div>
+                <textarea style="height: 150px;"readonly>${concludingStatement.selfJudge}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">经费情况</div>
+                <textarea style="height: 150px;" readonly>${concludingStatement.priceSituation}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">教师评价</div>
+                <textarea style="height: 150px;" readonly>${concludingStatement.viewOfTeacher}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">学院评价</div>
+                <textarea style="height: 150px;" readonly>${concludingStatement.viewOfAcademy}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">学校评价</div>
+                <textarea style="height: 150px;" name="viewOfSuper" placeholder="请输入学院评价" class="form-control">${concludingStatement.viewOfSuper}</textarea>
+            </div>
+            <input type="submit" class="btn btn-success" value="保存">
         </form>
-        <!-- 显示成员变更表-->
-        <c:if test="${isChange == '0'}">
-            <!-- 未进行变更 -->
-        </c:if>
         <c:if test="${isChange == '1'}">
             <!--进行变更-->
-            原先队员:
-            <c:forEach items="${fromMembers}" var="item">
-                <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
-            </c:forEach>
-            变更队员:
-            <c:forEach items="${toMembers}" var="item">
-                <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
-            </c:forEach>
-            <button id="passChange" class="btn btn-danger" data="${transferMemberId}">允许变更</button>
-            <br>
+            <hr>
+            <div class="changeDiv">
+                <div class="alert alert-danger" role="alert">在提交前，请确定是否允许成员变更，默认不允许</div>
+                原先队员:
+                <c:forEach items="${fromMembers}" var="item">
+                    <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
+                </c:forEach>
+                变更队员:
+                <c:forEach items="${toMembers}" var="item">
+                    <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
+                </c:forEach>
+                <button id="passChange" class="btn btn-danger" data="${transferMemberId}">允许变更</button>
+                <br>
+            </div>
+            <hr>
         </c:if>
         <button id="submitToNext" class="btn btn-info" data="${matchItemId}">提交</button>
     </div>
@@ -78,9 +126,10 @@
             $("#updateForm").ajaxForm(function(res){
                 var json = JSON.parse(res);
                 if(json["success"] == "true"){
-                    alert("保存成功");
+                    showMsg("保存成功");
+                    setTimeout("location.reload()",1000);
                 }else{
-                    alert(json["error"]);
+                    showMsg(json["error"]);
                 }
             });
 
@@ -96,9 +145,10 @@
                     success:function(res){
                         var json = JSON.parse(res);
                         if(json["success"] == "true"){
-                            alert("提交成功");
+                            showMsg("提交成功");
+                            setTimeout("location.href='/admin/match/concluding'",2000);
                         }else{
-                            alert(json["error"]);
+                            showMsg(json["error"]);
                         }
                     }
                 });
@@ -115,7 +165,8 @@
                     success:function(res){
                         var json = JSON.parse(res);
                         if(json["success"] == "true"){
-                            alert("成功");
+                            showMsg("成功");
+                            setTimeout("location.reload()",1000);
                         }
                     }
                 });

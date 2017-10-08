@@ -30,4 +30,7 @@ public interface PassDAO {
 
     @Delete({"delete from",TABLE_NAME,"where match_item_id = #{matchItemId}"})
     int deleteAllByMatchItemId(@Param("matchItemId") int matchItemId);
+
+    @Delete({"delete from",TABLE_NAME,"where id = #{id}"})
+    int deleteByPrimaryKey(@Param("id")int id);
 }

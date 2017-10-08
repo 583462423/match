@@ -117,9 +117,20 @@ public class TeacherMiddleCheckController extends BaseController{
     @ResponseBody
     public String submit(@RequestParam("matchItemId") int matchItemId){
         //TODO 首先查看当前middelCheck是否合法,当前用户是否参加了该比赛，该比赛是否到达了该阶段
-
+        // 提交到下一个阶段的前提是所有的指导老师都已经审核完毕，需要进行判断
         //提交到下一个阶段是学院审核，首先要找到该比赛的队长对应的学院，然后找到学院管理员，将其保存在redis中,并在当前阶段移除
         MatchItem matchItem = matchItemService.selectByPrimaryKey(matchItemId);
+        boolean flag = Arrays.stream(matchItem.getTeacherIds().split(","))
+                .map(Integer::parseInt)
+                .filter(id->{
+                    //将当前的教师的id清除
+                    return hostHolder.getUser().getId() != id;
+                })
+                .anyMatch(id->{
+                    //只要在redis存在任何一个id，那么就认为没有通过
+                    String key = RedisKeyGenerator.getTeacherMiddleCheckKey(id);
+                    return jedisAdapter.sget(key).contains(matchItem.getId());
+                });
         //限定leaderids只能为一个，所以不需要分割
         int leaderId = Integer.parseInt(matchItem.getLeaderIds());
         User user = userService.selectByPrimaryKey(leaderId);
@@ -129,12 +140,15 @@ public class TeacherMiddleCheckController extends BaseController{
         if(academyUser == null)return setJsonResult("error","学院管理员为空");
         MiddleCheck middleCheck = middleCheckService.selectByMatchItemId(matchItemId);
         if(middleCheck == null)return setJsonResult("error","无此比赛");
-        middleCheck.setStage(MiddleCheckStage.ACADEMY_JUDGE.getCode());
-        middleCheckService.updateByMatchItemIdSelective(middleCheck);
         //当前阶段移除
         jedisAdapter.srem(RedisKeyGenerator.getTeacherMiddleCheckKey(hostHolder.getUser().getId()),String.valueOf(matchItemId));
         //将该审核的比赛id加到学院管理员的redis中
-        jedisAdapter.sadd(RedisKeyGenerator.getTeacherMiddleCheckKey(academyUser.getId()),String.valueOf(matchItemId));
+        if(!flag){
+            //flag为true的时候，表明所有的指导老师没有审核完毕，所以需要等待所有指导老师审核完毕。
+            middleCheck.setStage(MiddleCheckStage.ACADEMY_JUDGE.getCode());
+            middleCheckService.updateByMatchItemIdSelective(middleCheck);
+            jedisAdapter.sadd(RedisKeyGenerator.getTeacherMiddleCheckKey(academyUser.getId()),String.valueOf(matchItemId));
+        }
         return setJsonResult("success","true");
     }
 

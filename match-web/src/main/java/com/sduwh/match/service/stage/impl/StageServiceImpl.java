@@ -81,6 +81,8 @@ public class StageServiceImpl implements StageService {
                 .filter(s->!checkEnd(s)).collect(Collectors.toList());
     }
 
+
+
     /** 如果过期，返回true*/
     @Override
     public boolean checkEnd(Stage stage) {
@@ -92,5 +94,6 @@ public class StageServiceImpl implements StageService {
         Date now = new Date();
         return now.after(stage.getStartTime()) && now.before(stage.getEndTime());
     }
+
 
 }

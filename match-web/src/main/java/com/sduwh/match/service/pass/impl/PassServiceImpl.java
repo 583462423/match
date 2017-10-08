@@ -20,7 +20,7 @@ public class PassServiceImpl implements PassService {
 
     @Override
     public int deleteByPrimaryKey(Integer integer) {
-        return 0;
+        return passDAO.deleteByPrimaryKey(integer);
     }
 
     @Override

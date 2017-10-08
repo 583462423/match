@@ -8,6 +8,8 @@ import com.sun.xml.internal.rngom.parse.host.Base;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +19,7 @@ import java.util.Map;
 public abstract class BaseController {
 
     /** 未授权网站*/
-    public static final String UNAUTH = "/common/unauth";
+    public static final String UNAUTH = "redirect:/unauth";
     /** 激活网站*/
     public static final String TO_ACTIVE = "";  //待传参数
 
@@ -73,12 +75,12 @@ public abstract class BaseController {
      * 因为会自动映射，所以如果跑出的不是BaseException，那么就会出现问题
      */
     @ExceptionHandler
-    public String exp(HttpServletRequest request,BaseException ex){
+    public void exp(HttpServletRequest request, BaseException ex, HttpServletResponse response) throws IOException {
         request.setAttribute("ex",ex);
-        return expPage;
+        response.sendRedirect("/error");
+
     }
 
-    private static final String expPage = "/error";
 
     public Map<String,String> setResult(String ... info){
         if((info.length &1) == 1)throw new BaseException("Map结果参数不得为基数个");

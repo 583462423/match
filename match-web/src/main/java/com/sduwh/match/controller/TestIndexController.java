@@ -10,6 +10,6 @@ public class TestIndexController extends BaseController {
 
     @GetMapping("/error")
     public String error(){
-        throw new BaseException("测试错误界面");
+        return "/error";
     }
 }

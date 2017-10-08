@@ -13,10 +13,11 @@
     <result column="match_info_id" jdbcType="INTEGER" property="matchInfoId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="is_supply" jdbcType="INTEGER" property="isSupply" />
+    <result column="by_time" jdbcType="INTEGER" property="byTime" />
   </resultMap>
   <sql id="Base_Column_List">
     id, leader_ids, member_ids, apply_id, teacher_ids, now_stage_id, next_stage_id,
-    academy_id, match_info_id,title,is_supply
+    academy_id, match_info_id,title,is_supply,by_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -38,11 +39,11 @@
     insert into match_item (id, leader_ids, member_ids, 
       apply_id, teacher_ids,
       now_stage_id, next_stage_id, academy_id, 
-      match_info_id,title,is_supply)
+      match_info_id,title,is_supply,by_time)
     values (#{id,jdbcType=INTEGER}, #{leaderIds,jdbcType=VARCHAR}, #{memberIds,jdbcType=VARCHAR},
       #{applyId,jdbcType=INTEGER}, #{teacherIds,jdbcType=VARCHAR},
       #{nowStageId,jdbcType=INTEGER}, #{nextStageId,jdbcType=INTEGER}, #{academyId,jdbcType=INTEGER}, 
-      #{matchInfoId,jdbcType=INTEGER},#{title,jdbcType=VARCHAR},#{isSupply,jdbcType=INTEGER})
+      #{matchInfoId,jdbcType=INTEGER},#{title,jdbcType=VARCHAR},#{isSupply,jdbcType=INTEGER},#{byTime,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sduwh.match.model.entity.MatchItem">
     insert into match_item
@@ -80,6 +81,9 @@
       <if test="isSupply != null">
         is_supply,
       </if>
+      <if test="byTime != null">
+        by_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -115,6 +119,9 @@
       <if test="isSupply != null">
         #{isSupply,jdbcType=INTEGER},
       </if>
+      <if test="byTime != null">
+        #{byTime,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sduwh.match.model.entity.MatchItem">
@@ -148,7 +155,10 @@
         title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="isSupply != null">
-        #{isSupply,jdbcType=INTEGER},
+        is_supply = #{isSupply,jdbcType=INTEGER},
+      </if>
+      <if test="byTime != null">
+        by_time = #{byTime,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -164,7 +174,8 @@
       academy_id = #{academyId,jdbcType=INTEGER},
       match_info_id = #{matchInfoId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
-      is_supply = #{isSupply,jdbcType=INTEGER}
+      is_supply = #{isSupply,jdbcType=INTEGER},
+      by_time = #{byTime,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

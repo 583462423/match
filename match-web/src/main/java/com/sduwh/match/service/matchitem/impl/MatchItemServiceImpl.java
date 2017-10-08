@@ -1,9 +1,11 @@
 package com.sduwh.match.service.matchitem.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.sduwh.match.async.EventModel;
+import com.sduwh.match.async.EventProducer;
+import com.sduwh.match.async.EventType;
 import com.sduwh.match.dao.MatchItemMapper;
-import com.sduwh.match.enums.MatchStage;
-import com.sduwh.match.enums.MatchStatus;
-import com.sduwh.match.enums.PassStatus;
+import com.sduwh.match.enums.*;
 import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.*;
 import com.sduwh.match.model.wrapper.MatchItemDetail;
@@ -20,12 +22,10 @@ import com.sduwh.match.util.JSONResponseUtils;
 import com.sduwh.match.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,6 +54,8 @@ public class MatchItemServiceImpl implements MatchItemService {
     ApplyService applyService;
     @Autowired
     UserService userService;
+    @Autowired
+    EventProducer eventProducer;
 
     @Override
     public int deleteByPrimaryKey(Integer integer) {
@@ -74,6 +76,16 @@ public class MatchItemServiceImpl implements MatchItemService {
     public MatchItem selectByPrimaryKey(Integer integer) {
         //获取比赛条目，因为涉及到状态信息，所以每次获取，都要进行查看状态信息是否已经过期，如果已经过期，那么就需要进行调整
         MatchItem matchItem = matchItemMapper.selectByPrimaryKey(integer);
+        if(matchItem.getByTime() == MatchByTimeEnum.NO.getCode()){
+            //如果指明不按照时间格式来，就直接返回
+            //这里还要进行判断，如果当前阶段已经可以正常运行，则按照正常方式来执行
+            Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+            if(stageService.checkIsRuning(stage)){
+                matchItem.setByTime(MatchByTimeEnum.YES.getCode());
+                updateByPrimaryKeySelective(matchItem);
+            }
+            return matchItem;
+        }
         if(matchItem == null)return null;
         //TODO matchItem也可能为空，原因也是后期删除
         MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
@@ -90,20 +102,23 @@ public class MatchItemServiceImpl implements MatchItemService {
         int nextStageId = MatchStatus.ALL_DONE.getValue();
         if(stageId < 0){
             //如果状态小于0,说明是非正常比赛，直接将结果显示出来即可
-            return matchItemMapper.selectByPrimaryKey(integer);
+            return matchItem;
         }
         for(int i=0; i<stageIds.length; i++){
             int tmpStage = Integer.parseInt(stageIds[i]);
             if(stageId == tmpStage && i!= stageIds.length-1){
                 nextStageId = Integer.parseInt(stageIds[i+1]);
+                break;
             }
         }
+
         //判断当前的stageId是否已经超时,stageId可能是-1,所以stage可能为空
         Stage stage = stageService.selectByPrimaryKey(stageId);
 
         if (stage!=null && stageService.checkEnd(stage)){
             //当前状态已过期，那么就需要重新设置状态,即更新操作
-            //当前状态需要根据实际情况进行判断，比如当前状态为审核，需要取得审核表，如果没有，说明为通过，直接将状态设置为-2.
+            //当前状态需要根据实际情况进行判断，比如当前状态为审核，需要取得审核表，如果没有，说明未通过，直接将状态设置为-2.
+            //但是一般来说，审核成功的都会有审核表，并且设置为下一个阶段，所以阶段控制不需要进行，如果当前为审核阶段，直接设置为审核不通过
             nextStageId = getNextStage(stage,matchItem,nextStageId);
             matchItem.setNowStageId(nextStageId);
             updateByPrimaryKey(matchItem);
@@ -112,6 +127,27 @@ public class MatchItemServiceImpl implements MatchItemService {
         }else{
             return matchItemMapper.selectByPrimaryKey(integer);
         }
+    }
+
+
+    /** 根据当前状态，获取比赛的下一个状态是什么，注意调用这个方法的前提是，当前的状态已过期*/
+    private int getNextStage(Stage stage,MatchItem matchItem,int nextStage){
+
+        int stageFlag = stage.getStageFlag();
+        //有时候不是我不用swtich而是这个地方的逻辑不允许我使用switch，so,如果有人在维护代码的时候看到这个地方的代码，请轻喷，否则，大爷您来完成他！
+        if(stageFlag == MatchStage.GUIDER_VERIFY.getId()){
+            //当前状态为指导老师审核，但是状态已经完成，老师也没审核，那就直接设置为审核未通过，下同
+            return MatchStatus.TEACHER_NOT_PASS.getValue();
+        }else if(stageFlag == MatchStage.ACADEMY_VERIFY.getId()){
+            return MatchStatus.ACADEMY_NOT_PASS.getValue();
+        }else if(stageFlag == MatchStage.SCHOOL_VERIFY.getId()){
+            return MatchStatus.SUPER_NOT_PASS.getValue();
+            //以上的代码执行完毕的话，如果审核阶段到时了
+        }
+
+        //如果没有符合条件的，就下一个状态吧
+        return nextStage;
+
     }
 
     @Override
@@ -150,32 +186,6 @@ public class MatchItemServiceImpl implements MatchItemService {
         }).collect(Collectors.toList());
     }
 
-
-
-    /** 根据当前状态，获取比赛的下一个状态是什么，注意调用这个方法的前提是，当前的状态已过期*/
-    private int getNextStage(Stage stage,MatchItem matchItem,int nextStage){
-
-        //有时候不是我不用swtich而是这个地方的逻辑不允许我使用switch，so,如果有人在维护代码的时候看到这个地方的代码，请轻喷，否则，大爷您来完成他！
-        if(stage.getStageFlag() == MatchStage.GUIDER_VERIFY.getId()){
-            //如果当前的状态是指导老师审核，那么就查看matchItem的指导老师是谁，如果指导老师们都审核了，那么下一个状态就确实应该是下一个状态= =
-            if(Arrays.stream(matchItem.getTeacherIds().split(","))
-                    .map(Integer::parseInt)
-                    .allMatch(e->{
-                        Pass pass = passService.selectByUserAndItem(e,matchItem.getId());
-                        return passService.checkPass(pass);
-                    })
-                    ){
-                //如果所有老师都审核通过了
-                return nextStage;
-            }else{
-                return MatchStatus.TEACHER_NOT_PASS.getValue();
-            }
-        }
-
-        //如果没有符合条件的，就下一个状态吧
-        return nextStage;
-
-    }
 
 
     @Override
@@ -223,6 +233,13 @@ public class MatchItemServiceImpl implements MatchItemService {
         //这里要考虑的一个问题是，是否添加一个审核表，因为一个比赛可能对应多个审核的教师。。= =
         //考虑完毕，需要添加审核表，毕竟审核也是一种记录。
         //每个审核表，都可以通过user_id,和match_item_id对应一条记录，这个记录标记该用户是否给该比赛通过
+        MatchItem matchItem = selectByPrimaryKey(matchItemId);
+        Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        if(stage.getStageFlag() != MatchStage.GUIDER_VERIFY.getId() &&
+                stage.getStageFlag() != MatchStage.ACADEMY_VERIFY.getId() &&
+                stage.getStageFlag() != MatchStage.SCHOOL_VERIFY.getId()){
+            return JSONResponseUtils.setJSONResponse("error","没有权限访问！");
+        }
 
         Pass pass = passService.selectByUserAndItem(hostHolder.getUser().getId(),matchItemId);
         if(pass != null){
@@ -249,6 +266,120 @@ public class MatchItemServiceImpl implements MatchItemService {
         }
 
         return null;
+    }
+
+    @Override
+    @Transactional
+    public String checkNoPass(int id, int flag) {
+        //首先判断是教师审核不通过，还是学院，还是学校，如果是教师审核不通过，直接将该比赛的状态重置为上传申请表阶段
+        //而如果是学院，则将教师审核的审核表删除，并将比赛的状态重置为上传申请表阶段
+        //而如果是学校，则删除学院，教师等，并将比赛状态重置为上传申请表阶段
+        //后续可以在这里添加一个记录，表示该比赛曾经审核不通过
+        String res = null;
+        switch (flag){
+            case CHECK_PASS_TEACHER:
+                res = teacherCheckNopass(id);
+                break;
+            case CHECK_PASS_ACADEMY:
+                res = academyCheckNopass(id);
+                break;
+            case CHECK_PASS_CAMPUS:
+                res = adminCheckNopass(id);
+                break;
+        }
+
+        return res;
+    }
+
+    /** 学校审核不通过*/
+    private String adminCheckNopass(int matchItemId){
+        //将MatchItem的比赛阶段重置为立项申请阶段
+        MatchItem matchItem = selectByPrimaryKey(matchItemId);
+        Stage nowStage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        if(nowStage.getStageFlag() != MatchStage.SCHOOL_VERIFY.getId()){
+            return JSONResponseUtils.setJSONResponse("error","无权访问！");
+        }
+        if(setMatchItemToApply(matchItem)){
+            //因为是学校未通过，所以需要将教师审核的数据删除，以及学院审核的表删除
+            Arrays.stream(matchItem.getTeacherIds().split(","))
+                    .map(Integer::parseInt)
+                    .map(id-> passService.selectByUserAndItem(id,matchItemId))
+                    .forEach(pass -> {
+                        if(pass != null)passService.deleteByPrimaryKey(pass.getId());
+                    });
+            //获取学院管理员
+            User academyUser = userService.selectAcademyUserByAcademyId(Roles.ACADEMY_ADMIN.getId(),matchItem.getAcademyId());
+            if(academyUser != null){
+                //删除学院管理员审核通过的项目
+                Pass pass = passService.selectByUserAndItem(academyUser.getId(),matchItemId);
+                if(pass != null) passService.deleteByPrimaryKey(pass.getId());
+            }
+
+            User user = userService.selectByPrimaryKey(Integer.valueOf(matchItem.getLeaderIds()));
+            eventProducer.sendMail(user.getEmail(),"山东大学(威海)比赛通知:您的比赛项目学校未审核通过，请重新上传申请表。","您的比赛:" + matchItem.getTitle() + " 未通过学院审核，请更新并重新上传申请表");
+            return null;
+        }else{
+            return JSONResponseUtils.setJSONResponse("error","审核不通过失败");
+        }
+    }
+
+    /** 学院审核不通过*/
+    private String academyCheckNopass(int matchItemId){
+        //将MatchItem的比赛阶段重置为立项申请阶段
+        MatchItem matchItem = selectByPrimaryKey(matchItemId);
+        Stage nowStage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        if(nowStage.getStageFlag() != MatchStage.ACADEMY_VERIFY.getId()){
+            return JSONResponseUtils.setJSONResponse("error","无权访问！");
+        }
+        if(setMatchItemToApply(matchItem)){
+            //因为是学院未通过，所以需要将教师审核的数据删除，教师审核的时候，会生成审核表
+            Arrays.stream(matchItem.getTeacherIds().split(","))
+                    .map(Integer::parseInt)
+                    .map(id-> passService.selectByUserAndItem(id,matchItemId))
+                    .forEach(pass -> passService.deleteByPrimaryKey(pass.getId()));
+
+            User user = userService.selectByPrimaryKey(Integer.valueOf(matchItem.getLeaderIds()));
+            eventProducer.sendMail(user.getEmail(),"山东大学(威海)比赛通知:您的比赛项目学院未审核通过，请重新上传申请表。","您的比赛:" + matchItem.getTitle() + " 未通过学院审核，请更新并重新上传申请表");
+            return null;
+        }else{
+            return JSONResponseUtils.setJSONResponse("error","审核不通过失败");
+        }
+    }
+
+    /** 教师审核不通过*/
+    private String teacherCheckNopass(int matchItemId){
+        //将MatchItem的比赛阶段重置为立项申请阶段
+        MatchItem matchItem = selectByPrimaryKey(matchItemId);
+        Stage nowStage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        if(nowStage.getStageFlag() != MatchStage.GUIDER_VERIFY.getId()){
+            return JSONResponseUtils.setJSONResponse("error","无权访问！");
+        }
+        if(setMatchItemToApply(matchItem)){
+            User user = userService.selectByPrimaryKey(Integer.valueOf(matchItem.getLeaderIds()));
+            eventProducer.sendMail(user.getEmail(),"山东大学(威海)比赛通知:您的比赛项目未审核通过，请重新上传申请表。","您的比赛:" + matchItem.getTitle() + " 未通过指导教师审核，请更新并重新上传申请表");
+            return null;
+        }else{
+            return JSONResponseUtils.setJSONResponse("error","审核不通过失败");
+        }
+    }
+
+    /** 设置对应的比赛到比赛申请阶段 ,true表示设置成功，false表示设置失败*/
+    private boolean setMatchItemToApply(MatchItem matchItem){
+        MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
+        boolean flag = Arrays.stream(matchInfo.getAllStage().split(",")).map(Integer::parseInt)
+                .map(stageService::selectByPrimaryKey).anyMatch(s->{
+                    if(s.getStageFlag() == MatchStage.APPLY.getId()){
+                        //立项申请阶段
+                        matchItem.setNowStageId(s.getId());
+                        if(!stageService.checkIsRuning(s)){
+                            //如果立项申请阶段没有按照正常时间来执行，则设置一个标志，标志该比赛不按时间阶段正常执行
+                            matchItem.setByTime(MatchByTimeEnum.NO.getCode());
+                        }
+                        matchItemService.updateByPrimaryKeySelective(matchItem);
+                        return true;
+                    }else return false;
+                });
+        return flag;
     }
 
 

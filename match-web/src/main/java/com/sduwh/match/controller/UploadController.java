@@ -97,7 +97,7 @@ public class UploadController extends BaseController{
                 apply.setTeacherIds(matchItem.getTeacherIds());
                 applyService.insert(apply);
                 matchItem.setApplyId(apply.getId());
-                matchItemService.updateByPrimaryKey(matchItem);
+                matchItemService.updateByPrimaryKeySelective(matchItem);
             }
         } catch (FileNotFoundException e){
             e.printStackTrace();

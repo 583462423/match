@@ -2,14 +2,18 @@ package com.sduwh.match.controller.academy;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sduwh.match.controller.base.BaseController;
+import com.sduwh.match.enums.MatchStage;
 import com.sduwh.match.enums.PassStatus;
+import com.sduwh.match.exception.base.BaseException;
 import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.Pass;
+import com.sduwh.match.model.entity.Stage;
 import com.sduwh.match.model.entity.User;
 import com.sduwh.match.model.wrapper.UserWrapper;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.pass.PassService;
+import com.sduwh.match.service.stage.StageService;
 import com.sduwh.match.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +43,8 @@ public class AcademyIndexController extends BaseController{
     MatchItemService matchItemService;
     @Autowired
     PassService passService;
+    @Autowired
+    StageService stageService;
 
     @GetMapping("/index")
     public String index(Map<String,UserWrapper> map){
@@ -57,7 +63,11 @@ public class AcademyIndexController extends BaseController{
     /** 待审核比赛的详细信息*/
     @GetMapping("/check/detail/{id}")
     public String checkDetail(Model model, @PathVariable("id") int id){
-        //TODO 判断当前比赛是否未审核，如果已审核就设置为未授权
+        MatchItem matchItem = matchItemService.selectByPrimaryKey(id);
+        Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        if(stage.getStageFlag() != MatchStage.ACADEMY_VERIFY.getId()){
+            return UNAUTH;
+        }
         String res = matchItemService.checkDetail(model,id);
         if(res != null)return res;
         return CHECK_DETAIL;
@@ -68,6 +78,15 @@ public class AcademyIndexController extends BaseController{
     @ResponseBody
     public String checkPass(@PathVariable("id") int matchItemId){
         String res = matchItemService.checkPass(matchItemId,MatchItemService.CHECK_PASS_ACADEMY);
+        if(res != null)return res;
+        return JSONObject.toJSONString(setResult("success","true"));
+    }
+
+    /** 审核不通过*/
+    @PostMapping("/check/detail/nopass/{id}")
+    @ResponseBody
+    public String checkNoPass(@PathVariable("id") int matchItemId){
+        String res = matchItemService.checkNoPass(matchItemId,MatchItemService.CHECK_PASS_ACADEMY);
         if(res != null)return res;
         return JSONObject.toJSONString(setResult("success","true"));
     }

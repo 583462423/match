@@ -75,8 +75,8 @@ public class TmpRaterServiceImpl implements TmpRaterService {
 
     /** 通过ids, startTime,endTime,cnt等创建评委*/
     @Override
-    public int createRater(String ids, String startTime, String endTime, Integer cnt,int level, int matchInfoId) throws ParseException {
-        int result = 0;
+    public List<TmpRater> createRater(String ids, String startTime, String endTime, Integer cnt,int level, int matchInfoId) throws ParseException {
+        List<TmpRater> result = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         for(int i=0; i<cnt; i++){
             TmpRater t = new TmpRater();
@@ -94,7 +94,7 @@ public class TmpRaterServiceImpl implements TmpRaterService {
                 t.setUsername(RandomStringUtils.getRandomStringUppercase(String.valueOf(i)));
                 tmp = selectByUsername(t.getUsername());
             }
-            result += tmpRaterMapper.insert(t);
+            if(tmpRaterMapper.insert(t) == 1) result.add(t);
         }
         return result;
     }

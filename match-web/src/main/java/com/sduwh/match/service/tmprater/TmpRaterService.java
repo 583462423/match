@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface TmpRaterService extends BaseService<TmpRater,Integer> {
     List<RaterWrapper> selectAll();
-    int createRater(String ids,String startTime,String endTime,Integer cnt,int level,int matchInfoId) throws ParseException;
+    List<TmpRater> createRater(String ids,String startTime,String endTime,Integer cnt,int level,int matchInfoId) throws ParseException;
     TmpRater selectByUsername(String username);
     /** 判断当前rater是否已经超过了最后允许的登陆时期*/
     public boolean checkEnd(TmpRater rater);

@@ -5,6 +5,7 @@ import com.sduwh.match.async.EventHandler;
 import com.sduwh.match.async.EventModel;
 import com.sduwh.match.async.EventType;
 import com.sduwh.match.service.MailSender;
+import com.sduwh.match.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 /**
  * Created by qxg on 17-8-26.
- * 这个是用来测试的。
+ * 发送邮件，如果要发送邮件，必须指定发送的目标用户，主题，和消息即email,title,msg,如果有不符合的就不发送
  */
 @Service
 public class MailHandler implements EventHandler {
@@ -23,8 +24,15 @@ public class MailHandler implements EventHandler {
     @Override
     public void doHandle(EventModel eventModel) {
         //这里开始发邮件'
+        String email = (String) eventModel.extGet("email");
+        String msg = (String) eventModel.extGet("msg");
+        String title = (String) eventModel.extGet("title");
+        if(StringUtils.nullOrEmpty(email,msg,title)){
+            System.out.println("邮件发送失败～～～～～");
+            return;
+        }
 
-        sender.send("583462423@qq.com","放飞梦想","亲爱的用户您好，您在本网站进行了消费10000元，验证码为9483,请尽快进行确认。");
+        sender.send(email,title,msg);
     }
 
     @Override

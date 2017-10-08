@@ -2,15 +2,19 @@ package com.sduwh.match.controller.teacher;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sduwh.match.controller.base.BaseController;
+import com.sduwh.match.enums.MatchStage;
 import com.sduwh.match.enums.PassStatus;
 import com.sduwh.match.enums.UserStatus;
+import com.sduwh.match.exception.base.BaseException;
 import com.sduwh.match.model.HostHolder;
 import com.sduwh.match.model.entity.MatchItem;
 import com.sduwh.match.model.entity.Pass;
+import com.sduwh.match.model.entity.Stage;
 import com.sduwh.match.model.entity.User;
 import com.sduwh.match.model.wrapper.UserWrapper;
 import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.pass.PassService;
+import com.sduwh.match.service.stage.StageService;
 import com.sduwh.match.service.user.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +43,8 @@ public class TeacherIndexController extends BaseController{
     MatchItemService matchItemService;
     @Autowired
     PassService passService;
+    @Autowired
+    StageService stageService;
 
     /** 显示用户当前帐号状态，如果未激活就提醒激活，显示其余各种信息 */
     @GetMapping("/index")
@@ -57,8 +63,12 @@ public class TeacherIndexController extends BaseController{
     /** 待审核比赛的详细信息*/
     @GetMapping("/check/detail/{id}")
     public String checkDetail(Model model, @PathVariable("id") int id){
-        //TODO 判断当前比赛是否未审核，如果已审核就设置为未授权
-        
+        MatchItem matchItem = matchItemService.selectByPrimaryKey(id);
+        Stage stage = stageService.selectByPrimaryKey(matchItem.getNowStageId());
+        if(stage.getStageFlag() != MatchStage.GUIDER_VERIFY.getId()){
+            return UNAUTH;
+        }
+
         //通过比赛id来查找比赛信息
         String res = matchItemService.checkDetail(model,id);
         if(res != null)return res;
@@ -69,6 +79,15 @@ public class TeacherIndexController extends BaseController{
     @ResponseBody
     public String checkPass(@PathVariable("id") int matchItemId){
         String res = matchItemService.checkPass(matchItemId,MatchItemService.CHECK_PASS_TEACHER);
+        if(res != null)return res;
+        return JSONObject.toJSONString(setResult("success","true"));
+    }
+
+    @PostMapping("/check/detail/nopass/{id}")
+    @ResponseBody
+    public String checkNoPass(@PathVariable("id") int matchItemId){
+        //判断当前阶段
+        String res = matchItemService.checkNoPass(matchItemId,MatchItemService.CHECK_PASS_TEACHER);
         if(res != null)return res;
         return JSONObject.toJSONString(setResult("success","true"));
     }

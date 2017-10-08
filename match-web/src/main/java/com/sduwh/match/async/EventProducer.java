@@ -29,4 +29,14 @@ public class EventProducer {
         }
     }
 
+    public void sendMail(String email,String title,String msg){
+        EventModel eventModel = new EventModel();
+        eventModel.setEventType(EventType.MAIL);
+        //如果要发送mail，需要指定email,title,to
+        eventModel.extAdd("email",email);
+        eventModel.extAdd("title",title);
+        eventModel.extAdd("msg",msg);
+        addEvent(eventModel);
+    }
+
 }

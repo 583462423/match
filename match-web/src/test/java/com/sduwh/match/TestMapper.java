@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.File;
 import java.security.Key;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -70,15 +71,14 @@ public class TestMapper {
     ResearchLogService researchLogService;
     @Test
     public void test(){
-        System.out.println(matchItemService.selectDetailById(3));
+        MatchItem matchItem = matchItemService.selectByPrimaryKey(4);
+        matchItem.setByTime(MatchByTimeEnum.NO.getCode());
+        matchItemService.updateByPrimaryKeySelective(matchItem);
     }
 
     @Test
     public void testRedis(){
-        String emailKey = RedisKeyGenerator.getUserTmpEmail();
-
-        jedisAdapter.hmget(emailKey).forEach((k,v)->{
-            System.out.println(k + ":" + v);
-        });
+        String key = RedisKeyGenerator.getListShowHandleHasDoneKey();
+        jedisAdapter.srem(key,"109");
     }
 }

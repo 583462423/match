@@ -44,6 +44,7 @@ public class ListShowProducer implements InitializingBean{
         String key = RedisKeyGenerator.getListShowHandleHasDoneKey();
         for(;;){
             List<Stage> stages = stageService.selectByStageFlag(MatchStage.SHOW.getId());
+            System.out.println(stages);
             stages.stream()
                     .filter(s->{
                         //过滤已经被处理的stage
@@ -55,6 +56,7 @@ public class ListShowProducer implements InitializingBean{
                     })
                     .forEach(s->{
                         //剩下的是当前符合条件的，转换为事件，传递出去
+                        System.out.println("符合条件的stage : "  + s);
                         EventModel eventModel = new EventModel();
                         eventModel.setEventType(EventType.STAGE_LIST_SHOW);
                         eventModel.extAdd("stage",s);

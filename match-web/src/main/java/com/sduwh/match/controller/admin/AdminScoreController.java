@@ -18,6 +18,7 @@ import com.sduwh.match.service.matchitem.MatchItemService;
 import com.sduwh.match.service.stage.StageService;
 import com.sduwh.match.service.tmprater.TmpRaterService;
 import com.sduwh.match.service.user.UserService;
+import com.sduwh.match.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,8 +119,15 @@ public class AdminScoreController extends BaseController {
                            @RequestParam("cnt") Integer cnt,
                            @RequestParam("matchInfoId")int matchInfoId) throws ParseException {
         //给这些比赛生成临时评委
-        if(tmpRaterService.createRater(matchItems,startTime,endTime,cnt, RaterLevel.SCHOOL.getLevel(),matchInfoId)==cnt)
-            return setJsonResult("success","true");
-        return setJsonResult("error","生成失败");
+        //判断是否有选项是空的
+        if(StringUtils.nullOrEmpty(matchItems,startTime,endTime,String.valueOf(cnt),String.valueOf(matchInfoId)))
+            return setJsonResult("error","输入内容不得为空!");
+        List<TmpRater> result =tmpRaterService.createRater(matchItems,startTime,endTime,cnt, RaterLevel.SCHOOL.getLevel(),matchInfoId);
+        //将来生成的评委的帐号密码生成字符串
+        StringBuilder ss = new StringBuilder();
+        result.forEach(t->{
+            ss.append("帐号:").append(t.getUsername()).append("    密码:").append(t.getPassword()).append("\n");
+        });
+        return setJsonResult("success","true","raterInfo",ss.toString());
     }
 }

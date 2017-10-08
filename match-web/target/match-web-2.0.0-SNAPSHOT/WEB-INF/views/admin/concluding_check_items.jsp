@@ -16,7 +16,11 @@
 <mydiv>
     <div style="width: 100%;height: 100%;">
         <!-- 显示当前的比赛，信息有比赛的名称，比赛的分工，比赛当前到哪个阶段了，比赛是否过期等信息 -->
-        <table class="table table-bordered">
+        <c:if test="${items == null || fn:length(items) == 0}">
+            当前没有比赛需要结题
+        </c:if>
+        <c:if test="${items != null && fn:length(items) > 0}">
+            <table class="table table-bordered">
             <thead>
             <tr>
                 <th class="col-sm-2">比赛名称</th>
@@ -32,6 +36,7 @@
             </c:forEach>
             </tbody>
         </table>
+        </c:if>
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->

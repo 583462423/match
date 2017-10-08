@@ -147,7 +147,7 @@ public class StudentMatchItemController extends BaseController {
             //说明整个流程都结束了。。。。那你想怎么样？，那就把-1都设置进去，就表示结束,alldone。。
         }
         matchItem.setNowStageId(nextStageId);
-        matchItemService.updateByPrimaryKey(matchItem);
+        matchItemService.updateByPrimaryKeySelective(matchItem);
         info.put("success","true");
         return JSONObject.toJSONString(info);
     }

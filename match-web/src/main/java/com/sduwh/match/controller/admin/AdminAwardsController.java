@@ -76,6 +76,7 @@ public class AdminAwardsController extends BaseController {
         //设置下一个状态,将所有的matchInfoId对应的比赛都设置为下一个阶段，因为都已经评奖完毕了，所以不能再有其他阶段了= =
         matchItemService.selectAllByInfoId(matchInfoId).stream().forEach(matchItem -> {
             matchItemService.updateAndSetNextStage(matchItem, null);
+            //TODO 写通知的需求，通过进行获奖查看
         });
 
         return setJsonResult("success", "true");

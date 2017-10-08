@@ -30,6 +30,7 @@ public class MailSender implements InitializingBean {
 
     public void send(String to,String title,String msg)  {
         try {
+            System.out.println("开始向 [" + to + "] 发送:" + title + "," + msg);
             InternetAddress from = new InternetAddress( "<qinxiaoguang95@163.com>");
             MimeMessageHelper helper = new MimeMessageHelper(sender.createMimeMessage());
             helper.setTo("583462423@qq.com");
@@ -40,7 +41,6 @@ public class MailSender implements InitializingBean {
         } catch (Exception e){
             logger.error(e.getMessage());
         }
-
     }
 
 }

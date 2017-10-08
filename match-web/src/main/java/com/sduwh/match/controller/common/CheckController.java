@@ -1,6 +1,7 @@
 package com.sduwh.match.controller.common;
 
 import com.sduwh.match.controller.base.BaseController;
+import com.sduwh.match.enums.MatchByTimeEnum;
 import com.sduwh.match.enums.PassStatus;
 import com.sduwh.match.enums.Roles;
 import com.sduwh.match.enums.MatchStage;
@@ -63,7 +64,7 @@ public class CheckController extends BaseController{
         User user = hostHolder.getUser();
         //查询待审核的比赛条目
         //首先查找符合条件的stage
-        List<Stage> stages = stageService.selectCheckedStageByStageFlag(MatchStage.GUIDER_VERIFY.getId());
+        List<Stage> stages = stageService.selectByStageFlag(MatchStage.GUIDER_VERIFY.getId());
         //通过stages的id去查找哪个比赛是符合条件的，并且还需要判断这个比赛是否已经结束
         List<MatchItem> matchItems = stages.stream().flatMap(e->{
             return matchItemService.selectByStageId(e.getId()).stream();
@@ -78,6 +79,11 @@ public class CheckController extends BaseController{
             //判断当前用户是否已经审核过该用户了,如果没审核过，那才符合条件！
             Pass pass = passService.selectByUserAndItem(user.getId(),item.getId());
             return !passService.checkPass(pass);
+        }).filter(item->{
+            //item对应的stage如果已经结束，那么需要判断item是否按照时间顺序在执行
+            Stage stage = stageService.selectByPrimaryKey(item.getNowStageId());
+            if(stageService.checkIsRuning(stage))return true;
+            else return item.getByTime() == MatchByTimeEnum.NO.getCode();
         })
         .collect(Collectors.toList());
 
@@ -114,7 +120,7 @@ public class CheckController extends BaseController{
         User user = hostHolder.getUser();
         //查询待审核的比赛条目
         //首先查找符合条件的stage
-        List<Stage> stages = stageService.selectCheckedStageByStageFlag(MatchStage.ACADEMY_VERIFY.getId());
+        List<Stage> stages = stageService.selectByStageFlag(MatchStage.ACADEMY_VERIFY.getId());
         //通过stages的id去查找哪个比赛是符合条件的，并且还需要判断这个比赛是否已经结束
         List<MatchItem> matchItems = stages.stream().flatMap(e->{
             return matchItemService.selectByStageId(e.getId()).stream();
@@ -128,6 +134,11 @@ public class CheckController extends BaseController{
             //判断当前用户是否已经审核过该用户了,如果没审核过，那才符合条件！
             Pass pass = passService.selectByUserAndItem(user.getId(),item.getId());
             return !passService.checkPass(pass);
+        }).filter(item->{
+            //item对应的stage如果已经结束，那么需要判断item是否按照时间顺序在执行
+            Stage stage = stageService.selectByPrimaryKey(item.getNowStageId());
+            if(stageService.checkIsRuning(stage))return true;
+            else return item.getByTime() == MatchByTimeEnum.NO.getCode();
         }).collect(Collectors.toList());
 
         //将需要审核的比赛，放入model中
@@ -163,6 +174,7 @@ public class CheckController extends BaseController{
         User user = hostHolder.getUser();
         //查询待审核的比赛条目
         //首先查找符合条件的stage
+        //学校审核才不会等那些未到达当前状态的人，所以直接不用查找那些未通过审核的比赛
         List<Stage> stages = stageService.selectCheckedStageByStageFlag(MatchStage.SCHOOL_VERIFY.getId());
         //通过stages的id去查找哪个比赛是符合条件的，并且还需要判断这个比赛是否已经结束
         List<MatchItem> matchItems = stages.stream().flatMap(e->{

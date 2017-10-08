@@ -12,6 +12,9 @@
         <path>/teacher/check/detail/pass/*</path>
         <path>/academy/check/detail/pass/*</path>
         <path>/admin/check/detail/pass/*</path>
+        <path>/teacher/check/detail/nopass/*</path>
+        <path>/academy/check/detail/nopass/*</path>
+        <path>/admin/check/detail/nopass/*</path>
         <path>/student/science/log/add/*</path>
         <path>/student/science/detail/*</path>
         <path>/admin/supply</path>

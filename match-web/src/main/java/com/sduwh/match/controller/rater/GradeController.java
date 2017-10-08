@@ -60,6 +60,8 @@ public class GradeController extends BaseController {
     @ResponseBody
     public String gradeToMatchItem(Grade grade){
         checkAuth(grade.getMatchItemId(),RaterLevel.ACADEMY);
+        if(StringUtils.nullOrEmpty(grade.getComment(),String.valueOf(grade.getScore())))
+            return setJsonResult("error","输入不得为空");
         TmpRater rater = hostHolder.getRater();
         grade.setLevel(rater.getLevel());
         grade.setRaterId(rater.getId());
@@ -125,6 +127,8 @@ public class GradeController extends BaseController {
     @ResponseBody
     public String gradeToMatchItemOfSuper(Grade grade){
         checkAuth(grade.getMatchItemId(),RaterLevel.SCHOOL);
+        if(StringUtils.nullOrEmpty(grade.getComment(),String.valueOf(grade.getScore())))
+            return setJsonResult("error","输入不得为空");
         TmpRater rater = hostHolder.getRater();
         grade.setLevel(rater.getLevel());
         grade.setRaterId(rater.getId());

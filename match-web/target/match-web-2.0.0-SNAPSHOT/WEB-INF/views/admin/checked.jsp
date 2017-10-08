@@ -15,22 +15,28 @@
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th class="col-sm-2">比赛标题</th>
-                <th>详情</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${matchItem}" var="item">
+        <c:if test="${matchItem == null || fn:length(matchItem) == 0}">
+            <!-- 当前没有可以报名的比赛 -->
+            当前没有已审核的比赛
+        </c:if>
+        <c:if test="${matchItem != null && fn:length(matchItem) > 0}">
+            <table class="table table-bordered">
+                <thead>
                 <tr>
-                    <td>${item.title}</td>
-                    <td><a href="/admin/check/detail/${item.id}">详情</a></td>
+                    <th class="col-sm-2">比赛标题</th>
+                    <th>详情</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach items="${matchItem}" var="item">
+                    <tr>
+                        <td>${item.title}</td>
+                        <td><a href="/admin/check/detail/${item.id}">详情</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->

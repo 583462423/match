@@ -76,7 +76,7 @@ public class MiddleCheckController extends BaseController{
                     //过滤掉是中期检查阶段的比赛
                     if(item.getNowStageId() < 0)return false;
                     Stage stage = stageService.selectByPrimaryKey(item.getNowStageId());
-                    return stage.getStageFlag() == MatchStage.MIDDLE_CHECK.getId();
+                    return stageService.checkIsRuning(stage) && stage.getStageFlag() == MatchStage.MIDDLE_CHECK.getId();
                 })
                 .filter(item->{
                     //过滤掉已经提交的阶段
@@ -93,22 +93,46 @@ public class MiddleCheckController extends BaseController{
     /** 跳转到某个比赛的中期检查报告页面，如果之前上传过，就把页面中的一些值更改一下*/
     @GetMapping("/match/middle/report/{id}")
     public String middleReport(@PathVariable("id")int matchItemId,Model model){
-        MiddleCheck middleCheck = middleCheckService.selectByMatchItemId(matchItemId);
-        model.addAttribute("matchItemId",matchItemId);
-        MatchItem matchItem = matchItemService.selectByPrimaryKey(matchItemId);
-        MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
-        model.addAttribute("info",matchInfo);
-        List<User> users = Arrays.stream(matchItem.getMemberIds().split(",")).map(id->{
-            //通过id查找User
-            return userService.selectByPrimaryKey(Integer.parseInt(id));
-        }).collect(Collectors.toList());
-        model.addAttribute("members",users);
-        model.addAttribute("nowMembers",matchItem.getMemberIds());
+//        MiddleCheck middleCheck = middleCheckService.selectByMatchItemId(matchItemId);
+//        model.addAttribute("matchItemId",matchItemId);
+//        MatchItem matchItem = matchItemService.selectByPrimaryKey(matchItemId);
+//        MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
+//        model.addAttribute("info",matchInfo);
+//        List<User> users = Arrays.stream(matchItem.getMemberIds().split(",")).map(id->{
+//            //通过id查找User
+//            return userService.selectByPrimaryKey(Integer.parseInt(id));
+//        }).collect(Collectors.toList());
+//        model.addAttribute("members",users);
+//        model.addAttribute("nowMembers",matchItem.getMemberIds());
+//
+//        if(middleCheck == null){
+//            model.addAttribute("isNull","true");
+//        }else model.addAttribute("middleCheck",middleCheck);
+//        return MIDDLE_CHECK_ALTER;
 
-        if(middleCheck == null){
-            model.addAttribute("isNull","true");
-        }else model.addAttribute("middleCheck",middleCheck);
-        return MIDDLE_CHECK_ALTER;
+        MiddleCheck middleCheck = middleCheckService.selectByMatchItemId(matchItemId);
+        //判断当前阶段
+        if(middleCheck == null || middleCheck.getStage() == MiddleCheckStage.STUDENT_JUDGE.getCode()){
+            model.addAttribute("matchItemId",matchItemId);
+            MatchItem matchItem = matchItemService.selectByPrimaryKey(matchItemId);
+            MatchInfo matchInfo = matchInfoService.selectByPrimaryKey(matchItem.getMatchInfoId());
+            model.addAttribute("info",matchInfo);
+            List<User> users = Arrays.stream(matchItem.getMemberIds().split(",")).map(id->{
+                //通过id查找User
+                return userService.selectByPrimaryKey(Integer.parseInt(id));
+            }).collect(Collectors.toList());
+            model.addAttribute("members",users);
+            model.addAttribute("nowMembers",matchItem.getMemberIds());
+
+            if(middleCheck == null){
+                model.addAttribute("isNull","true");
+            }else model.addAttribute("middleCheck",middleCheck);
+            return MIDDLE_CHECK_ALTER;
+        } else if(middleCheck.getStage() != MiddleCheckStage.STUDENT_JUDGE.getCode()){
+            //当前不是学生评价阶段
+            return setJsonResult("error","当前非学生评价阶段");
+        }
+        return UNAUTH;
     }
 
 

@@ -11,6 +11,23 @@
 <html>
 <head>
     <title>主页</title>
+    <mylink>
+        <style>
+            textarea {
+                resize:none;
+                width:100%;
+                height:150px;
+            }
+
+            .changeDiv{
+                border:1px solid #ccc;
+                box-shadow: 0px 0px 2px 2px #ccc;
+                padding:8px;
+                border-radius:5px;
+                margin-bottom:8px;
+            }
+        </style>
+    </mylink>
 </head>
 <body>
 <mydiv>
@@ -18,36 +35,73 @@
         <form action="/admin/match/middle/report/update" method="post" id="updateForm">
             <!-- 上传过检查表-->
             <input type="hidden" name="matchItemId" value="${middleCheck.matchItemId}"/>
-            <input readonly value="${middleCheck.comuWithTeacher}" />
-            <input readonly  value="${middleCheck.projectResult}" />
-            <input readonly value="${middleCheck.isExpect}" />
-            <input readonly value="${middleCheck.costSituation}" />
-            <input readonly value="${middleCheck.pointByStudent}" />
-            <input readonly value="${middleCheck.pointByTeacher}" />
-            <input readonly value="${middleCheck.followPlan}" />
-            <input readonly value="${middleCheck.followPoint}" />
-            <input readonly  value="${middleCheck.viewOfTeacher}"/>
-            <input readonly value="${middleCheck.levelByTeacher}"/>
-            <input readonly value="${middleCheck.viewOfAcademy}"/>
-            <input name="viewOfSuper" placeholder="学校评价" value="${middleCheck.viewOfSuper}"/>
-            <input type="submit" value="保存">
+            <div class="input-group">
+                <div class="input-group-addon">与导师交流情况</div>
+                <textarea readonly>${middleCheck.comuWithTeacher}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">项目结果</div>
+                <textarea readonly >${middleCheck.projectResult}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">与期望结果的差异</div>
+                <textarea readonly>${middleCheck.isExpect}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">花费情况</div>
+                <textarea readonly>${middleCheck.costSituation}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">学生观点</div>
+                <textarea readonly>${middleCheck.pointByStudent}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">教师观点</div>
+                <textarea readonly>${middleCheck.pointByTeacher}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">后续计划</div>
+                <textarea readonly>${middleCheck.followPlan}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">后续重点</div>
+                <textarea readonly>${middleCheck.followPoint}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">教师评价</div>
+                <textarea readonly>${middleCheck.viewOfTeacher}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">教师评级</div>
+                <textarea readonly>${middleCheck.levelByTeacher}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">学院评价</div>
+                <textarea readonly>${middleCheck.viewOfAcademy}</textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">学校评价</div>
+                <textarea name="viewOfSuper" placeholder="请填写学校评价">${middleCheck.viewOfSuper}</textarea>
+            </div>
+            <input type="submit" class="btn btn-success" value="保存">
         </form>
-        <!-- 显示成员变更表-->
-        <c:if test="${isChange == '0'}">
-            <!-- 未进行变更 -->
-        </c:if>
+
         <c:if test="${isChange == '1'}">
-            <!--进行变更-->
-            原先队员:
-            <c:forEach items="${fromMembers}" var="item">
-                <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
-            </c:forEach>
-            变更队员:
-            <c:forEach items="${toMembers}" var="item">
-                <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
-            </c:forEach>
-            <button id="passChange" class="btn btn-danger" data="${transferMemberId}">允许变更</button>
-            <br>
+            <hr>
+            <div class="changeDiv">
+                <div class="alert alert-danger" role="alert">在提交前，请确定是否允许成员变更，默认不允许</div>
+                原先队员:
+                <c:forEach items="${fromMembers}" var="item">
+                    <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
+                </c:forEach>
+                变更队员:
+                <c:forEach items="${toMembers}" var="item">
+                    <span class="label label-info"  style="cursor:pointer" >${item.username}&nbsp;${item.name}</span>
+                </c:forEach>
+                <button id="passChange" class="btn btn-danger" data="${transferMemberId}">允许变更</button>
+                <br>
+            </div>
+            <hr>
         </c:if>
         <button id="submitToNext" class="btn btn-info" data="${matchItemId}">提交</button>
     </div>
@@ -83,9 +137,10 @@
             $("#updateForm").ajaxForm(function(res){
                 var json = JSON.parse(res);
                 if(json["success"] == "true"){
-                    alert("保存成功");
+                    showMsg("保存成功");
+                    setTimeout("location.reload()",1000);
                 }else{
-                    alert(json["error"]);
+                    showMsg(json["error"]);
                 }
             });
 
@@ -101,9 +156,10 @@
                     success:function(res){
                         var json = JSON.parse(res);
                         if(json["success"] == "true"){
-                            alert("提交成功");
+                            showMsg("提交成功");
+                            setTimeout("location.href='/admin/match/middle';",2000);
                         }else{
-                            alert(json["error"]);
+                            showMsg(json["error"]);
                         }
                     }
                 });
@@ -121,7 +177,8 @@
                     success:function(res){
                         var json = JSON.parse(res);
                         if(json["success"] == "true"){
-                            alert("成功");
+                            showMsg("成功");
+                            setTimeout("location.reload()",1000);
                         }
                     }
                 });

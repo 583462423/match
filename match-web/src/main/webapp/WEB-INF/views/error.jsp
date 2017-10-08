@@ -17,9 +17,9 @@
 
     <!-- CSS
   ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/vendor.css">
 
     <!-- script
     ================================================== -->
@@ -83,9 +83,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="js/jquery.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
 <script>
     $(document).ready(function(){
         $("#back").click(function(){

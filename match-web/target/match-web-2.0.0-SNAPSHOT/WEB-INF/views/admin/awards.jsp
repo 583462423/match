@@ -15,7 +15,11 @@
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
-        <table class="table table-bordered">
+        <c:if test="${matchItemWithScore == null || fn:length(matchItemWithScore)== 0}">
+            无
+        </c:if>
+        <c:if test="${matchItemWithScore != null && fn:length(matchItemWithScore) > 0}">
+            <table class="table table-bordered">
             <thead>
             <tr>
                 <th>比赛名称</th>
@@ -33,9 +37,11 @@
             </c:forEach>
             </tbody>
         </table>
+            <input type="number" placeholder="请输入入选个数" id="num"/>
+            <button id="submit" class="btn btn-danger">提交</button>
+        </c:if>
 
-        <input type="number" placeholder="请输入入选个数" id="num"/>
-        <button id="submit" class="btn btn-danger">提交</button>
+
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->
