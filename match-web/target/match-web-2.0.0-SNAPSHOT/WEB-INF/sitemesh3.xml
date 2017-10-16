@@ -51,6 +51,7 @@
         <path>/admin/awards/award</path>
         <path>/active/email</path>
         <path>/active/user</path>
+        <path>/admin/send/notice</path>
     </mapping>
 
   	<!-- admin布局修饰 -->

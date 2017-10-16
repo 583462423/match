@@ -3,16 +3,15 @@ package com.sduwh.match.controller.teacher;
 import com.alibaba.fastjson.JSONObject;
 import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.enums.MatchStage;
+import com.sduwh.match.enums.NoticeLevel;
 import com.sduwh.match.enums.PassStatus;
 import com.sduwh.match.enums.UserStatus;
 import com.sduwh.match.exception.base.BaseException;
 import com.sduwh.match.model.HostHolder;
-import com.sduwh.match.model.entity.MatchItem;
-import com.sduwh.match.model.entity.Pass;
-import com.sduwh.match.model.entity.Stage;
-import com.sduwh.match.model.entity.User;
+import com.sduwh.match.model.entity.*;
 import com.sduwh.match.model.wrapper.UserWrapper;
 import com.sduwh.match.service.matchitem.MatchItemService;
+import com.sduwh.match.service.notice.NoticeService;
 import com.sduwh.match.service.pass.PassService;
 import com.sduwh.match.service.stage.StageService;
 import com.sduwh.match.service.user.UserService;
@@ -23,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,10 +45,12 @@ public class TeacherIndexController extends BaseController{
     PassService passService;
     @Autowired
     StageService stageService;
+    @Autowired
+    NoticeService noticeService;
 
     /** 显示用户当前帐号状态，如果未激活就提醒激活，显示其余各种信息 */
     @GetMapping("/index")
-    public String index(Map<String,UserWrapper> map){
+    public String index(Model model){
         User user = hostHolder.getUser();
         //获取到User信息后，将User的各种信息展示，需要使用Map
         //判断用户是否激活，如果没有激活，则跳转到激活网站，主要是跳转过去用于激活
@@ -56,7 +58,9 @@ public class TeacherIndexController extends BaseController{
         if(res != null)return res;
 
         //否则就跳转过来，直接开始正常操作
-        map.put("user",userService.selectUserWrapperByUser(user));
+        model.addAttribute("user",userService.selectUserWrapperByUser(user));
+        List<Notice> notices = noticeService.selectByLevelAndRunning(NoticeLevel.TEACHER.getCode());
+        model.addAttribute("notices",notices);
         return TEACHER_INDEX;
     }
 

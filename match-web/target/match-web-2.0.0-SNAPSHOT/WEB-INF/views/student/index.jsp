@@ -15,6 +15,13 @@
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
+        <!-- 找个位置显示通告-->
+        <div class="notice" style="margin-top: 60px;">
+            <c:forEach items="${notices}" var="notice">
+                <div class="alert alert-danger" role="alert">${notice.title}</div>
+            </c:forEach>
+        </div>
+
         <!-- 显示用户信息 -->
         ${user.user.username}<br>
         ${user.user.lastTime}<br>
@@ -28,6 +35,8 @@
         </c:forEach>
         ${user.academy.name}<br>
         ${user.specialty.name}<br>
+
+
     </div>
 
     <!--模态框，显示详细信息 不用的时候删除-->

@@ -112,8 +112,8 @@
 
                             <li><a><i class="fa fa-home"></i> 通知(待做)<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="#">通知管理</a></li>
-                                    <li><a href="#">发布通知</a></li>
+                                    <li><a href="/admin/notice/all">通告管理</a></li>
+                                    <li><a href="/admin/notice/send">发布通告</a></li>
                                 </ul>
                             </li>
 

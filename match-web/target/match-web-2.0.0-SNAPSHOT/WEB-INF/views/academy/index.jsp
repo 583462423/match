@@ -15,6 +15,12 @@
 <body>
 <mydiv>
     <div style="width: 100%;height: 100%;">
+        <div class="notice" style="margin-top: 60px;">
+            <c:forEach items="${notices}" var="notice">
+                <div class="alert alert-danger" role="alert">${notice.title}</div>
+            </c:forEach>
+        </div>
+
         <!-- 显示用户信息 -->
         ${user.user.username}<br>
         ${user.user.lastTime}<br>

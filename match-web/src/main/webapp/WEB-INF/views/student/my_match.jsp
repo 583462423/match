@@ -40,7 +40,9 @@
                         <td>
                             <c:if test="${item.upApply == 'true'}">
                                 <a href="/student/matchs/upapply/${item.itemId}"> 上传申请表</a>
-
+                            </c:if>
+                            <c:if test="${item.award == 'true'}">
+                                <a href="/awards/rank/${item.infoid}">查看结果</a>
                             </c:if>
                         </td>
                     </tr>

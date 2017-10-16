@@ -174,9 +174,14 @@ public class StudentMatchItemController extends BaseController {
             if(stage != null){
                 for(int i=0; i<stages.length; i++){
                     if(stage.getStageFlag() == stages[i].getId()){
-                        if (stages[i].getDes() == "立项申请") {
+                        if (stage.getStageFlag() == MatchStage.APPLY.getId()) {
                             //如果是立项申请，就需要显示跳转立项申请页面
                             map.put("upApply","true");
+                        }
+                        if(stage.getStageFlag() == MatchStage.END_SHOW.getId() && stageService.checkIsRuning(stage)){
+                            //当前结果公布
+                            map.put("award","true");
+                            map.put("infoid",String.valueOf(matchInfo.getId()));
                         }
                         //判断当前stage是否开始
                         if(stageService.checkIsRuning(stage))map.put("stage",stages[i].getDes() + ":已开始");

@@ -3,18 +3,18 @@ package com.sduwh.match.controller.academy;
 import com.alibaba.fastjson.JSONObject;
 import com.sduwh.match.controller.base.BaseController;
 import com.sduwh.match.enums.MatchStage;
+import com.sduwh.match.enums.NoticeLevel;
 import com.sduwh.match.enums.PassStatus;
 import com.sduwh.match.exception.base.BaseException;
 import com.sduwh.match.model.HostHolder;
-import com.sduwh.match.model.entity.MatchItem;
-import com.sduwh.match.model.entity.Pass;
-import com.sduwh.match.model.entity.Stage;
-import com.sduwh.match.model.entity.User;
+import com.sduwh.match.model.entity.*;
 import com.sduwh.match.model.wrapper.UserWrapper;
 import com.sduwh.match.service.matchitem.MatchItemService;
+import com.sduwh.match.service.notice.NoticeService;
 import com.sduwh.match.service.pass.PassService;
 import com.sduwh.match.service.stage.StageService;
 import com.sduwh.match.service.user.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,18 +46,23 @@ public class AcademyIndexController extends BaseController{
     PassService passService;
     @Autowired
     StageService stageService;
+    @Autowired
+    NoticeService noticeService;
 
     @GetMapping("/index")
-    public String index(Map<String,UserWrapper> map){
+    public String index(Model model){
         User user = hostHolder.getUser();
         String res = userService.checkStatus(user);
         if(res != null)return res;
 
         //否则就跳转过来，直接开始正常操作
-        map.put("user",userService.selectUserWrapperByUser(user));
+        model.addAttribute("user",userService.selectUserWrapperByUser(user));
 
         //为什么用户的主页信息逻辑都一样，但是还不进行模块化，因为每种用户的详细信息是不一样的。
-        map.put("someOtherThing",null);
+        model.addAttribute("someOtherThing",null);
+
+        List<Notice> notices = noticeService.selectByLevelAndRunning(NoticeLevel.ADMIN.getCode());
+        model.addAttribute("notices",notices);
         return ACADEMY_INDEX;
     }
 

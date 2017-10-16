@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="match-web:war exploded" />
+      <artifact name="match-web:war" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
@@ -10,174 +10,31 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/match_common_war.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/match_common_war_exploded.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/d60d0664-db00-4bf1-b8aa-10f0d5427c8c.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/static/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/static/js/bootstrap.min.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/Config.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/Config.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/EventProducer.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/EventProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/handler/MailHandler.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/handler/MailHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/handler/StageListShowEventHandler.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/handler/StageListShowEventHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/producer/ListShowProducer.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/async/producer/ListShowProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/TestIndexController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/TestIndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/UploadController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/UploadController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/UserController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/academy/AcademyIndexController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/academy/AcademyIndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/academy/AcademyScoreController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/academy/AcademyScoreController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/admin/AdminCheckController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/admin/AdminCheckController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/base/BaseController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/base/BaseController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/common/CheckController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/common/CheckController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/admin/AdminAwardsController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/admin/AdminAwardsController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/student/IndexController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/student/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/student/MiddleCheckController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/student/MiddleCheckController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/student/StudentMatchItemController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/student/StudentMatchItemController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/teacher/TeacherIndexController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/teacher/TeacherIndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/dao/MatchItemMapper.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/dao/MatchItemMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/dao/PassDAO.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/dao/PassDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/model/entity/MatchItem.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/model/entity/MatchItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/MailSender.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/MailSender.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/matchitem/MatchItemService.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/matchitem/MatchItemService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/pass/impl/PassServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/pass/impl/PassServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/stage/impl/StageServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/stage/impl/StageServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/user/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/classes/com/sduwh/match/service/user/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/EventProducer.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/EventProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/handler/MailHandler.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/handler/MailHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/handler/StageListShowEventHandler.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/handler/StageListShowEventHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/producer/ListShowProducer.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/async/producer/ListShowProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/TestIndexController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/TestIndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/UploadController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/UploadController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/UserController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/academy/AcademyIndexController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/academy/AcademyIndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/academy/AcademyScoreController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/academy/AcademyScoreController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/admin/AdminCheckController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/admin/AdminCheckController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/base/BaseController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/base/BaseController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/common/CheckController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/common/CheckController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/admin/AdminAwardsController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/admin/AdminAwardsController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/student/IndexController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/student/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/student/MiddleCheckController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/student/MiddleCheckController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/student/StudentMatchItemController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/student/StudentMatchItemController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/teacher/TeacherIndexController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/teacher/TeacherIndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/dao/MatchItemMapper.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/dao/MatchItemMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/dao/PassDAO.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/dao/PassDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/model/entity/MatchItem.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/model/entity/MatchItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/MailSender.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/MailSender.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/matchitem/MatchItemService.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/matchitem/MatchItemService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/pass/impl/PassServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/pass/impl/PassServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/stage/impl/StageServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/stage/impl/StageServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/user/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/com/sduwh/match/service/user/impl/UserServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/lib/match-common-2.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/lib/match-common-2.0.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/test-classes/com/sduwh/match/TestMapper.class" afterPath="$PROJECT_DIR$/match-web/target/test-classes/com/sduwh/match/TestMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/test-classes/com/sduwh/match/TestNormal.class" afterPath="$PROJECT_DIR$/match-web/target/test-classes/com/sduwh/match/TestNormal.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/c42656d7-ceae-4db1-aa5a-8ded03832c9a.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/c42656d7-ceae-4db1-aa5a-8ded03832c9a.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/EventProducer.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/EventProducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/handler/MailHandler.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/handler/MailHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/producer/ListShowProducer.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/producer/ListShowProducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/DownloadController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/DownloadController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/TestIndexController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/TestIndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/UploadController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/UploadController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyIndexController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyIndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyScoreController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyScoreController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAwardsController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAwardsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminCheckController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminCheckController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminScoreController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminScoreController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/base/BaseController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/base/BaseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/common/CheckController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/common/CheckController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/rater/GradeController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/rater/GradeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/MiddleCheckController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/MiddleCheckController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/IndexController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/IndexController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/StudentMatchItemController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/StudentMatchItemController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherIndexController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherIndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/MatchItemMapper.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/MatchItemMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/PassDAO.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/PassDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/entity/MatchItem.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/entity/MatchItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/MailSender.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/MailSender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/matchitem/MatchItemService.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/matchitem/MatchItemService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/pass/impl/PassServiceImpl.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/pass/impl/PassServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/stage/StageService.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/stage/StageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/stage/impl/StageServiceImpl.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/stage/impl/StageServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/tmprater/TmpRaterService.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/tmprater/TmpRaterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/tmprater/impl/TmpRaterServiceImpl.java" afterPath="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/tmprater/impl/TmpRaterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/resources/mybatis/MatchItemMapper.xml" afterPath="$PROJECT_DIR$/match-web/src/main/resources/mybatis/MatchItemMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/sitemesh3.xml" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/sitemesh3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/check.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/check.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/checkDetail.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/checkDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/checked.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/checked.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/concluding_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/concluding_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/concluding_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/concluding_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/score_all.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/score_all.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/score_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/score_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/awards.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/awards.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/check.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/check.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/checkDetail.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/checkDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/checked.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/checked.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/concluding_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/concluding_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/concluding_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/concluding_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_all.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_all.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/error.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/error.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/academy_grade.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/academy_grade.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/academy_index.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/academy_index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/super_grade.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/super_grade.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/super_index.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/super_index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/concluding_statement_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/concluding_statement_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/concluding_statement_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/concluding_statement_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/scienceLogDetail.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/scienceLogDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/science_match.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/science_match.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/check.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/check.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/checkDetail.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/checkDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/checked.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/checked.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/concluding_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/concluding_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/concluding_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/concluding_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/static/css/custom.min.css" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/static/css/custom.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/test/java/com/sduwh/match/TestMapper.java" afterPath="$PROJECT_DIR$/match-web/src/test/java/com/sduwh/match/TestMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/test/java/com/sduwh/match/TestNormal.java" afterPath="$PROJECT_DIR$/match-web/src/test/java/com/sduwh/match/TestNormal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/classes/mybatis/MatchItemMapper.xml" afterPath="$PROJECT_DIR$/match-web/target/classes/mybatis/MatchItemMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/mybatis/MatchItemMapper.xml" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/classes/mybatis/MatchItemMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/index.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/sitemesh/admin.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/sitemesh/admin.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/index.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/my_match.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/my_match.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/index.jsp" afterPath="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/sitemesh3.xml" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/sitemesh3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/check.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/check.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/checkDetail.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/checkDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/checked.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/checked.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/concluding_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/concluding_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/concluding_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/concluding_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/score_all.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/academy/score_all.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/check.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/check.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/checkDetail.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/checkDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/checked.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/checked.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/concluding_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/concluding_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/concluding_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/concluding_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/admin/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/error.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/error.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/concluding_statement_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/concluding_statement_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/concluding_statement_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/concluding_statement_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/scienceLogDetail.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/scienceLogDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/science_match.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/science_match.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/check.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/check.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/checkDetail.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/checkDetail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/checked.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/checked.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/concluding_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/concluding_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/concluding_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/concluding_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/middle_check_alter.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/middle_check_alter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/middle_check_items.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/teacher/middle_check_items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/static/css/custom.min.css" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/static/css/custom.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/sitemesh/admin.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/sitemesh/admin.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/index.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/my_match.jsp" afterPath="$PROJECT_DIR$/match-web/target/match-web-2.0.0-SNAPSHOT/WEB-INF/views/student/my_match.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -213,35 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="score_all.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_all.jsp">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="37" column="20" lean-forward="false" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-              <folding>
-                <element signature="n#table#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="awards.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/awards.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="77" column="44" lean-forward="false" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="44" />
-              <folding>
-                <element signature="n#table#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminAwardsController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAwardsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+            <state relative-caret-position="88">
+              <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -252,15 +85,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showMsg</find>
-      <find>teaNowAdd</find>
-      <find>teachermembers</find>
       <find>teacherMembers</find>
       <find>text</find>
       <find>upApply</find>
@@ -288,6 +119,9 @@
       <find>/academy/rater/gen</find>
       <find>rater/</find>
       <find>alert(</find>
+      <find>my</find>
+      <find>rater/gen</find>
+      <find>TimestampFormatUtils.getTimestampFromString</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -301,25 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyIndexController.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherIndexController.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminCheckController.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/TestIndexController.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/checkDetail.jsp" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/handler/MailHandler.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/MailSender.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/async/producer/ListShowProducer.java" />
-        <option value="$PROJECT_DIR$/match-web/src/test/java/com/sduwh/match/TestMapper.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/resources/springmvc/spring-mvc.xml" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/science_match.jsp" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/scienceLogDetail.jsp" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/middle_check_items.jsp" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/static/css/custom.min.css" />
-        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/MiddleCheckController.java" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_items.jsp" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_items.jsp" />
-        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_alter.jsp" />
         <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_alter.jsp" />
         <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_items.jsp" />
         <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_alter.jsp" />
@@ -352,6 +167,25 @@
         <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_all.jsp" />
         <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/awards.jsp" />
         <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAwardsController.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/StudentMatchItemController.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/my_match.jsp" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/notices.jsp" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/sitemesh3.xml" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminNoticeController.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/send_notice.jsp" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/sitemesh/admin.jsp" />
+        <option value="$PROJECT_DIR$/match-common/src/main/java/com/sduwh/match/enums/NoticeLevel.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/NoticeDAO.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/resources/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/entity/Notice.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/notice/NoticeService.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/notice/impl/NoticeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/index.jsp" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/IndexController.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherIndexController.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/index.jsp" />
+        <option value="$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyIndexController.java" />
+        <option value="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/index.jsp" />
       </list>
     </option>
   </component>
@@ -381,7 +215,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="346" />
     <option name="y" value="68" />
     <option name="width" value="1400" />
@@ -393,20 +227,21 @@
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
-      <showMembers />
+      <showMembers ProjectPane="false" />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="false" />
       <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -417,6 +252,74 @@
             <path>
               <item name="match" type="b2602c69:ProjectViewProjectNode" />
               <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
               <item name="match-web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -447,6 +350,27 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
               <item name="match" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -456,6 +380,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
               <item name="match" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -466,9 +392,71 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
               <item name="match" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="notice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sduwh" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="notice" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="match" type="b2602c69:ProjectViewProjectNode" />
@@ -501,14 +489,41 @@
               <item name="match" type="b2602c69:ProjectViewProjectNode" />
               <item name="match" type="462c0819:PsiDirectoryNode" />
               <item name="match-web" type="462c0819:PsiDirectoryNode" />
-              <item name="upload" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="academy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="match" type="b2602c69:ProjectViewProjectNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+              <item name="match-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
+        <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,10 +534,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="SearchEverywhereHistoryKey" value="TestMapp&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/test/java/com/sduwh/match/TestMapper.java&#10;MatchItemS&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.java&#10;mybatis-confi&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis-config.xml&#10;MatchItem&#9;PSI&#9;JAVA://com.sduwh.match.model.entity.MatchItem&#10;MatchItemMap&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis/MatchItemMapper.xml&#10;testMapp&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/test/java/com/sduwh/match/TestMapper.java&#10;sitemesh&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/webapp/WEB-INF/sitemesh3.xml&#10;MatchItemMapper&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis/MatchItemMapper.xml&#10;MatchItemMA&#9;PSI&#9;JAVA://com.sduwh.match.dao.MatchItemMapper&#10;TestMap&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/test/java/com/sduwh/match/TestMapper.java&#10;MatchItemDe&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/model/wrapper/MatchItemDetail.java&#10;TestMapper&#9;PSI&#9;JAVA://com.sduwh.match.TestMapper&#10;TestInd&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/controller/TestIndexController.java&#10;BaseCon&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/controller/base/BaseController.java&#10;BaseCo&#9;PSI&#9;JAVA://com.sduwh.match.controller.base.BaseController&#10;MatchInfoMa&#9;PSI&#9;JAVA://com.sduwh.match.dao.MatchInfoMapper&#10;MatchInfoServi&#9;PSI&#9;JAVA://com.sduwh.match.service.matchinfo.MatchInfoService&#10;MatchInfo&#9;PSI&#9;JAVA://com.sduwh.match.model.entity.MatchInfo" />
+    <property name="SearchEverywhereHistoryKey" value="No&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/service/notice/NoticeService.java&#10;Noti&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/service/notice/NoticeService.java&#10;mybatis-con&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis-config.xml&#10;sitemesh3&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/webapp/WEB-INF/sitemesh3.xml&#10;Notice&#9;PSI&#9;JAVA://com.sduwh.match.model.entity.Notice&#10;NoticeLevel&#9;FILE&#9;file:///home/qxg/project/web/match/match-common/src/main/java/com/sduwh/match/enums/NoticeLevel.java&#10;TestMapp&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/test/java/com/sduwh/match/TestMapper.java&#10;MatchItemS&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/service/matchitem/impl/MatchItemServiceImpl.java&#10;mybatis-confi&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis-config.xml&#10;MatchItem&#9;PSI&#9;JAVA://com.sduwh.match.model.entity.MatchItem&#10;MatchItemMap&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis/MatchItemMapper.xml&#10;testMapp&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/test/java/com/sduwh/match/TestMapper.java&#10;sitemesh&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/webapp/WEB-INF/sitemesh3.xml&#10;MatchItemMapper&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/resources/mybatis/MatchItemMapper.xml&#10;MatchItemMA&#9;PSI&#9;JAVA://com.sduwh.match.dao.MatchItemMapper&#10;TestMap&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/test/java/com/sduwh/match/TestMapper.java&#10;MatchItemDe&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/model/wrapper/MatchItemDetail.java&#10;TestMapper&#9;PSI&#9;JAVA://com.sduwh.match.TestMapper&#10;TestInd&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/controller/TestIndexController.java&#10;BaseCon&#9;FILE&#9;file:///home/qxg/project/web/match/match-web/src/main/java/com/sduwh/match/controller/base/BaseController.java&#10;BaseCo&#9;PSI&#9;JAVA://com.sduwh.match.controller.base.BaseController&#10;MatchInfoMa&#9;PSI&#9;JAVA://com.sduwh.match.dao.MatchInfoMapper&#10;MatchInfoServi&#9;PSI&#9;JAVA://com.sduwh.match.service.matchinfo.MatchInfoService&#10;MatchInfo&#9;PSI&#9;JAVA://com.sduwh.match.model.entity.MatchInfo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin" />
       <recent name="$PROJECT_DIR$/match-web/src/main/webapp/static/js" />
       <recent name="$PROJECT_DIR$/match-web/src/main/webapp/static/css" />
       <recent name="$PROJECT_DIR$/match-web/src/main/webapp/static/images" />
@@ -806,6 +822,8 @@
       <workItem from="1507002264163" duration="6268000" />
       <workItem from="1507298555773" duration="1758000" />
       <workItem from="1507430787240" duration="14900000" />
+      <workItem from="1507519013508" duration="8060000" />
+      <workItem from="1508161306956" duration="1558000" />
     </task>
     <servers />
   </component>
@@ -842,11 +860,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74006000" />
+    <option name="totallyTimeSpent" value="83624000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="346" y="68" width="1920" height="1018" extended-state="7" />
-    <editor active="true" />
+    <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4124424" sideWeight="0.50428265" order="7" side_tool="true" content_ui="tabs" />
@@ -865,11 +882,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4124424" sideWeight="0.49571735" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5967742" sideWeight="0.49571735" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27301928" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2805139" sideWeight="0.5" order="0" side_tool="true" content_ui="combo" x="696" y="115" width="527" height="861" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -880,39 +897,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4124424" sideWeight="0.50428265" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18629551" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39976957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4124424" sideWeight="0.49571735" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27301928" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1014,349 +998,127 @@
           <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="52" />
+      <option name="time" value="72" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/MailSender.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/entity/Grade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/MiddleCheckController.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/entity/Stage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="176" column="12" lean-forward="true" selection-start-line="176" selection-start-column="12" selection-end-line="181" selection-end-column="23" />
+        <state relative-caret-position="198">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.stage">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.match_item">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/static/css/bootstrap.min.css">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/notice.java" />
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/PassDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="4" column="37075" lean-forward="true" selection-start-line="4" selection-start-column="37075" selection-end-line="4" selection-end-column="37075" />
+        <state relative-caret-position="-10">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/middle_check_alter.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/pass/PassService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="57" column="18" lean-forward="true" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-          <folding>
-            <marker date="1507453510318" expanded="true" signature="10155:10169" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/sitemesh/student.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="23" column="45" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        <state relative-caret-position="252">
+          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/concluding_check_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/concluding_statement_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="21" column="62" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/middle_check_alter.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="103" column="15" lean-forward="true" selection-start-line="86" selection-start-column="6" selection-end-line="103" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherMiddleCheckController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="148" column="73" lean-forward="false" selection-start-line="148" selection-start-column="73" selection-end-line="148" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/ConcludingStatementDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="24" column="24" lean-forward="false" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/concludingstagtement/middlecheck/impl/ConcludingStatementServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/concludingstagtement/middlecheck/ConcludingStatementService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="101" column="59" lean-forward="true" selection-start-line="101" selection-start-column="59" selection-end-line="101" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.concluding_statement">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/concluding_statement_alter.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="69" column="12" lean-forward="true" selection-start-line="69" selection-start-column="12" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <marker date="1507453931525" expanded="true" signature="8900:8914" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="21" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/concluding_check_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/concluding_check_alter.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="36" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#form#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#textarea#0;n#div#2;n#form#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#textarea#0;n#div#3;n#form#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#textarea#0;n#div#4;n#form#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_alter.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="34" column="55" lean-forward="true" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/concluding_check_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding>
-            <element signature="n#table#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/middle_check_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="21" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/score_all.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="n#table#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.role">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.match_info">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/concluding_check_alter.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/academy.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="153" column="49" lean-forward="true" selection-start-line="153" selection-start-column="49" selection-end-line="153" selection-end-column="49" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/grade/impl/GradeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/awards.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="92" column="44" lean-forward="true" selection-start-line="92" selection-start-column="44" selection-end-line="92" selection-end-column="44" />
+        <state relative-caret-position="994">
+          <caret line="88" column="11" lean-forward="false" selection-start-line="88" selection-start-column="11" selection-end-line="88" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/concluding_check_alter.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="119" column="16" lean-forward="true" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
+        <state relative-caret-position="156">
+          <caret line="66" column="12" lean-forward="false" selection-start-line="66" selection-start-column="12" selection-end-line="69" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyIndexController.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/raterGen.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="630">
+          <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="77" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/wrapper/RaterWrapper.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/sitemesh3.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="288">
+          <caret line="40" column="58" lean-forward="true" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/base/BaseController.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/DownloadController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="95" column="5" lean-forward="false" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
-          <folding>
-            <element signature="e#2495#2496#0" expanded="true" />
-            <element signature="e#2558#2559#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/tmprater/TmpRaterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="126">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/rater/TmpRaterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+        <state relative-caret-position="180">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/RaterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/middle_check_alter.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/PermissionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        <state relative-caret-position="159">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.pass">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.grade">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/super_index.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/PasswordController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/academy_index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="32" column="40" lean-forward="false" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/rater/GradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyScoreController.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/OpenSupplyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="93" column="16" lean-forward="true" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+        <state relative-caret-position="159">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1369,82 +1131,286 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/academy_grade.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminMiddleCheckController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="98" column="20" lean-forward="true" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="159">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAwardsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="72" column="44" lean-forward="false" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/TestIndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/UploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/MatchItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/MatchTypeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/StageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/SuperRankController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminConcludingStatementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAcademyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/tmprater/impl/TmpRaterServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="90" column="32" lean-forward="false" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+        <state relative-caret-position="105">
+          <caret line="77" column="26" lean-forward="false" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyScoreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="124" column="55" lean-forward="true" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.tmp_rater">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/sitemesh/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="98" column="33" lean-forward="true" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/notices.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminNoticeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="54" column="37" lean-forward="true" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-common/src/main/java/com/sduwh/match/enums/NoticeLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#422#423#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/dao/NoticeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/model/entity/Notice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="846">
+          <caret line="75" column="48" lean-forward="false" selection-start-line="75" selection-start-column="48" selection-end-line="75" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/notice/NoticeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/my_match.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f186dce4/c42656d7-ceae-4db1-aa5a-8ded03832c9a/competition.notice">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/rater/super_grade.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/service/notice/impl/NoticeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="97" column="48" lean-forward="false" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/score_items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="153" column="15" lean-forward="true" selection-start-line="153" selection-start-column="15" selection-end-line="153" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/score_all.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="37" column="20" lean-forward="false" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+        <state relative-caret-position="520">
+          <caret line="58" column="44" lean-forward="false" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
           <folding>
-            <element signature="n#table#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/awards.jsp">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/admin/send_notice.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="77" column="44" lean-forward="false" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="44" />
+        <state relative-caret-position="252">
+          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherConcludingStatementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/teacher/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/student/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="53" column="8" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="54" selection-end-column="46" />
           <folding>
-            <element signature="n#table#0;n#div#0;n#mydiv#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/admin/AdminAwardsController.java">
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/academy/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+        <state relative-caret-position="396">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/academy/AcademyIndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/java/com/sduwh/match/controller/teacher/TeacherIndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="61" column="8" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="62" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/match-web/src/main/webapp/WEB-INF/views/student/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
           <folding />
         </state>
       </provider>

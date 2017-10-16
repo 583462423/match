@@ -1,15 +1,20 @@
 package com.sduwh.match.controller.student;
 
 import com.sduwh.match.controller.base.BaseController;
+import com.sduwh.match.enums.NoticeLevel;
+import com.sduwh.match.model.entity.Notice;
 import com.sduwh.match.model.entity.User;
 import com.sduwh.match.model.wrapper.UserWrapper;
+import com.sduwh.match.service.notice.NoticeService;
 import com.sduwh.match.service.user.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,10 +30,12 @@ public class IndexController extends BaseController {
     private static final String STUDENT_TO_ACTIVE = "";
     @Autowired
     UserService userService;
+    @Autowired
+    NoticeService noticeService;
 
     /** 显示用户当前帐号状态，如果未激活就提醒激活，显示其余各种信息 */
     @GetMapping("/index")
-    public String index(Map<String,UserWrapper> map){
+    public String index(Model model){
         String name = (String) SecurityUtils.getSubject().getPrincipal();
         User user = userService.selectByUsername(name);
         //获取到User信息后，将User的各种信息展示，需要使用Map
@@ -41,8 +48,11 @@ public class IndexController extends BaseController {
                 //TODO 状态3为未激活，所以需要跳转到某个页面激活，待做
                 return STUDENT_TO_ACTIVE;
         }
+
         //否则就跳转过来，直接开始正常操作
-        map.put("user",userService.selectUserWrapperByUser(user));
+        model.addAttribute("user",userService.selectUserWrapperByUser(user));
+        List<Notice> notices = noticeService.selectByLevelAndRunning(NoticeLevel.STUDENT.getCode());
+        model.addAttribute("notices",notices);
         return STUDENT_INDEX;
     }
 
